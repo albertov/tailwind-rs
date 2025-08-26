@@ -35,7 +35,7 @@ pub fn parse_tailwind(input: &str) -> Result<Vec<AstStyle>, Err<Error<&str>>> {
 }
 
 /// `variant:ast-style(grouped)`
-#[derive(Clone, Debug, PartialEq, Default)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash, Default)]
 pub struct AstGroup<'a> {
     /// Is a `!important` group
     pub important: bool,
@@ -46,7 +46,7 @@ pub struct AstGroup<'a> {
 }
 
 /// One of [`AstGroup`] and [`AstStyle`]
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum AstGroupItem<'a> {
     /// Is grouped node can be expand
     Grouped(AstGroup<'a>),
@@ -55,7 +55,7 @@ pub enum AstGroupItem<'a> {
 }
 
 /// `not-variant:pseudo::-ast-element-[arbitrary]`
-#[derive(Clone, Debug, PartialEq, Default)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash, Default)]
 pub struct AstStyle<'a> {
     /// Is a `!important` style
     pub important: bool,
@@ -70,29 +70,29 @@ pub struct AstStyle<'a> {
 }
 
 /// `-[.+]`
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct AstArbitrary<'a> {
     /// The arbitrary value text
     pub arbitrary: &'a str,
 }
 
 /// `ast-elements`
-#[derive(Clone, Debug, PartialEq, Default)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash, Default)]
 pub struct AstElements<'a> {
     /// `name-space`
     pub elements: Vec<&'a str>,
 }
 
 /// `&`
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub struct AstReference {}
 
 /// `!`
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub struct AstImportant {}
 
 /// `(not-)?variant:pseudo::`
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct ASTVariant<'a> {
     /// `not-`
     pub not: bool,
