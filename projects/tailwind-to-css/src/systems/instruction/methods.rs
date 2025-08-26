@@ -26,6 +26,10 @@ impl TailwindInstruction {
     pub fn view_arbitrary(&self) -> &TailwindArbitrary {
         &self.arbitrary
     }
+    #[inline]
+    pub fn view_variants(&self) -> &[TailwindVariant] {
+        &self.variants
+    }
     // TODO
     pub fn normalization(self) -> Self {
         self

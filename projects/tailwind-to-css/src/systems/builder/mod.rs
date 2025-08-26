@@ -156,10 +156,10 @@ impl TailwindBuilder {
             out.push_str(&self.preflight.to_string());
         }
         for item in &self.objects {
-            item.write_css(&mut out)?;
+            item.write_css(&mut out, self)?;
         }
         for item in &self.bundles {
-            item.write_css(&mut out)?;
+            item.write_css(&mut out, self)?;
         }
         Ok(out)
     }
@@ -174,7 +174,8 @@ fn try_trace(tw: &mut TailwindBuilder, style: &str, obfuscate: bool) -> Result<C
     let parsed = parse_tailwind(style)?;
     let mut out = CssBundle::default();
     for item in parsed {
-        let i = CssInstance::new(&*item.get_instance()?, tw, obfuscate);
+        let variants = item.view_variants().to_vec();
+        let i = CssInstance::new(&*item.get_instance()?, tw, obfuscate, variants);
         out.add_trace(&i);
         tw.objects.insert(i);
     }
@@ -185,7 +186,8 @@ fn try_inline(tw: &mut TailwindBuilder, style: &str, mode: CssInlineMode) -> Res
     let parsed = parse_tailwind(style)?;
     let mut out = CssBundle::default();
     for item in parsed {
-        let i = CssInstance::new(&*item.get_instance()?, tw, true);
+        let variants = item.view_variants().to_vec();
+        let i = CssInstance::new(&*item.get_instance()?, tw, true, variants);
         match &i.inlineable {
             true => out.add_inline(i),
             false => {

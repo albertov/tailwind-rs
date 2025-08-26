@@ -20,11 +20,11 @@ pub struct TailwindInstruction {
     arbitrary: TailwindArbitrary,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Hash, PartialEq, Eq)]
 pub struct TailwindVariant {
-    not: bool,
-    pseudo: bool,
-    names: Vec<String>,
+    pub not: bool,
+    pub pseudo: bool,
+    pub names: Vec<String>,
 }
 
 #[derive(Debug, Clone)]

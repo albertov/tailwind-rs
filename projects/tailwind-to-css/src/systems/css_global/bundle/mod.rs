@@ -55,7 +55,7 @@ impl CssBundle {
     pub fn set_mode(&mut self, mode: CssInlineMode) {
         self.mode = mode
     }
-    pub fn write_css(&self, f: &mut (dyn Write)) -> Result<()> {
+    pub fn write_css(&self, f: &mut (dyn Write), _tw: &crate::TailwindBuilder) -> Result<()> {
         let id = Self::obfuscate(self);
         match self.mode {
             CssInlineMode::None => unreachable!(),
