@@ -1,53 +1,94 @@
+//! Tailwind CSS variant type system.
+//!
+//! This module provides a type-safe representation of Tailwind CSS variants
+//! including responsive breakpoints, pseudo-classes, pseudo-elements, and state variants.
+
 use crate::systems::instruction::TailwindVariant;
 
+/// Responsive breakpoint variants for media queries.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Breakpoint {
+    /// Small screens (640px)
     Sm,
+    /// Medium screens (768px)
     Md,
+    /// Large screens (1024px)
     Lg,
+    /// Extra large screens (1280px)
     Xl,
+    /// 2x extra large screens (1536px)
     Xxl,
-    Custom(String),  // For user-defined breakpoints
+    /// User-defined custom breakpoints
+    Custom(String),
 }
 
+/// Type-safe representation of all Tailwind variant types.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum VariantType {
+    /// Responsive breakpoints (sm, md, lg, xl, 2xl)
     Responsive(Breakpoint),
+    /// CSS pseudo-classes (hover, focus, active, etc.)
     PseudoClass(PseudoClass),
+    /// CSS pseudo-elements (before, after, etc.)
     PseudoElement(PseudoElement),
+    /// Dark mode variant
     Dark,
+    /// Structural state variants (first, last, even, odd, etc.)
     State(StateVariant),
-    Unknown(String),  // Fallback for unrecognized variants
+    /// Unknown variants (may be custom breakpoints or future features)
+    Unknown(String),
 }
 
+/// CSS pseudo-class variants.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum PseudoClass {
+    /// :hover pseudo-class
     Hover,
+    /// :focus pseudo-class
     Focus,
+    /// :active pseudo-class
     Active,
+    /// :visited pseudo-class
     Visited,
+    /// :disabled pseudo-class
     Disabled,
+    /// :checked pseudo-class
     Checked,
+    /// :enabled pseudo-class
     Enabled,
 }
 
+/// CSS pseudo-element variants.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum PseudoElement {
+    /// ::before pseudo-element
     Before,
+    /// ::after pseudo-element
     After,
+    /// ::marker pseudo-element
     Marker,
+    /// ::selection pseudo-element
     Selection,
+    /// ::first-letter pseudo-element
     FirstLetter,
+    /// ::first-line pseudo-element
     FirstLine,
 }
 
+/// Structural state variants for element positioning.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum StateVariant {
+    /// :first-child selector
     First,
+    /// :last-child selector
     Last,
+    /// :nth-child(even) selector
     Even,
+    /// :nth-child(odd) selector
     Odd,
+    /// :first-of-type selector
     FirstOfType,
+    /// :last-of-type selector
     LastOfType,
 }
 
@@ -106,6 +147,9 @@ impl StateVariant {
 }
 
 impl TailwindVariant {
+    /// Determines the variant type based on the variant name.
+    /// 
+    /// Maps string variant names to their corresponding type-safe enum representations.
     pub fn get_type(&self) -> VariantType {
         let name = self.names.join("-");
         match name.as_str() {
@@ -150,6 +194,9 @@ impl TailwindVariant {
         }
     }
     
+    /// Converts the variant names to a class prefix string.
+    /// 
+    /// Joins multiple names with hyphens (e.g., ["first", "child"] becomes "first-child").
     pub fn to_class_prefix(&self) -> String {
         self.names.join("-")
     }
