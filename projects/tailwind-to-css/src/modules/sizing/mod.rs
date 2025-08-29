@@ -14,6 +14,21 @@ enum TailwindSizingKind {
 }
 
 #[derive(Copy, Clone, Debug)]
+enum PresetSize {
+    Xs,
+    Sm,
+    Md,
+    Lg,
+    Xl,
+    Xxl,
+    Xxxl,
+    Xxxxl,
+    Xxxxxl,
+    Xxxxxxl,
+    Xxxxxxxl,
+}
+
+#[derive(Copy, Clone, Debug)]
 enum SizingUnit {
     Min,
     Max,
@@ -21,6 +36,7 @@ enum SizingUnit {
     Auto,
     Full,
     Screen,
+    Preset(PresetSize),
     Fraction(usize, usize),
     Length(LengthUnit),
 }

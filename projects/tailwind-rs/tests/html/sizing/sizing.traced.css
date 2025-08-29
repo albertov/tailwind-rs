@@ -6,12 +6,56 @@
   max-height: 100vh;
 }
 
+.max-width-2xl {
+  max-width: 42rem;
+}
+
+.max-width-3xl {
+  max-width: 48rem;
+}
+
+.max-width-4xl {
+  max-width: 56rem;
+}
+
+.max-width-5xl {
+  max-width: 64rem;
+}
+
+.max-width-6xl {
+  max-width: 72rem;
+}
+
+.max-width-7xl {
+  max-width: 80rem;
+}
+
 .max-width-\[0px\] {
   max-width: 0;
 }
 
 .max-width-\[50\%\] {
   max-width: 50%;
+}
+
+.max-width-lg {
+  max-width: 32rem;
+}
+
+.max-width-md {
+  max-width: 28rem;
+}
+
+.max-width-sm {
+  max-width: 24rem;
+}
+
+.max-width-xl {
+  max-width: 36rem;
+}
+
+.max-width-xs {
+  max-width: 20rem;
 }
 
 .min-height-screen {

@@ -205,6 +205,8 @@ impl TailwindInstruction {
             ["size", rest @ ..] => TailwindBackgroundSize::parse(rest, arbitrary)?.boxed(),
             // https://tailwindcss.com/docs/background-blend-mode
             ["blend", rest @ ..] => TailwindBackgroundBlend::parse(rest, arbitrary)?.boxed(),
+            // https://tailwindcss.com/docs/background-image
+            ["gradient", "to", rest @ ..] => TailwindBackgroundGradient::parse(rest, arbitrary)?.boxed(),
             _ => TailwindBackgroundColor::parse(pattern, arbitrary)?.boxed(),
         };
         Ok(out)

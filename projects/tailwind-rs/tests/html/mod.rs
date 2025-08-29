@@ -8,6 +8,7 @@ mod border;
 mod effect;
 mod filter;
 mod flex;
+mod gradient;
 mod grouped;
 mod interactivity;
 mod layout;

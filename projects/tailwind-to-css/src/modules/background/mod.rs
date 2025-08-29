@@ -2,7 +2,7 @@ pub use self::{
     attachment::TailwindBackgroundAttachment,
     clip::TailwindBackgroundClip,
     color::TailwindBackgroundColor,
-    gradient::{TailwindFrom, TailwindTo, TailwindVia},
+    gradient::{TailwindBackgroundGradient, TailwindFrom, TailwindTo, TailwindVia},
     image::TailwindBackgroundImage,
     origin::TailwindBackgroundOrigin,
     position::TailwindBackgroundPosition,

@@ -1,4 +1,7 @@
+mod direction;
+
 use super::*;
+pub use direction::TailwindBackgroundGradient;
 
 #[doc=include_str!("readme.md")]
 #[derive(Clone, Debug)]
