@@ -28,14 +28,14 @@ impl Display for Transition {
             Self::Opacity => write!(f, "-opacity"),
             Self::Shadow => write!(f, "-shadow"),
             Self::Transform => write!(f, "-transform"),
-            Self::Arbitrary(g) => write!(f, "-[{}]", g.get_class()),
+            Self::Arbitrary(g) => write!(f, "-[{}]", g.get_properties()),
         }
     }
 }
 
 impl Display for TailwindTransition {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "transition[{}]", self.kind)
+        write!(f, "transition{}", self.kind)
     }
 }
 

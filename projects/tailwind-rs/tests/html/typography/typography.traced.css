@@ -94,6 +94,26 @@
   text-decoration-color: currentColor;
 }
 
+.font-\[300\] {
+  font-weight: 300;
+}
+
+.font-\[400\] {
+  font-weight: 400;
+}
+
+.font-\[500\] {
+  font-weight: 500;
+}
+
+.font-\[600\] {
+  font-weight: 600;
+}
+
+.font-\[700\] {
+  font-weight: 700;
+}
+
 .line-through {
   text-decoration-line: line-through;
 }
@@ -203,6 +223,18 @@
   line-height: 1.5rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-left {
+  text-align: left;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -211,6 +243,10 @@
 .text-md {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .text-sm {
