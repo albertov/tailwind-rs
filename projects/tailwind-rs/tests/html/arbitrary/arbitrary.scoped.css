@@ -314,8 +314,52 @@
   flex-shrink: var(--shrink);
 }
 
-.F3fRpXh9CjH {
-  font-family: ;
+.JTQ3Pn9MU6Y {
+  font-family: Gill Sans;
+}
+
+.xXpGjYMprxJ {
+  font-family: Some Font, Some Other Font;
+}
+
+.Fq5rPktSxXT {
+  font-family: Some Font, sans-serif;
+}
+
+.DQGkq3cIAXV {
+  font-family: "Some Font", var(--other-font);
+}
+
+.QZ4zDBo4I7K {
+  font-family: Georgia, serif;
+}
+
+.l7k4Wl8uiOY {
+  font-family: family-name:var(--value);
+}
+
+.HprG6RMXLcL {
+  font-family: invalid font because spaces;
+}
+
+.EF77610vg5Y {
+  font-family: number:lighter;
+}
+
+.kArzILUDW2Q {
+  font-family: number:var(--value);
+}
+
+.BM4GeRaX9IX {
+  font-family: sans-serif, serif;
+}
+
+.Kz6Y3OFqzMT {
+  font-family: serif, var(--value);
+}
+
+.ZFBtijTNJdG {
+  font-family: var(--font1), var(--font2);
 }
 
 .OJlUpX5VF3B {
@@ -348,6 +392,10 @@
 
 .Rn7w8Hj9UnH, .GJfcGOlHHrN, .QhYThpIEHlB {
   font-size: #7b7b7b;
+}
+
+.pgJcg0hzQRR {
+  font-weight: 300;
 }
 
 .uPOCmMgjeKH {

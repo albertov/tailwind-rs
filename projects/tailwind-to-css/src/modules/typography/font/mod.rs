@@ -19,6 +19,14 @@ pub fn font_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<B
         ["bold"] => TailwindFontWeight::BOLD.boxed(),
         ["extrabold"] => TailwindFontWeight::EXTRA_BOLD.boxed(),
         ["black"] => TailwindFontWeight::BLACK.boxed(),
+        // Handle font-[300] case where pattern is empty and arbitrary has value
+        [] if arbitrary.is_some() => {
+            // Try to parse as weight first, then fall back to font family
+            match maybe_weight(arbitrary) {
+                Ok(weight) => weight,
+                Err(_) => TailwindFontFamily::from(arbitrary.as_str()).boxed(),
+            }
+        },
         ["size"] => maybe_size(arbitrary)?,
         ["size", n] => {
             let a = TailwindArbitrary::from(*n);

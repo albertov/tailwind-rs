@@ -314,8 +314,52 @@
   flex-shrink: var(--shrink);
 }
 
-[data-tw-F3fRpXh9CjH] {
-  font-family: ;
+[data-tw-JTQ3Pn9MU6Y] {
+  font-family: Gill Sans;
+}
+
+[data-tw-xXpGjYMprxJ] {
+  font-family: Some Font, Some Other Font;
+}
+
+[data-tw-Fq5rPktSxXT] {
+  font-family: Some Font, sans-serif;
+}
+
+[data-tw-DQGkq3cIAXV] {
+  font-family: "Some Font", var(--other-font);
+}
+
+[data-tw-QZ4zDBo4I7K] {
+  font-family: Georgia, serif;
+}
+
+[data-tw-l7k4Wl8uiOY] {
+  font-family: family-name:var(--value);
+}
+
+[data-tw-HprG6RMXLcL] {
+  font-family: invalid font because spaces;
+}
+
+[data-tw-EF77610vg5Y] {
+  font-family: number:lighter;
+}
+
+[data-tw-kArzILUDW2Q] {
+  font-family: number:var(--value);
+}
+
+[data-tw-BM4GeRaX9IX] {
+  font-family: sans-serif, serif;
+}
+
+[data-tw-Kz6Y3OFqzMT] {
+  font-family: serif, var(--value);
+}
+
+[data-tw-ZFBtijTNJdG] {
+  font-family: var(--font1), var(--font2);
 }
 
 [data-tw-OJlUpX5VF3B] {
@@ -348,6 +392,10 @@
 
 [data-tw-Rn7w8Hj9UnH], [data-tw-GJfcGOlHHrN], [data-tw-QhYThpIEHlB] {
   font-size: #7b7b7b;
+}
+
+[data-tw-pgJcg0hzQRR] {
+  font-weight: 300;
 }
 
 [data-tw-uPOCmMgjeKH] {

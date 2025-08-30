@@ -242,8 +242,56 @@
   flex: var(--flex);
 }
 
-.font- {
-  font-family: ;
+.font-\'Gill_Sans\' {
+  font-family: Gill Sans;
+}
+
+.font-\'Some_Font\'\,\'Some_Other_Font\' {
+  font-family: Some Font, Some Other Font;
+}
+
+.font-\'Some_Font\'\,sans-serif {
+  font-family: Some Font, sans-serif;
+}
+
+.font-\'Some_Font\'\,var\(--other-font\) {
+  font-family: "Some Font", var(--other-font);
+}
+
+.font-Georgia\,serif {
+  font-family: Georgia, serif;
+}
+
+.font-\[300\] {
+  font-weight: 300;
+}
+
+.font-family-name\:var\(--value\) {
+  font-family: family-name:var(--value);
+}
+
+.font-invalid_font_because_spaces {
+  font-family: invalid font because spaces;
+}
+
+.font-number\:lighter {
+  font-family: number:lighter;
+}
+
+.font-number\:var\(--value\) {
+  font-family: number:var(--value);
+}
+
+.font-sans-serif\,serif {
+  font-family: sans-serif, serif;
+}
+
+.font-serif\,var\(--value\) {
+  font-family: serif, var(--value);
+}
+
+.font-var\(--font1\)\,var\(--font2\) {
+  font-family: var(--font1), var(--font2);
 }
 
 .from-\[\#DA5B66FF\] {
