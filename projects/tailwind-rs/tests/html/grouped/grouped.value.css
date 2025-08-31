@@ -1,8 +1,5 @@
-[data-tw="w7ilurhQQSV"] {
+[data-tw="sZYjBrGcVYP"] {
   opacity: .5;
-  filter: blur(8px) brightness() contrast() grayscale() hue-rotate(180deg) invert() saturate() sepia();
-}
-
-[data-tw="HYCTSIViCUO"] {
-  backdrop-filter: blur(8px) brightness() contrast() grayscale() hue-rotate(180deg) invert() opacity(50%) saturate() sepia();
+  filter: brightness() contrast() grayscale() hue-rotate(180deg) invert() saturate() sepia();
+  opacity: .5;
 }

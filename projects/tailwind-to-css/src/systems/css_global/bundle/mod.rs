@@ -19,6 +19,10 @@ impl CssBundle {
     pub fn add_trace(&mut self, item: &CssInstance) {
         self.non_inlined_classes.insert(item.get_class());
     }
+    /// Add an unparsed class name directly (for classes that can't be parsed)
+    pub fn add_unparsed_class(&mut self, class: &str) {
+        self.non_inlined_classes.insert(class.to_string());
+    }
     /// insert new css instance to the html tag
     pub fn add_inline(&mut self, item: CssInstance) {
         self.attribute += item.attribute;

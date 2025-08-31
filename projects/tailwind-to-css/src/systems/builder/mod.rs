@@ -171,32 +171,124 @@ fn parse_tailwind(input: &str) -> Result<Vec<TailwindInstruction>> {
     Ok(styles.into_iter().map(TailwindInstruction::from).collect())
 }
 
-fn try_trace(tw: &mut TailwindBuilder, style: &str, obfuscate: bool) -> Result<CssBundle> {
-    let parsed = parse_tailwind(style)?;
-    let mut out = CssBundle::default();
-    for item in parsed {
-        let variants = item.view_variants().to_vec();
-        let i = CssInstance::new(&*item.get_instance()?, tw, obfuscate, variants);
-        out.add_trace(&i);
-        tw.objects.insert(i);
+/// Tokenize a class string respecting bracket boundaries for arbitrary values
+fn tokenize_classes(input: &str) -> Vec<String> {
+    let mut tokens = Vec::new();
+    let mut current = String::new();
+    let mut bracket_depth = 0;
+    let mut chars = input.chars().peekable();
+    
+    while let Some(ch) = chars.next() {
+        match ch {
+            '[' => {
+                bracket_depth += 1;
+                current.push(ch);
+            }
+            ']' => {
+                bracket_depth -= 1;
+                current.push(ch);
+            }
+            ' ' | '\t' | '\n' | '\r' if bracket_depth == 0 => {
+                // Only split on whitespace when not inside brackets
+                if !current.is_empty() {
+                    tokens.push(current.clone());
+                    current.clear();
+                }
+            }
+            _ => {
+                current.push(ch);
+            }
+        }
     }
+    
+    // Don't forget the last token
+    if !current.is_empty() {
+        tokens.push(current);
+    }
+    
+    tokens
+}
+
+fn try_trace(tw: &mut TailwindBuilder, style: &str, obfuscate: bool) -> Result<CssBundle> {
+    let mut out = CssBundle::default();
+    
+    // Tokenize input respecting bracket boundaries
+    for class in tokenize_classes(style) {
+        // Skip empty strings
+        if class.is_empty() {
+            continue;
+        }
+        
+        // Try to parse and transform this individual class
+        match parse_tailwind(&class) {
+            Ok(parsed) => {
+                // Successfully parsed - transform it
+                for item in parsed {
+                    let variants = item.view_variants().to_vec();
+                    match item.get_instance() {
+                        Ok(instance) => {
+                            let i = CssInstance::new(&*instance, tw, obfuscate, variants);
+                            out.add_trace(&i);
+                            tw.objects.insert(i);
+                        }
+                        Err(_) => {
+                            // If we can't get the instance, keep the original class
+                            out.add_unparsed_class(&class);
+                        }
+                    }
+                }
+            }
+            Err(_) => {
+                // Can't parse this class - keep it as-is (it might be already transformed)
+                out.add_unparsed_class(&class);
+            }
+        }
+    }
+    
     Ok(out)
 }
 
 fn try_inline(tw: &mut TailwindBuilder, style: &str, mode: CssInlineMode) -> Result<CssBundle> {
-    let parsed = parse_tailwind(style)?;
     let mut out = CssBundle::default();
-    for item in parsed {
-        let variants = item.view_variants().to_vec();
-        let i = CssInstance::new(&*item.get_instance()?, tw, true, variants);
-        match &i.inlineable {
-            true => out.add_inline(i),
-            false => {
-                out.add_trace(&i);
-                tw.objects.insert(i);
-            },
-        };
+    
+    // Tokenize input respecting bracket boundaries
+    for class in tokenize_classes(style) {
+        // Skip empty strings
+        if class.is_empty() {
+            continue;
+        }
+        
+        // Try to parse and transform this individual class
+        match parse_tailwind(&class) {
+            Ok(parsed) => {
+                // Successfully parsed - transform it
+                for item in parsed {
+                    let variants = item.view_variants().to_vec();
+                    match item.get_instance() {
+                        Ok(instance) => {
+                            let i = CssInstance::new(&*instance, tw, true, variants);
+                            match &i.inlineable {
+                                true => out.add_inline(i),
+                                false => {
+                                    out.add_trace(&i);
+                                    tw.objects.insert(i);
+                                },
+                            };
+                        }
+                        Err(_) => {
+                            // If we can't get the instance, keep the original class
+                            out.add_unparsed_class(&class);
+                        }
+                    }
+                }
+            }
+            Err(_) => {
+                // Can't parse this class - keep it as-is (it might be already transformed)
+                out.add_unparsed_class(&class);
+            }
+        }
     }
+    
     out.set_mode(mode);
     tw.bundles.insert(out.to_owned());
     Ok(out)
