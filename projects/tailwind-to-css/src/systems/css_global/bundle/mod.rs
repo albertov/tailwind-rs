@@ -1,16 +1,17 @@
 use super::*;
 use crate::Base62;
+use indexmap::IndexSet;
 mod traits;
 
 /// A collection of css objects
 ///
 /// Separate or merge as needed
-#[derive(Debug, Clone, Default, Ord, PartialOrd, Eq, PartialEq)]
+#[derive(Debug, Clone, Default, Eq, PartialEq)]
 pub(crate) struct CssBundle {
     mode: CssInlineMode,
-    non_inlined_classes: BTreeSet<String>,
+    non_inlined_classes: IndexSet<String>,
     attribute: CssAttributes,
-    addition: BTreeSet<String>,
+    addition: IndexSet<String>,
 }
 
 // noinspection DuplicatedCode
@@ -26,7 +27,10 @@ impl CssBundle {
     pub fn obfuscate(css: &Self) -> String {
         let mut hasher = Xxh3::new();
         css.attribute.hash(&mut hasher);
-        css.addition.hash(&mut hasher);
+        // Hash the items in the IndexSet in order
+        for item in &css.addition {
+            item.hash(&mut hasher);
+        }
         hasher.finish().base62()
     }
     /// # Returns

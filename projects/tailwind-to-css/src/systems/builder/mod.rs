@@ -1,4 +1,5 @@
-use std::{collections::BTreeSet, fmt::Debug};
+use std::fmt::Debug;
+use indexmap::IndexSet;
 
 use crate::{systems::instruction::TailwindInstruction, *};
 
@@ -29,8 +30,8 @@ pub struct TailwindBuilder {
     ///
     /// Only determined when packing
     pub effects: EffectSystem,
-    pub(crate) objects: BTreeSet<CssInstance>,
-    pub(crate) bundles: BTreeSet<CssBundle>,
+    pub(crate) objects: IndexSet<CssInstance>,
+    pub(crate) bundles: IndexSet<CssBundle>,
 }
 
 impl TailwindBuilder {

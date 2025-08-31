@@ -1,173 +1,26 @@
-.decoration-0 {
-  text-decoration-thickness: 0;
+.text-xs {
+  font-size: .75rem;
+  line-height: 1rem;
 }
 
-.decoration-1 {
-  text-decoration-thickness: 1px;
+.text-sm {
+  font-size: .875rem;
+  line-height: 1.25rem;
 }
 
-.decoration-\[\#FFFFFFFF\] {
-  text-decoration-color: #fff;
+.text-base, .text-md {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
-.decoration-\[\#FFFFFF\] {
-  text-decoration: none;
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
-.decoration-\[overline_red\] {
-  text-decoration: overline red;
-}
-
-.decoration-auto {
-  text-decoration-thickness: auto;
-}
-
-.decoration-black-0, .decoration-current-0 {
-  text-decoration-color: currentColor;
-}
-
-.decoration-dashed {
-  text-decoration-style: dashed;
-}
-
-.decoration-dotted {
-  text-decoration-style: dotted;
-}
-
-.decoration-double {
-  text-decoration-style: double;
-}
-
-.decoration-from-font {
-  text-decoration-thickness: from-font;
-}
-
-.decoration-inherit-0 {
-  text-decoration-color: currentColor;
-}
-
-.decoration-line-\[overline_underline_line-through\] {
-  text-decoration-line: underline overline line-through;
-}
-
-.decoration-line-\[unset\], .decoration-line-unset {
-  text-decoration-line: unset;
-}
-
-.decoration-red-0 {
-  text-decoration-color: currentColor;
-}
-
-.decoration-slate-100 {
-  text-decoration-color: #f1f5f9;
-}
-
-.decoration-slate-50 {
-  text-decoration-color: #f8fafc;
-}
-
-.decoration-solid {
-  text-decoration-style: solid;
-}
-
-.decoration-style-\[unset\], .decoration-style-unset {
-  text-decoration-style: unset;
-}
-
-.decoration-thick-\[unset\], .decoration-thick-unset {
-  text-decoration-thickness: unset;
-}
-
-.decoration-transparent-0 {
-  text-decoration-color: currentColor;
-}
-
-.decoration-unset {
-  text-decoration-color: unset;
-}
-
-.decoration-wavy {
-  text-decoration-style: wavy;
-}
-
-.decoration-white-0 {
-  text-decoration-color: currentColor;
-}
-
-.font-\[300\] {
-  font-weight: 300;
-}
-
-.font-\[400\] {
-  font-weight: 400;
-}
-
-.font-\[500\] {
-  font-weight: 500;
-}
-
-.font-\[600\] {
-  font-weight: 600;
-}
-
-.font-\[700\] {
-  font-weight: 700;
-}
-
-.line-through {
-  text-decoration-line: line-through;
-}
-
-.list-\[\'-\'\] {
-  list-style-type: "-";
-}
-
-.list-\[\@custom-counter-style\] {
-  list-style-type: @custom-counter-style;
-}
-
-.list-\[unset\] {
-  list-style-type: unset;
-}
-
-.list-decimal {
-  list-style-type: decimal;
-}
-
-.list-disc {
-  list-style-type: disc;
-}
-
-.list-inside {
-  list-style-position: inside;
-}
-
-.list-none {
-  list-style-type: none;
-}
-
-.list-outside {
-  list-style-position: outside;
-}
-
-.list-position-\[unset\], .list-position-unset {
-  list-style-position: unset;
-}
-
-.list-trad-chinese-informal {
-  list-style-type: trad-chinese-informal;
-}
-
-.list-unset {
-  list-style-type: unset;
-}
-
-.no-underline {
-  text-decoration-line: none;
-}
-
-.overline {
-  text-decoration-line: overline;
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-2xl {
@@ -210,86 +63,28 @@
   line-height: 100%;
 }
 
-.text-\[10px\] {
-  font-size: 10px;
-}
-
 .text-\[2\.3rem\] {
   font-size: 2.3rem;
 }
 
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.text-md {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-sm {
-  font-size: .875rem;
-  line-height: 1.25rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-xs {
-  font-size: .75rem;
-  line-height: 1rem;
-}
-
-.tracking-\[0\.5em\] {
-  letter-spacing: .5em;
-}
-
-.tracking-normal {
-  letter-spacing: normal;
-}
-
-.tracking-not-found {
-  letter-spacing: 0;
-}
-
-.tracking-tight {
-  letter-spacing: -.025em;
-}
-
-.tracking-tighter {
-  letter-spacing: -.05em;
+.text-\[10px\] {
+  font-size: 10px;
 }
 
 .tracking-tightest {
   letter-spacing: -.75em;
 }
 
-.tracking-unset {
-  letter-spacing: unset;
+.tracking-tighter {
+  letter-spacing: -.05em;
+}
+
+.tracking-tight {
+  letter-spacing: -.025em;
+}
+
+.tracking-normal {
+  letter-spacing: normal;
 }
 
 .tracking-wide {
@@ -304,6 +99,190 @@
   letter-spacing: .1em;
 }
 
+.tracking-unset {
+  letter-spacing: unset;
+}
+
+.tracking-not-found {
+  letter-spacing: 0;
+}
+
+.tracking-\[0\.5em\] {
+  letter-spacing: .5em;
+}
+
+.list-none {
+  list-style-type: none;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+.list-decimal {
+  list-style-type: decimal;
+}
+
+.list-trad-chinese-informal {
+  list-style-type: trad-chinese-informal;
+}
+
+.list-unset, .list-\[unset\] {
+  list-style-type: unset;
+}
+
+.list-\[\'-\'\] {
+  list-style-type: "-";
+}
+
+.list-\[\@custom-counter-style\] {
+  list-style-type: @custom-counter-style;
+}
+
+.list-inside {
+  list-style-position: inside;
+}
+
+.list-outside {
+  list-style-position: outside;
+}
+
+.list-position-unset, .list-position-\[unset\] {
+  list-style-position: unset;
+}
+
 .underline {
   text-decoration-line: underline;
+}
+
+.overline {
+  text-decoration-line: overline;
+}
+
+.line-through {
+  text-decoration-line: line-through;
+}
+
+.no-underline {
+  text-decoration-line: none;
+}
+
+.decoration-line-unset, .decoration-line-\[unset\] {
+  text-decoration-line: unset;
+}
+
+.decoration-line-\[overline_underline_line-through\] {
+  text-decoration-line: underline overline line-through;
+}
+
+.decoration-inherit-0, .decoration-current-0, .decoration-transparent-0, .decoration-black-0, .decoration-white-0 {
+  text-decoration-color: currentColor;
+}
+
+.decoration-\[\#FFFFFFFF\] {
+  text-decoration-color: #fff;
+}
+
+.decoration-\[\#FFFFFF\] {
+  text-decoration: none;
+}
+
+.decoration-slate-50 {
+  text-decoration-color: #f8fafc;
+}
+
+.decoration-slate-100 {
+  text-decoration-color: #f1f5f9;
+}
+
+.decoration-unset {
+  text-decoration-color: unset;
+}
+
+.decoration-red-0 {
+  text-decoration-color: currentColor;
+}
+
+.decoration-solid {
+  text-decoration-style: solid;
+}
+
+.decoration-double {
+  text-decoration-style: double;
+}
+
+.decoration-dotted {
+  text-decoration-style: dotted;
+}
+
+.decoration-dashed {
+  text-decoration-style: dashed;
+}
+
+.decoration-wavy {
+  text-decoration-style: wavy;
+}
+
+.decoration-style-unset, .decoration-style-\[unset\] {
+  text-decoration-style: unset;
+}
+
+.decoration-auto {
+  text-decoration-thickness: auto;
+}
+
+.decoration-from-font {
+  text-decoration-thickness: from-font;
+}
+
+.decoration-0 {
+  text-decoration-thickness: 0;
+}
+
+.decoration-1 {
+  text-decoration-thickness: 1px;
+}
+
+.decoration-thick-unset, .decoration-thick-\[unset\] {
+  text-decoration-thickness: unset;
+}
+
+.decoration-\[overline_red\] {
+  text-decoration: overline red;
+}
+
+.font-\[700\] {
+  font-weight: 700;
+}
+
+.font-\[500\] {
+  font-weight: 500;
+}
+
+.font-\[600\] {
+  font-weight: 600;
+}
+
+.font-\[400\] {
+  font-weight: 400;
+}
+
+.font-\[300\] {
+  font-weight: 300;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
 }

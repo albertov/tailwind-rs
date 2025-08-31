@@ -1,121 +1,49 @@
-.auto-cols-auto {
-  grid-auto-columns: auto;
-}
-
-.auto-cols-fr {
-  grid-auto-columns: minmax(0, 1fr);
-}
-
-.auto-cols-max {
-  grid-auto-columns: max-content;
-}
-
-.auto-cols-min {
-  grid-auto-columns: min-content;
-}
-
-.auto-rows-auto {
-  grid-auto-rows: auto;
-}
-
-.auto-rows-fr {
-  grid-auto-rows: minmax(0, 1fr);
-}
-
-.auto-rows-max {
-  grid-auto-rows: max-content;
-}
-
-.auto-rows-min {
-  grid-auto-rows: min-content;
-}
-
 .basis-0 {
   flex-basis: 0;
-}
-
-.basis-0\/1 {
-  flex-basis: 0%;
-}
-
-.basis-1\/1 {
-  flex-basis: 100%;
-}
-
-.basis-1\/2 {
-  flex-basis: 50%;
 }
 
 .basis-2\.5 {
   flex-basis: .625rem;
 }
 
-.basis-\[1px\] {
-  flex-basis: 1px;
+.basis-0\/1 {
+  flex-basis: 0%;
 }
 
-.basis-\[calc\(20\%_-_30px\)\] {
-  flex-basis: calc(20% - 30px);
+.basis-1\/2 {
+  flex-basis: 50%;
 }
 
-.basis-\[unset\] {
-  flex-basis: unset;
+.basis-1\/1 {
+  flex-basis: 100%;
 }
 
 .basis-auto {
   flex-basis: auto;
 }
 
-.basis-fit {
-  flex-basis: fit-content;
+.basis-min {
+  flex-basis: min-content;
 }
 
 .basis-max {
   flex-basis: max-content;
 }
 
-.basis-min {
-  flex-basis: min-content;
+.basis-fit {
+  flex-basis: fit-content;
 }
 
-.basis-unset {
+.basis-\[1px\] {
+  flex-basis: 1px;
+}
+
+.basis-unset, .basis-\[unset\] {
   flex-basis: unset;
 }
 
-.col {
-  grid-auto-flow: column;
-}
-
-.col-dense {
-  grid-auto-flow: column dense;
-}
-
-.col-span-auto {
-  grid-column: auto;
-}
-
-.content-align-start {
-  align-content: start;
-}
-
-.flex-0 {
-  flex: 0;
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.flex-\[10_30px\] {
-  flex: 10 30px;
-}
-
-.flex-\[2_2_10\%\] {
-  flex: 2 2 10%;
-}
-
-.flex-auto {
-  flex: auto;
+.basis-\[calc\(20\%_-_30px\)\] {
+  flex-basis: calc(20% - 30px);
 }
 
 .flex-col {
@@ -126,8 +54,44 @@
   flex-direction: column-reverse;
 }
 
-.flex-direction-\[unset\], .flex-direction-unset {
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex-direction-unset, .flex-direction-\[unset\] {
   flex-direction: unset;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-wrap-unset, .flex-wrap-\[unset\] {
+  flex-wrap: unset;
+}
+
+.flex-0 {
+  flex: 0;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-auto {
+  flex: auto;
 }
 
 .flex-initial {
@@ -138,32 +102,148 @@
   flex: none;
 }
 
-.flex-nowrap {
-  flex-wrap: nowrap;
+.flex-\[10_30px\] {
+  flex: 10 30px;
 }
 
-.flex-row {
-  flex-direction: row;
+.flex-\[2_2_10\%\] {
+  flex: 2 2 10%;
 }
 
-.flex-row-reverse {
-  flex-direction: row-reverse;
+.grow-100 {
+  flex-grow: 100;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
+.grow-0 {
+  flex-grow: 0;
 }
 
-.flex-wrap-\[unset\] {
-  flex-wrap: unset;
+.grow-1 {
+  flex-grow: 1;
 }
 
-.flex-wrap-reverse {
-  flex-wrap: wrap-reverse;
+.grow-unset {
+  flex-grow: unset;
 }
 
-.flex-wrap-unset {
-  flex-wrap: unset;
+.grow-\[unset\] {
+  flex-grow: [unset];
+}
+
+.shrink-1 {
+  flex-shrink: 1;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.shrink-unset, .shrink-\[unset\] {
+  flex-shrink: unset;
+}
+
+.order-0 {
+  order: 0;
+}
+
+.order-1 {
+  order: 1;
+}
+
+.order-9999 {
+  order: 9999;
+}
+
+.order-unset {
+  order: unset;
+}
+
+.order-\[unset\] {
+  order: [unset];
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-0 {
+  grid-template-columns: repeat(0, minmax(0, 1fr));
+}
+
+.grid-cols-none {
+  grid-template-columns: none;
+}
+
+.grid-cols-\[unset\] {
+  grid-template-columns: unset;
+}
+
+.col-span-auto {
+  grid-column: auto;
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
+.row-span-auto {
+  grid-row: auto;
+}
+
+.grid-flow- {
+  grid-auto-flow: row;
+}
+
+.col {
+  grid-auto-flow: column;
+}
+
+.row-dense {
+  grid-auto-flow: row dense;
+}
+
+.col-dense {
+  grid-auto-flow: column dense;
+}
+
+.auto-cols-auto {
+  grid-auto-columns: auto;
+}
+
+.auto-cols-min {
+  grid-auto-columns: min-content;
+}
+
+.auto-cols-max {
+  grid-auto-columns: max-content;
+}
+
+.auto-cols-fr {
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+.auto-rows-auto {
+  grid-auto-rows: auto;
+}
+
+.auto-rows-min {
+  grid-auto-rows: min-content;
+}
+
+.auto-rows-max {
+  grid-auto-rows: max-content;
+}
+
+.auto-rows-fr {
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+.gap-\[0px\] {
+  gap: 0;
+}
+
+.gap-\[1px\] {
+  gap: 1px;
 }
 
 .gap-\[0\.125rem\] {
@@ -182,8 +262,8 @@
   gap: .75rem;
 }
 
-.gap-\[0px\] {
-  gap: 0;
+.gap-\[1rem\] {
+  gap: 1rem;
 }
 
 .gap-\[1\.25rem\] {
@@ -194,20 +274,12 @@
   gap: 1.5rem;
 }
 
-.gap-\[1px\] {
-  gap: 1px;
-}
-
-.gap-\[1rem\] {
-  gap: 1rem;
+.gap-\[2rem\] {
+  gap: 2rem;
 }
 
 .gap-\[2\.5rem\] {
   gap: 2.5rem;
-}
-
-.gap-\[2rem\] {
-  gap: 2rem;
 }
 
 .gap-\[3rem\] {
@@ -246,50 +318,6 @@
   row-gap: 1rem;
 }
 
-.grid-cols-0 {
-  grid-template-columns: repeat(0, minmax(0, 1fr));
-}
-
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-.grid-cols-\[unset\] {
-  grid-template-columns: unset;
-}
-
-.grid-cols-none {
-  grid-template-columns: none;
-}
-
-.grid-flow- {
-  grid-auto-flow: row;
-}
-
-.grid-rows-1 {
-  grid-template-rows: repeat(1, minmax(0, 1fr));
-}
-
-.grow-0 {
-  flex-grow: 0;
-}
-
-.grow-1 {
-  flex-grow: 1;
-}
-
-.grow-100 {
-  flex-grow: 100;
-}
-
-.grow-\[unset\] {
-  flex-grow: [unset];
-}
-
-.grow-unset {
-  flex-grow: unset;
-}
-
 .justify-content-start {
   justify-content: start;
 }
@@ -302,24 +330,12 @@
   justify-self: start;
 }
 
-.order-0 {
-  order: 0;
+.content-align-start {
+  align-content: start;
 }
 
-.order-1 {
-  order: 1;
-}
-
-.order-9999 {
-  order: 9999;
-}
-
-.order-\[unset\] {
-  order: [unset];
-}
-
-.order-unset {
-  order: unset;
+.self-start {
+  align-self: start;
 }
 
 .place-content-start {
@@ -332,28 +348,4 @@
 
 .place-self-start {
   place-self: start;
-}
-
-.row-dense {
-  grid-auto-flow: row dense;
-}
-
-.row-span-auto {
-  grid-row: auto;
-}
-
-.self-start {
-  align-self: start;
-}
-
-.shrink-0 {
-  flex-shrink: 0;
-}
-
-.shrink-1 {
-  flex-shrink: 1;
-}
-
-.shrink-\[unset\], .shrink-unset {
-  flex-shrink: unset;
 }

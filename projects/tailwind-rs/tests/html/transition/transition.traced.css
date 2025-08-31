@@ -1,13 +1,5 @@
-.delay-0 {
-  transition-delay: 0s;
-}
-
-.delay-100 {
-  transition-delay: .1s;
-}
-
-.delay-\[unset\], .delay-unset {
-  transition-delay: unset;
+.duration-150 {
+  transition-duration: .15s;
 }
 
 .duration-0 {
@@ -18,10 +10,18 @@
   transition-duration: .1s;
 }
 
-.duration-150 {
-  transition-duration: .15s;
+.duration-unset, .duration-\[unset\] {
+  transition-duration: unset;
 }
 
-.duration-\[unset\], .duration-unset {
-  transition-duration: unset;
+.delay-100 {
+  transition-delay: .1s;
+}
+
+.delay-0 {
+  transition-delay: 0s;
+}
+
+.delay-unset, .delay-\[unset\] {
+  transition-delay: unset;
 }

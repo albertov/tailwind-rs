@@ -5,7 +5,7 @@ mod traits;
 /// A css property is used to remove duplicates.
 ///
 /// In principle, each css property will only appear once, and the one set later will override the previous one.
-#[derive(Debug, Clone, Default, Ord, PartialOrd, Eq, PartialEq, Hash)]
+#[derive(Debug, Clone, Default, Eq, PartialEq, Hash)]
 pub struct CssAttributes {
     normal: ImportantMap,
     transforms: ImportantSet,

@@ -1,17 +1,30 @@
-.border-\[\#000000FF\] {
-  border-color: #000;
+.rounded-\[0px\] {
+  border-radius: 0;
 }
 
-.border-\[\#FFFFFFFF\] {
-  border-color: #fff;
+.rounded-\[0\.25rem\] {
+  border-radius: .25rem;
 }
 
-.border-\[0px\] {
-  border-width: 0;
+.rounded-t-\[0\.5rem\] {
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+}
+
+.rounded-\[2\.3rem\] {
+  border-radius: 2.3rem;
+}
+
+.rounded-\[8px\] {
+  border-radius: 8px;
 }
 
 .border-\[1px\] {
   border-width: 1px;
+}
+
+.border-\[0px\] {
+  border-width: 0;
 }
 
 .border-\[2px\] {
@@ -30,50 +43,14 @@
   border-width: 9px;
 }
 
-.border-b-\[1px\] {
-  border-bottom-width: 1px;
-}
-
-.border-current {
-  border-color: currentColor;
-}
-
-.border-inherit {
-  border-color: inherit;
-}
-
-.border-l-\[1px\] {
+.border-x-\[1px\] {
   border-left-width: 1px;
-}
-
-.border-r-\[1px\] {
   border-right-width: 1px;
-}
-
-.border-red-100 {
-  border-color: #fee2e2;
-}
-
-.border-t-\[1px\] {
-  border-top-width: 1px;
-}
-
-.border-t-\[2px\] {
-  border-top-width: 2px;
-}
-
-.border-transparent {
-  border-color: #0000;
 }
 
 .border-x-\[0px\] {
   border-left-width: 0;
   border-right-width: 0;
-}
-
-.border-x-\[1px\] {
-  border-left-width: 1px;
-  border-right-width: 1px;
 }
 
 .border-x-\[3px\] {
@@ -96,8 +73,48 @@
   border-bottom-width: 5px;
 }
 
-.outline {
-  outline-style: solid;
+.border-t-\[1px\] {
+  border-top-width: 1px;
+}
+
+.border-t-\[2px\] {
+  border-top-width: 2px;
+}
+
+.border-r-\[1px\] {
+  border-right-width: 1px;
+}
+
+.border-b-\[1px\] {
+  border-bottom-width: 1px;
+}
+
+.border-l-\[1px\] {
+  border-left-width: 1px;
+}
+
+.border-inherit {
+  border-color: inherit;
+}
+
+.border-current {
+  border-color: currentColor;
+}
+
+.border-transparent {
+  border-color: #0000;
+}
+
+.border-\[\#000000FF\] {
+  border-color: #000;
+}
+
+.border-\[\#FFFFFFFF\] {
+  border-color: #fff;
+}
+
+.border-red-100 {
+  border-color: #fee2e2;
 }
 
 .outline-0 {
@@ -108,8 +125,24 @@
   outline-width: 1px;
 }
 
-.outline-1rem {
+.outline-1rem, .outline-width-\[1rem\] {
   outline-width: 1rem;
+}
+
+.outline-width-unset, .outline-width-\[unset\] {
+  outline-width: unset;
+}
+
+.outline-color-inherit {
+  outline-color: inherit;
+}
+
+.outline-color-current {
+  outline-color: currentColor;
+}
+
+.outline-color-transparent {
+  outline-color: #0000;
 }
 
 .outline-color-\[\#000000FF\] {
@@ -120,41 +153,37 @@
   outline-color: #fff;
 }
 
-.outline-color-current {
-  outline-color: currentColor;
-}
-
-.outline-color-inherit {
-  outline-color: inherit;
-}
-
-.outline-color-red-0 {
-  outline-color: currentColor;
+.outline-color-slate-50 {
+  outline-color: #f8fafc;
 }
 
 .outline-color-slate-100 {
   outline-color: #f1f5f9;
 }
 
-.outline-color-slate-50 {
-  outline-color: #f8fafc;
-}
-
-.outline-color-transparent {
-  outline-color: #0000;
-}
-
 .outline-color-unset {
   outline-color: unset;
+}
+
+.outline-color-red-0 {
+  outline-color: currentColor;
+}
+
+.outline-none {
+  outline-offset: 2px;
+  outline: 2px solid #0000;
+}
+
+.outline {
+  outline-style: solid;
 }
 
 .outline-dashed {
   outline-style: dashed;
 }
 
-.outline-none {
-  outline-offset: 2px;
-  outline: 2px solid #0000;
+.outline-style-\[unset\] {
+  outline-style: unset;
 }
 
 .outline-offset-0 {
@@ -171,37 +200,4 @@
 
 .outline-offset-1rem, .outline-offset-\[1rem\] {
   outline-offset: 1rem;
-}
-
-.outline-style-\[unset\] {
-  outline-style: unset;
-}
-
-.outline-width-\[1rem\] {
-  outline-width: 1rem;
-}
-
-.outline-width-\[unset\], .outline-width-unset {
-  outline-width: unset;
-}
-
-.rounded-\[0\.25rem\] {
-  border-radius: .25rem;
-}
-
-.rounded-\[0px\] {
-  border-radius: 0;
-}
-
-.rounded-\[2\.3rem\] {
-  border-radius: 2.3rem;
-}
-
-.rounded-\[8px\] {
-  border-radius: 8px;
-}
-
-.rounded-t-\[0\.5rem\] {
-  border-top-left-radius: .5rem;
-  border-top-right-radius: .5rem;
 }

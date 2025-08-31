@@ -1,13 +1,14 @@
 use super::*;
+use indexmap::IndexSet;
 
 mod methods;
 mod traits;
 
 /// The `css-global-attribute` system.
-#[derive(Debug, Clone, Default, Ord, PartialOrd, Eq, PartialEq, Hash)]
+#[derive(Debug, Clone, Default, Eq, PartialEq)]
 pub struct ImportantSet {
     important: bool,
-    set: BTreeSet<String>,
+    set: IndexSet<String>,
 }
 
 /// The `css-global-attribute` system.

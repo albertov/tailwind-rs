@@ -1,39 +1,3 @@
-.backdrop-blur-8 {
-  backdrop-filter: blur(8px);
-}
-
-.backdrop-brightness-100 {
-  backdrop-filter: brightness();
-}
-
-.backdrop-contrast-100 {
-  backdrop-filter: contrast();
-}
-
-.backdrop-grayscale-100 {
-  backdrop-filter: grayscale();
-}
-
-.backdrop-hue-rotate-180 {
-  backdrop-filter: hue-rotate(180deg);
-}
-
-.backdrop-invert-100 {
-  backdrop-filter: invert();
-}
-
-.backdrop-opacity-50 {
-  backdrop-filter: opacity(50%);
-}
-
-.backdrop-saturate-100 {
-  backdrop-filter: saturate();
-}
-
-.backdrop-sepia-100 {
-  backdrop-filter: sepia();
-}
-
 .blur-8 {
   filter: blur(8px);
 }
@@ -68,4 +32,40 @@
 
 .sepia-100 {
   filter: sepia();
+}
+
+.backdrop-blur-8 {
+  backdrop-filter: blur(8px);
+}
+
+.backdrop-brightness-100 {
+  backdrop-filter: brightness();
+}
+
+.backdrop-contrast-100 {
+  backdrop-filter: contrast();
+}
+
+.backdrop-grayscale-100 {
+  backdrop-filter: grayscale();
+}
+
+.backdrop-hue-rotate-180 {
+  backdrop-filter: hue-rotate(180deg);
+}
+
+.backdrop-invert-100 {
+  backdrop-filter: invert();
+}
+
+.backdrop-opacity-50 {
+  backdrop-filter: opacity(50%);
+}
+
+.backdrop-saturate-100 {
+  backdrop-filter: saturate();
+}
+
+.backdrop-sepia-100 {
+  backdrop-filter: sepia();
 }
