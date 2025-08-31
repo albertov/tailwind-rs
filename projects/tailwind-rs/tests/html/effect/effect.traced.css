@@ -1,3 +1,11 @@
+.shadow-2xs {
+  box-shadow: 0 0 0 1px #0000000d;
+}
+
+.shadow-xs {
+  box-shadow: 0 1px 2px #0000000d;
+}
+
 .shadow, .shadow-default {
   box-shadow: 0 1px 3px #0000001a, 0 1px 2px -1px #0000001a;
 }
@@ -16,6 +24,10 @@
 
 .shadow-xl {
   box-shadow: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;
+}
+
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px #00000040;
 }
 
 .shadow-inner {
@@ -38,6 +50,14 @@
   box-shadow: 0 35px 60px -15px #0000004d;
 }
 
+.drop-shadow-2xs {
+  filter: 0 0 0 1px #0000000d;
+}
+
+.drop-shadow-xs {
+  filter: 0 1px 2px 0 #0000000d;
+}
+
 .drop-shadow, .drop-shadow-default {
   filter: drop-shadow(0 1px 2px #0000001a) drop-shadow(0 1px 1px #0000000f);
 }
@@ -56,6 +76,10 @@
 
 .drop-shadow-xl {
   filter: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;
+}
+
+.drop-shadow-2xl {
+  filter: 0 25px 50px -12px #00000040;
 }
 
 .drop-shadow-none {

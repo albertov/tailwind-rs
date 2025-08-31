@@ -15,7 +15,7 @@ pub use self::{
     list::{list_position::TailwindListPosition, list_type::TailwindListStyle},
     text::{
         text_adaptor, text_align::TailwindTextAlignment, text_color::TailwindTextColor, text_overflow::TailwindTextOverflow,
-        text_transform::TailwindTextTransform,
+        text_transform::TailwindTextTransform, text_wrap::TailwindTextWrap,
     },
     tracking::TailwindTracking,
     underline_offset::TailwindUnderlineOffset,

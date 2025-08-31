@@ -9,6 +9,10 @@ impl EffectSystem {
     }
     fn builtin_box_shadows(&mut self) {
         self.set_box_shadow_default("0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)");
+        // New v4 shadow scale entries
+        self.insert_box_shadow("2xs", "0 0 0 1px rgb(0 0 0 / 0.05)");
+        self.insert_box_shadow("xs", "0 1px 2px 0 rgb(0 0 0 / 0.05)");
+        // Existing entries (xs was previously sm, so sm keeps its current value)
         self.insert_box_shadow("sm", "0 1px 2px 0 rgb(0 0 0 / 0.05)");
         self.insert_box_shadow("md", "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)");
         self.insert_box_shadow("lg", "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)");
@@ -19,6 +23,10 @@ impl EffectSystem {
     }
     fn builtin_drop_shadows(&mut self) {
         self.set_drop_shadow_default("drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06))");
+        // New v4 drop-shadow scale entries (consistent with box-shadow scale)
+        self.insert_drop_shadow("2xs", "drop-shadow(0 0 0 1px rgb(0 0 0 / 0.05));");
+        self.insert_drop_shadow("xs", "drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));");
+        // Existing entries
         self.insert_drop_shadow("sm", "drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));");
         self.insert_drop_shadow("md", "drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));");
         self.insert_drop_shadow("lg", "drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));");
