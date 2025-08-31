@@ -13,6 +13,7 @@ pub use self::{
         outline_width::TailwindOutlineWidth,
     },
     ring::{
+        inset_ring_color::TailwindInsetRingColor, inset_ring_width::TailwindInsetRingWidth,
         ring_color::TailwindRingColor, ring_inset::TailwindRingInset, ring_offset_color::TailwindRingOffsetColor,
         ring_offset_width::TailwindRingOffsetWidth, ring_width::TailwindRingWidth, TailwindRing,
     },

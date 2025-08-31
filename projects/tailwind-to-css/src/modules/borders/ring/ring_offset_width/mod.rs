@@ -14,22 +14,23 @@ impl Display for TailwindRingOffsetWidth {
 
 impl TailwindInstance for TailwindRingOffsetWidth {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
+        let offset_width = self.kind.get_properties(|f| format!("{}px", f));
         css_attributes! {
-            "--tw-ring-offset-width" => self.kind,
-            "box-shadow" => "0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color), var(--tw-ring-shadow)"
+            "--tw-ring-offset-width" => &offset_width,
+            "--tw-ring-offset-shadow" => format!("var(--tw-ring-inset, ) 0 0 0 {} var(--tw-ring-offset-color, #fff)", offset_width),
+            "box-shadow" => "var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow, 0 0 #0000)"
         }
     }
 }
+
 impl TailwindRingOffsetWidth {
-    /// <https://tailwindcss.com/docs/ring-width>
+    /// <https://tailwindcss.com/docs/ring-offset-width>
     pub fn parse(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Self> {
-        let kind = match pattern {
-            [] => NumericValue::from(3u32),
-            _ => NumericValue::positive_parser("ring-offset-width", Self::check_valid)(pattern, arbitrary)?,
-        };
+        let kind = NumericValue::positive_parser("ring-offset-width", Self::check_valid)(pattern, arbitrary)?;
         Ok(Self { kind })
     }
-    /// https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit#syntax
+    
+    /// Check for valid CSS keywords
     pub fn check_valid(mode: &str) -> bool {
         ["inherit", "initial", "revert", "unset"].contains(&mode)
     }

@@ -34,7 +34,7 @@ impl TailwindInstance for TailwindTextWrap {
                 "text-wrap" => "wrap"
             },
             TextWrapKind::NoWrap => css_attributes! {
-                "white-space" => "nowrap"
+                "text-wrap" => "nowrap"
             },
             TextWrapKind::Balance => css_attributes! {
                 "text-wrap" => "balance"
@@ -100,7 +100,7 @@ mod tests {
         // Test text-nowrap
         let nowrap = TailwindTextWrap::from("nowrap");
         let attrs = nowrap.attributes(&builder);
-        assert!(attrs.to_string().contains("white-space:nowrap"));
+        assert!(attrs.to_string().contains("text-wrap:nowrap"));
         
         // Test text-balance
         let balance = TailwindTextWrap::from("balance");

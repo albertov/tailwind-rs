@@ -291,7 +291,7 @@ fn test_hover_modifier_css_generation() {
     
     // Verify exact CSS output
     assert!(css.contains(".hover\\:bg-blue-500:hover"));
-    assert!(css.contains("background-color:rgba(59, 130, 246, 1)"));
+    assert!(css.contains("background-color:rgb(59 130 246)"));
 }
 
 #[test]
@@ -315,7 +315,7 @@ fn test_combined_modifiers_css_generation() {
     // Verify media query wraps pseudo-selector
     assert!(css.contains("@media(min-width:640px)"));
     assert!(css.contains(".sm\\:hover\\:bg-blue-500:hover"));
-    assert!(css.contains("background-color:rgba(59, 130, 246, 1)"));
+    assert!(css.contains("background-color:rgb(59 130 246)"));
     // Verify nesting order is correct
     let media_start = css.find("@media").unwrap();
     let hover_pos = css.find(":hover").unwrap();

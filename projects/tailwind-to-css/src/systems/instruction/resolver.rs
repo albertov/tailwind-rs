@@ -40,6 +40,8 @@ impl TailwindInstruction {
             [s @ ("static" | "fixed" | "absolute" | "relative" | "sticky")] => TailwindPosition::from(*s).boxed(),
             ["position", rest @ ..] => TailwindPosition::parse(rest, arbitrary)?.boxed(),
             // https://tailwindcss.com/docs/top-right-bottom-left
+            // Special case: inset-ring utilities must be checked before regular inset positioning
+            ["inset", "ring", rest @ ..] => Self::inset_ring_adaptor(rest, arbitrary)?,
             ["inset", rest @ ..] => TailwindInset::parse(rest, arbitrary, neg)?.boxed(),
             ["top", rest @ ..] => TailwindTop::parse(rest, arbitrary, neg)?.boxed(),
             ["right", rest @ ..] => TailwindRight::parse(rest, arbitrary, neg)?.boxed(),
@@ -81,7 +83,7 @@ impl TailwindInstruction {
             ["max", "h", rest @ ..] => TailwindSizing::parse_height_max(rest, arbitrary)?.boxed(),
             // Typography System
             ["font", rest @ ..] => font_adaptor(rest, arbitrary)?,
-            ["text", rest @ ..] => text_adaptor(rest, arbitrary)?,
+            ["text", rest @ ..] => text_adaptor(rest, arbitrary, self.view_opacity())?,
             // begin https://tailwindcss.com/docs/font-variant-numeric
             ["antialiased"] => TailwindFontSmoothing::from("todo").boxed(),
             ["subpixel", "antialiased"] => TailwindFontSmoothing::from("todo").boxed(),
@@ -124,18 +126,18 @@ impl TailwindInstruction {
             // Typography System Extension
             ["prose"] => todo!(),
             // Backgrounds System
-            ["bg", rest @ ..] => Self::bg_adaptor(rest, arbitrary)?,
+            ["bg", rest @ ..] => Self::bg_adaptor(rest, arbitrary, self.view_opacity())?,
             ["from", rest @ ..] => TailwindFrom::parse(rest, arbitrary)?.boxed(),
             ["via", rest @ ..] => TailwindVia::parse(rest, arbitrary)?.boxed(),
             ["to", rest @ ..] => TailwindTo::parse(rest, arbitrary)?.boxed(),
             // Borders System
             ["rounded", rest @ ..] => TailwindRounded::parse(rest, arbitrary)?.boxed(),
-            ["border", rest @ ..] => Self::border_adaptor(rest, arbitrary)?,
+            ["border", rest @ ..] => Self::border_adaptor(rest, arbitrary, self.view_opacity())?,
             ["divide", rest @ ..] => TailwindDivide::adapt(rest, arbitrary)?,
             ["outline", rest @ ..] => outline_adaptor(rest, arbitrary)?,
-            ["ring", rest @ ..] => TailwindRing::adapt(rest, arbitrary)?,
+            ["ring", rest @ ..] => TailwindRing::adapt_with_opacity(rest, arbitrary, self.view_opacity())?,
             // Effects System
-            ["shadow", rest @ ..] => Self::shadow_adaptor(rest, arbitrary)?,
+            ["shadow", rest @ ..] => Self::shadow_adaptor(rest, arbitrary, self.view_opacity())?,
             ["opacity", rest @ ..] => TailwindOpacity::parse(rest, arbitrary, false)?.boxed(),
             ["mix", "blend", rest @ ..] => TailwindBlend::parse(rest, arbitrary)?.boxed(),
             // Filters System
@@ -177,7 +179,7 @@ impl TailwindInstruction {
             ["select", rest @ ..] => TailwindSelect::parse(rest, arbitrary)?.boxed(),
             ["will", "change", rest @ ..] => TailwindWillChange::parse(rest, arbitrary)?.boxed(),
             // SVG System
-            ["fill", rest @ ..] => TailwindFillColor::parse(rest, arbitrary)?.boxed(),
+            ["fill", rest @ ..] => TailwindFillColor::parse_with_opacity(rest, arbitrary, self.view_opacity())?.boxed(),
             ["stroke", rest @ ..] => TailwindStroke::parse(rest, arbitrary)?,
             // Accessibility System
             ["sr", "only"] => TailwindScreenReader::new(true).boxed(),
@@ -188,7 +190,7 @@ impl TailwindInstruction {
         Ok(instance)
     }
     #[inline]
-    fn bg_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Box<dyn TailwindInstance>> {
+    fn bg_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary, opacity: Option<&str>) -> Result<Box<dyn TailwindInstance>> {
         let out = match pattern {
             // https://tailwindcss.com/docs/background-attachment
             [s @ ("fixed" | "local" | "scroll")] => TailwindBackgroundAttachment::from(*s).boxed(),
@@ -207,12 +209,12 @@ impl TailwindInstruction {
             ["blend", rest @ ..] => TailwindBackgroundBlend::parse(rest, arbitrary)?.boxed(),
             // https://tailwindcss.com/docs/background-image
             ["gradient", "to", rest @ ..] => TailwindBackgroundGradient::parse(rest, arbitrary)?.boxed(),
-            _ => TailwindBackgroundColor::parse(pattern, arbitrary)?.boxed(),
+            _ => TailwindBackgroundColor::parse_with_opacity(pattern, arbitrary, opacity)?.boxed(),
         };
         Ok(out)
     }
     #[inline]
-    fn border_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Box<dyn TailwindInstance>> {
+    fn border_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary, opacity: Option<&str>) -> Result<Box<dyn TailwindInstance>> {
         let color = |color| TailwindBorderColor::from(color).boxed();
         let out = match pattern {
             // https://tailwindcss.com/docs/border-style
@@ -228,16 +230,21 @@ impl TailwindInstruction {
             // https://tailwindcss.com/docs/border-color
             ["black"] => color(TailwindColor::Black),
             ["white"] => color(TailwindColor::White),
-            _ => TailwindBorderColor::parse(pattern, arbitrary)?.boxed(),
+            _ => TailwindBorderColor::parse_with_opacity(pattern, arbitrary, opacity)?.boxed(),
         };
         Ok(out)
     }
     #[inline]
-    fn shadow_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Box<dyn TailwindInstance>> {
+    fn shadow_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary, opacity: Option<&str>) -> Result<Box<dyn TailwindInstance>> {
         let out = match pattern {
             // https://tailwindcss.com/docs/box-shadow
-            ["black" | "white" | "current" | "transparent"] => TailwindShadowColor::parse(pattern, arbitrary)?.boxed(),
-            ["color", rest @ ..] => TailwindShadowColor::parse(rest, arbitrary)?.boxed(),
+            ["black" | "white" | "current" | "transparent"] => TailwindShadowColor::parse_with_opacity(pattern, arbitrary, opacity)?.boxed(),
+            ["color", rest @ ..] => TailwindShadowColor::parse_with_opacity(rest, arbitrary, opacity)?.boxed(),
+            // Check if it's a themed color pattern (e.g., ["cyan", "500"])
+            [name, weight] if weight.parse::<u32>().is_ok() => {
+                // This is a color like cyan-500
+                TailwindShadowColor::parse_with_opacity(pattern, arbitrary, opacity)?.boxed()
+            },
             // https://tailwindcss.com/docs/box-shadow-color
             _ => TailwindShadow::parse(pattern, arbitrary, false)?.boxed(),
         };
@@ -299,6 +306,23 @@ impl TailwindInstruction {
             ["row"] => TailwindDisplay::from("table-row").boxed(),
             // https://tailwindcss.com/docs/table-layout
             _ => TailwindTableLayout::parse(pattern, arbitrary)?.boxed(),
+        };
+        Ok(out)
+    }
+    
+    #[inline]
+    fn inset_ring_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Box<dyn TailwindInstance>> {
+        use crate::{TailwindInsetRingWidth, TailwindInsetRingColor};
+        
+        let out = match pattern {
+            // inset-ring width utilities (inset-ring, inset-ring-0, inset-ring-1, inset-ring-2, inset-ring-4)
+            [] => TailwindInsetRingWidth::parse(&[], arbitrary)?.boxed(),
+            ["0"] | ["1"] | ["2"] | ["4"] => TailwindInsetRingWidth::parse(pattern, arbitrary)?.boxed(),
+            
+            // Arbitrary values are handled with the empty pattern above when arbitrary.is_some()
+            
+            // inset-ring color utilities (inset-ring-red-500, inset-ring-blue-600, etc.)
+            _ => TailwindInsetRingColor::parse(pattern, arbitrary)?.boxed(),
         };
         Ok(out)
     }

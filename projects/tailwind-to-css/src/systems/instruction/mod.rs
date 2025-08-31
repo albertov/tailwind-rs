@@ -11,13 +11,14 @@ use std::{
 };
 use tailwind_ast::{parse_fraction, ASTVariant, AstStyle};
 
-/// `v:v:-a-a-[A]`
+/// `v:v:-a-a-[A]/opacity`
 #[derive(Debug, Clone)]
 pub struct TailwindInstruction {
     negative: Negative,
     variants: Vec<TailwindVariant>,
     elements: TailwindElements,
     arbitrary: TailwindArbitrary,
+    opacity: Option<String>,
 }
 
 #[derive(Debug, Clone, Hash, PartialEq, Eq)]

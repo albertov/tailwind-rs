@@ -43,14 +43,15 @@ impl<'a> AstGroupItem<'a> {
 }
 
 impl<'a> AstStyle<'a> {
-    /// `v:v::-?a-a-a-[A]`
+    /// `v:v::-?a-a-a-[A]/opacity`
     #[inline]
     pub fn parse(input: &'a str) -> IResult<&'a str, Self> {
-        let (rest, (variants, negative, elements, arbitrary, important)) = tuple((
+        let (rest, (variants, negative, elements, arbitrary, opacity, important)) = tuple((
             many0(ASTVariant::parse),
             opt(char('-')),
             opt(AstElements::parse),
             opt(AstArbitrary::parse),
+            opt(Self::parse_opacity),
             opt(char('!')),
         ))(input)?;
 
@@ -62,8 +63,24 @@ impl<'a> AstStyle<'a> {
                 variants,
                 elements: elements.unwrap_or_default().elements,
                 arbitrary: arbitrary.map(|s| s.arbitrary),
+                opacity,
             },
         ))
+    }
+    
+    /// Parse opacity modifier like `/50` or `/[0.23]`
+    #[inline]
+    fn parse_opacity(input: &'a str) -> IResult<&'a str, &'a str> {
+        let (rest, (_, opacity)) = tuple((
+            char('/'),
+            alt((
+                // Arbitrary value in brackets
+                delimited(char('['), take_till1(|c| c == ']'), char(']')),
+                // Predefined opacity value
+                alphanumeric1,
+            )),
+        ))(input)?;
+        Ok((rest, opacity))
     }
 }
 
@@ -78,9 +95,21 @@ impl<'a> AstElements<'a> {
     }
     #[inline]
     fn parse_head(input: &'a str) -> IResult<&'a str, &'a str> {
+        // Try to parse as a fraction first (e.g., "1/2", "3/4")
+        // But only if it looks like a valid fraction (small numbers on both sides)
+        if let Ok((rest, (num, denom))) = crate::utils::parse_fraction(input) {
+            // Check if this looks like a legitimate fraction (both parts are small numbers)
+            // This helps distinguish "1/2" (fraction) from "500/50" (not a fraction, likely color-500 with /50 opacity)
+            if num <= 12 && denom <= 12 {
+                // If it's a valid fraction, return the whole fraction string
+                let fraction_len = input.len() - rest.len();
+                return Ok((rest, &input[..fraction_len]));
+            }
+        }
+        
         let stop = |c: char| -> bool {
-            // space
-            matches!(c, ' ' | '\n' | '\r' | '-' | '[' | ']' | '(' | ')')
+            // space and delimiters
+            matches!(c, ' ' | '\n' | '\r' | '-' | '[' | ']' | '(' | ')' | '/')
         };
         take_till1(stop)(input)
     }
@@ -141,8 +170,78 @@ impl<'a> AstArbitrary<'a> {
     /// `-[ANY+]`
     #[inline]
     pub fn parse(input: &'a str) -> IResult<&'a str, Self> {
-        let pair = delimited(char('['), take_till1(|c| c == ']'), char(']'));
-        let (rest, (_, arbitrary)) = tuple((char('-'), pair))(input)?;
+        // Parse the opening -[
+        let (input, _) = char('-')(input)?;
+        let (input, _) = char('[')(input)?;
+        
+        // Custom parser that handles quotes, escapes, and nested brackets
+        let mut byte_index = 0;
+        let mut bracket_depth = 0;
+        let mut in_single_quote = false;
+        let mut in_double_quote = false;
+        let mut escaped = false;
+        
+        let mut chars = input.chars();
+        
+        while let Some(ch) = chars.next() {
+            if escaped {
+                // Skip escaped character
+                escaped = false;
+                byte_index += ch.len_utf8();
+                continue;
+            }
+            
+            if ch == '\\' {
+                // Next character is escaped
+                escaped = true;
+                byte_index += ch.len_utf8();
+                continue;
+            }
+            
+            // Handle quotes (but not if escaped)
+            if ch == '\'' && !in_double_quote {
+                in_single_quote = !in_single_quote;
+                byte_index += ch.len_utf8();
+                continue;
+            }
+            
+            if ch == '"' && !in_single_quote {
+                in_double_quote = !in_double_quote;
+                byte_index += ch.len_utf8();
+                continue;
+            }
+            
+            // Only process brackets if not inside quotes
+            if !in_single_quote && !in_double_quote {
+                if ch == '[' {
+                    bracket_depth += 1;
+                } else if ch == ']' {
+                    if bracket_depth == 0 {
+                        // Found the closing bracket for our arbitrary value
+                        break;
+                    }
+                    bracket_depth -= 1;
+                }
+            }
+            
+            byte_index += ch.len_utf8();
+        }
+        
+        // Extract the arbitrary value (everything up to the closing ])
+        let arbitrary = &input[..byte_index];
+        
+        // Fail if the arbitrary value is empty
+        if arbitrary.is_empty() {
+            return Err(nom::Err::Error(nom::error::Error::new(
+                input,
+                nom::error::ErrorKind::TakeWhile1,
+            )));
+        }
+        
+        // Skip the closing ]
+        let rest = &input[byte_index..];
+        let (rest, _) = char(']')(rest)?;
+        
         Ok((rest, Self { arbitrary }))
     }
 }

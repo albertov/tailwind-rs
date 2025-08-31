@@ -54,7 +54,7 @@ pub enum AstGroupItem<'a> {
     Styled(AstStyle<'a>),
 }
 
-/// `not-variant:pseudo::-ast-element-[arbitrary]`
+/// `not-variant:pseudo::-ast-element-[arbitrary]/opacity`
 #[derive(Clone, Debug, PartialEq, Eq, Hash, Default)]
 pub struct AstStyle<'a> {
     /// Is a `!important` style
@@ -67,6 +67,8 @@ pub struct AstStyle<'a> {
     pub elements: Vec<&'a str>,
     /// Is a arbitrary value
     pub arbitrary: Option<&'a str>,
+    /// Opacity modifier (e.g., 50 for /50, or arbitrary value)
+    pub opacity: Option<&'a str>,
 }
 
 /// `-[.+]`

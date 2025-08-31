@@ -7,6 +7,7 @@ impl<'a> From<AstStyle<'a>> for TailwindInstruction {
             variants: node.variants.into_iter().map(|s| s.into()).collect(),
             elements: TailwindElements { inner: node.elements.into_iter().map(|s| s.to_string()).collect() },
             arbitrary: TailwindArbitrary::from(node.arbitrary.unwrap_or_default()),
+            opacity: node.opacity.map(|s| s.to_string()),
         }
     }
 }
@@ -29,6 +30,10 @@ impl TailwindInstruction {
     #[inline]
     pub fn view_variants(&self) -> &[TailwindVariant] {
         &self.variants
+    }
+    #[inline]
+    pub fn view_opacity(&self) -> Option<&str> {
+        self.opacity.as_deref()
     }
     // TODO
     pub fn normalization(self) -> Self {

@@ -6,10 +6,6 @@
   aspect-ratio: 16 / 9;
 }
 
-.aspect-21\/9 {
-  aspect-ratio: 21 / 9;
-}
-
 .aspect-auto {
   aspect-ratio: auto;
 }

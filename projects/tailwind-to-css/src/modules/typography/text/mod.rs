@@ -6,7 +6,7 @@ pub(crate) mod text_overflow;
 pub(crate) mod text_transform;
 pub(crate) mod text_wrap;
 
-pub fn text_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Box<dyn TailwindInstance>> {
+pub fn text_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary, opacity: Option<&str>) -> Result<Box<dyn TailwindInstance>> {
     let out = match pattern {
         // https://tailwindcss.com/docs/text-align
         [s @ ("left" | "center" | "right" | "justify" | "start" | "end")] => TailwindTextAlignment::from(*s).boxed(),
@@ -28,7 +28,7 @@ pub fn text_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<B
         [] => TailwindFontSize::parse(pattern, arbitrary)?.boxed(),
         // https://tailwindcss.com/docs/text-color
         _ => {
-            let color = TailwindColor::parse(pattern, arbitrary)?;
+            let color = TailwindColor::parse_with_opacity(pattern, arbitrary, opacity)?;
             TailwindTextColor::from(color).boxed()
         },
     };
