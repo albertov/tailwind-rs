@@ -1,4 +1,6 @@
 use super::*;
+use crate::modules::flexbox::grow::TailWindGrow;
+use crate::modules::flexbox::shrink::TailWindShrink;
 
 pub(crate) mod flex_direction;
 pub(crate) mod flex_wrap;
@@ -41,6 +43,9 @@ impl TailwindFlex {
             // https://tailwindcss.com/docs/flex-wrap
             ["wrap", rest @ ..] => TailwindFlexWrap::parse(rest, arbitrary)?.boxed(),
             ["nowrap"] => TailwindFlexWrap::from("nowrap").boxed(),
+            // https://tailwindcss.com/docs/flex-grow and flex-shrink
+            ["grow", rest @ ..] => TailWindGrow::parse(rest, arbitrary)?.boxed(),
+            ["shrink", rest @ ..] => TailWindShrink::parse(rest, arbitrary)?.boxed(),
             // https://tailwindcss.com/docs/flex
             _ => Self::parse(pattern, arbitrary)?.boxed(),
         };

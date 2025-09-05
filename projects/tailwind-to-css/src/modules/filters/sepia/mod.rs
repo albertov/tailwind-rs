@@ -15,8 +15,13 @@ impl Display for TailwindSepia {
 
 impl TailwindInstance for TailwindSepia {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
-        let n = self.percent.get_properties(|f| format!("{}%", f));
-        self.backdrop.get_filter(format!("sepia({})", n))
+        let n = self.percent.get_properties(|f| {
+            // Convert percentage to decimal for sepia function
+            // 100% = 1.0, 0% = 0, etc.
+            let decimal = f / 100.0;
+            format!("{}", decimal)
+        });
+        self.backdrop.get_filter_var("sepia", format!("sepia({})", n))
     }
 }
 

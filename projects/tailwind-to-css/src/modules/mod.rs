@@ -6,6 +6,7 @@ mod borders;
 mod effects;
 mod filters;
 mod flexbox;
+mod forms;
 mod interactivity;
 mod layouts;
 mod sizing;
@@ -17,7 +18,7 @@ mod transition;
 mod typography;
 
 pub use self::{
-    accessibility::*, background::*, borders::*, effects::*, filters::*, flexbox::*, interactivity::*, layouts::*, sizing::*,
+    accessibility::*, background::*, borders::*, effects::*, filters::*, flexbox::*, forms::*, interactivity::*, layouts::*, sizing::*,
     spacing::*, svg::*, tables::*, transforms::*, transition::*, typography::*,
 };
 

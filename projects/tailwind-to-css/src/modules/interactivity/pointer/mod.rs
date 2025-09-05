@@ -20,24 +20,9 @@ impl TailwindPointerEvents {
         let kind = StandardValue::parser("pointer-events", &Self::check_valid)(pattern, arbitrary)?;
         Ok(Self { kind })
     }
-    /// <https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#syntax>
+    /// <https://tailwindcss.com/docs/pointer-events>
+    /// Tailwind CSS only supports 'none' and 'auto' for pointer-events
     pub fn check_valid(mode: &str) -> bool {
-        let set = BTreeSet::from_iter(vec![
-            "all",
-            "auto",
-            "fill",
-            "inherit",
-            "initial",
-            "none",
-            "painted",
-            "revert",
-            "stroke",
-            "unset",
-            "visible",
-            "visibleFill",
-            "visiblePainted",
-            "visibleStroke",
-        ]);
-        set.contains(mode)
+        matches!(mode, "none" | "auto")
     }
 }

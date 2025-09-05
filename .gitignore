@@ -11,4 +11,8 @@
 target/
 Cargo.lock
 time-travel.*
-dist/
+dist/*.bak
+*.bak
+.claude-trace/*
+.*.sw[op]
+.claude

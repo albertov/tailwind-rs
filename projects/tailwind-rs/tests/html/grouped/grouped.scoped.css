@@ -1,8 +1,11 @@
-.Kt9rZG8XmlV {
-  backdrop-filter: blur(8px) brightness() contrast() grayscale() hue-rotate(180deg) invert() opacity(50%) saturate() sepia();
-}
-
-.WJW29DNBGQT {
+.Q60LjVt7BJI {
+  --tw-brightness: brightness(1);
+  --tw-contrast: contrast(1);
+  --tw-grayscale: grayscale(1);
+  --tw-hue-rotate: hue-rotate(180deg);
+  --tw-invert: invert(1);
+  --tw-saturate: saturate(1);
   opacity: .5;
-  filter: blur(8px) brightness() contrast() grayscale() hue-rotate(180deg) invert() saturate() sepia();
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);
+  opacity: .5;
 }

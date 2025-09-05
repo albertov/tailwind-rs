@@ -29,6 +29,10 @@ impl TailwindInstance for TailwindPadding {
 impl TailwindPadding {
     /// https://tailwindcss.com/docs/padding
     pub fn parse(pattern: &[&str], arbitrary: &TailwindArbitrary, negative: Negative) -> Result<Self> {
+        // Padding cannot be negative
+        if negative.0 {
+            return syntax_error!("Negative padding values are not allowed");
+        }
         let (axis, rest) = match pattern {
             ["p", rest @ ..] => (SpacingAxis::new("p", &["padding"]), rest),
             ["pl", rest @ ..] => (SpacingAxis::new("pl", &["padding-left"]), rest),
@@ -37,6 +41,8 @@ impl TailwindPadding {
             ["pb", rest @ ..] => (SpacingAxis::new("pb", &["padding-bottom"]), rest),
             ["px", rest @ ..] => (SpacingAxis::new("px", &["padding-left", "padding-right"]), rest),
             ["py", rest @ ..] => (SpacingAxis::new("py", &["padding-top", "padding-bottom"]), rest),
+            ["ps", rest @ ..] => (SpacingAxis::new("ps", &["padding-inline-start"]), rest),
+            ["pe", rest @ ..] => (SpacingAxis::new("pe", &["padding-inline-end"]), rest),
             _ => return syntax_error!("Unknown padding axis"),
         };
         let size = SpacingSize::parse(rest, arbitrary, &Self::check_valid)?;

@@ -50,7 +50,11 @@ impl TailwindTextOverflow {
             [] => TextOverflow::Arbitrary(arbitrary.to_owned()),
             _ => {
                 let input = pattern.join("-");
-                debug_assert!(Self::check_valid(&input));
+                // Skip invalid text-overflow values instead of panicking
+                if !Self::check_valid(&input) {
+                    eprintln!("Warning: Unknown text-overflow value '{}', skipping", input);
+                    return syntax_error!("Unknown text-overflow pattern: {}", input);
+                }
                 TextOverflow::Standard(input)
             },
         };

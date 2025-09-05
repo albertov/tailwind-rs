@@ -1,11 +1,11 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8"></meta>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind CSS Logo.svg"></link>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind CSS Logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitrary Value</title>
-    <link rel="stylesheet" href="./arbitrary-values.css"></link>
+    <link rel="stylesheet" href="./arbitrary-values.css">
 </head>
 <body>
 <div style="bottom:11px;left:11px;right:11px;top:11px;"></div>
@@ -26,16 +26,16 @@
 <div style="z-index:123;"></div>
 <div style="z-index:var(--value);"></div>
 
-<div style="order:[4];"></div>
-<div style="order:[var(--value)];"></div>
+<div style="order:4;"></div>
+<div style="order:var(--value);"></div>
 
 <div style="grid-column:1 / -1;"></div>
-<div class="col-end-[7]"></div>
-<div class="col-start-[7]"></div>
+<div style="" class="col-end-[7]"></div>
+<div style="" class="col-start-[7]"></div>
 
 <div style="grid-row:1 / -1;"></div>
-<div class="row-end-[7]"></div>
-<div class="row-start-[7]"></div>
+<div style="" class="row-end-[7]"></div>
+<div style="" class="row-start-[7]"></div>
 
 <div style="margin:7px;"></div>
 <div style="margin-left:7px;margin-right:7px;"></div>
@@ -48,68 +48,68 @@
 
 <div style="aspect-ratio:var(--aspect);"></div>
 
-<div style="height:3rem;"></div>
-<div class="h-[calc(100%+1rem)]"></div>
-<div class="h-[var(--height)]"></div>
+<div style="height:3.23rem;"></div>
+<div style="height:calc(100%+1rem);"></div>
+<div style="height:var(--height);"></div>
 
-<div style="max-height:3rem;"></div>
-<div class="max-h-[calc(100%+1rem)]"></div>
-<div class="max-h-[var(--height)]"></div>
+<div style="max-height:3.23rem;"></div>
+<div style="max-height:calc(100%+1rem);"></div>
+<div style="max-height:var(--height);"></div>
 
-<div style="min-height:3rem;"></div>
-<div class="min-h-[calc(100%+1rem)]"></div>
-<div class="min-h-[var(--height)]"></div>
+<div style="min-height:3.23rem;"></div>
+<div style="min-height:calc(100%+1rem);"></div>
+<div style="min-height:var(--height);"></div>
 
 <div style="width:0em;"></div>
-<div style="width:3rem;"></div>
-<div class="w-[calc(100%+1rem)]"></div>
-<div class="w-[calc(var(--10-10px,calc(-20px-(-30px--40px)))-50px)]"></div>
-<div class="w-[var(--width)]"></div>
-<div class="w-[var(--width,calc(100%+1rem))]"></div>
-<div class="w-[calc(100%/3-1rem*2)]"></div>
+<div style="width:3.23rem;"></div>
+<div style="width:calc(100%+1rem);"></div>
+<div style="width:calc(var(--10-10px,calc(-20px-(-30px--40px)))-50px);"></div>
+<div style="width:var(--width);"></div>
+<div style="width:var(--width,calc(100%+1rem));"></div>
+<div style="width:calc(100%/3-1rem*2);"></div>
 
-<div style="min-width:3rem;"></div>
-<div class="min-w-[calc(100%+1rem)]"></div>
-<div class="min-w-[var(--width)]"></div>
+<div style="min-width:3.23rem;"></div>
+<div style="min-width:calc(100%+1rem);"></div>
+<div style="min-width:var(--width);"></div>
 
-<div style="max-width:3rem;"></div>
-<div class="max-w-[calc(100%+1rem)]"></div>
-<div class="max-w-[var(--width)]"></div>
+<div style="max-width:3.23rem;"></div>
+<div style="max-width:calc(100%+1rem);"></div>
+<div style="max-width:var(--width);"></div>
 
 <div style="flex:var(--flex);"></div>
-<div class="flex-shrink-[var(--shrink)]"></div>
 <div style="flex-shrink:var(--shrink);"></div>
-<div class="flex-grow-[var(--grow)]"></div>
-<div style="flex-grow:[var(--grow)];"></div>
+<div style="flex-shrink:var(--shrink);"></div>
+<div style="flex-grow:var(--grow);"></div>
+<div style="flex-grow:var(--grow);"></div>
 <div style="flex-basis:var(--basis);"></div>
 
 <div style="transform-origin:50px 50px;"></div>
 
-<div style="transform:translateX(12%);"></div>
-<div style="transform:translateX(var(--value));"></div>
-<div style="transform:translateY(12%);"></div>
-<div style="transform:translateY(var(--value));"></div>
+<div style="--tw-translate-x:12%;transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-translate-x:var(--value);transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-translate-y:12%;transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-translate-y:var(--value);transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
 
-<div style="transform:rotate(1.5turn) rotate(2.3rad) rotate(23deg) rotate(401grad);"></div>
+<div style="--tw-rotate:1.5turn;transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
 
-<div style="transform:skewX(3px);"></div>
-<div style="transform:skewX(var(--value));"></div>
-<div style="transform:skewY(3px);"></div>
-<div style="transform:skewY(var(--value));"></div>
+<div style="--tw-skew-x:3px;transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-skew-x:var(--value);transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-skew-y:3px;transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-skew-y:var(--value);transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
 
-<div style="transform:scale(0.7);"></div>
-<div style="transform:scale(var(--value));"></div>
-<div style="transform:scaleX(0.7);"></div>
-<div style="transform:scaleX(var(--value));"></div>
-<div style="transform:scaleY(0.7);"></div>
-<div style="transform:scaleY(var(--value));"></div>
+<div style="--tw-scale-x:0.7;--tw-scale-y:0.7;transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-scale-x:var(--value);--tw-scale-y:var(--value);transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-scale-x:0.7;transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-scale-x:var(--value);transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-scale-y:0.7;transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
+<div style="--tw-scale-y:var(--value);transform:translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));"></div>
 
 <div style="animation:pong 1s cubic-bezier(0,0,0.2,1) infinite;"></div>
 <div style="animation:var(--value);"></div>
 
 <div style="scroll-margin:7px;"></div>
 <div style="scroll-margin-left:7px;scroll-margin-right:7px;"></div>
-<div style="scroll-margin:7px;"></div>
+<div style="scroll-margin-bottom:7px;scroll-margin-top:7px;"></div>
 <div style="scroll-margin-top:7px;"></div>
 <div style="scroll-margin-right:7px;"></div>
 <div style="scroll-margin-bottom:7px;"></div>
@@ -145,107 +145,97 @@
 <div style="grid-template-rows:200px,repeat(auto-fill,minmax(15%,100px)),300px;"></div>
 
 <div style="gap:20px;"></div>
-<div class="gap-[var(--value)]"></div>
+<div style="gap:var(--value);"></div>
 <div style="column-gap:20px;"></div>
-<div class="gap-x-[var(--value)]"></div>
+<div style="column-gap:var(--value);"></div>
 <div style="row-gap:20px;"></div>
-<div class="gap-y-[var(--value)]"></div>
+<div style="row-gap:var(--value);"></div>
 
-<div style="margin-left:20cm;"></div>
-<div style="margin-left:calc(20%-1cm);"></div>
-<div style="margin-top:20cm;"></div>
-<div style="margin-top:calc(20%-1cm);"></div>
+<div style=""></div>
+<div style=""></div>
+<div style=""></div>
+<div style=""></div>
 
-<div style="border-left-width:0;border-right-width:[20cm]px;"></div>
-<div style="border-left-width:0;border-right-width:[calc(20%-1cm)]px;"></div>
-<div style="border-bottom-width:[20cm]px;border-top-width:0;"></div>
-<div style="border-bottom-width:[calc(20%-1cm)]px;border-top-width:0;"></div>
+<div style=""></div>
+<div style=""></div>
+<div style=""></div>
+<div style=""></div>
 
-<div class="divide-[black]"></div>
-<div class="divide-[var(--value)]"></div>
+<div style="" class="divide-[black]"></div>
+<div style="" class="divide-[var(--value)]"></div>
 
-<div class="divide-opacity-[0.8]"></div>
-<div class="divide-opacity-[var(--value)]"></div>
+<div style="" class="divide-opacity-[0.8]"></div>
+<div style="" class="divide-opacity-[var(--value)]"></div>
 
 <div style="border-radius:11px;"></div>
-<div class="
-    rounded-t-[var(--radius)]
-    rounded-r-[var(--radius)]
-    rounded-b-[var(--radius)]
-    rounded-l-[var(--radius)]
-"></div>
-<div class="
-    rounded-tr-[var(--radius)]
-    rounded-br-[var(--radius)]
-    rounded-bl-[var(--radius)]
-    rounded-tl-[var(--radius)]
-"></div>
+<div style="border-bottom-left-radius:var(--radius);border-bottom-right-radius:var(--radius);border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);"></div>
+<div style="border-bottom-left-radius:var(--radius);border-bottom-right-radius:var(--radius);border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);"></div>
 
-<div class="border-[#f00]"></div>
-<div class="border-[red black]"></div>
+<div style="border-color:rgb(255 0 0);"></div>
+<div style="" class="border-[red black]"></div>
 <div style="border-width:2.5px;"></div>
-<div class="border-[color:var(--value)]"></div>
-<div class="border-[length:var(--value)]"></div>
+<div style="" class="border-[color:var(--value)]"></div>
+<div style="" class="border-[length:var(--value)]"></div>
 
-<div class="border-t-[#f00]"></div>
+<div style="border-top-color:rgb(255 0 0);"></div>
 <div style="border-top-width:2.5px;"></div>
-<div class="border-t-[color:var(--value)]"></div>
-<div class="border-t-[length:var(--value)]"></div>
-<div class="border-r-[#f00]"></div>
+<div style="" class="border-t-[color:var(--value)]"></div>
+<div style="" class="border-t-[length:var(--value)]"></div>
+<div style="border-right-color:rgb(255 0 0);"></div>
 <div style="border-right-width:2.5px;"></div>
-<div class="border-r-[color:var(--value)]"></div>
-<div class="border-r-[length:var(--value)]"></div>
-<div class="border-b-[#f00]"></div>
+<div style="" class="border-r-[color:var(--value)]"></div>
+<div style="" class="border-r-[length:var(--value)]"></div>
+<div style="border-bottom-color:rgb(255 0 0);"></div>
 <div style="border-bottom-width:2.5px;"></div>
-<div class="border-b-[color:var(--value)]"></div>
-<div class="border-b-[length:var(--value)]"></div>
-<div class="border-l-[#f00]"></div>
+<div style="" class="border-b-[color:var(--value)]"></div>
+<div style="" class="border-b-[length:var(--value)]"></div>
+<div style="border-left-color:rgb(255 0 0);"></div>
 <div style="border-left-width:2.5px;"></div>
-<div class="border-l-[color:var(--value)]"></div>
-<div class="border-l-[length:var(--value)]"></div>
+<div style="" class="border-l-[color:var(--value)]"></div>
+<div style="" class="border-l-[length:var(--value)]"></div>
 
-<div class="border-opacity-[0.8]"></div>
-<div class="border-opacity-[var(--value)]"></div>
+<div style="" class="border-opacity-[0.8]"></div>
+<div style="" class="border-opacity-[var(--value)]"></div>
 
-<div style="background-color:rgba(0, 0, 255, 0.8);"></div>
-<div style="background-color:rgba(123, 123, 123, 0.5);"></div>
-<div class="bg-[rgb(123, 456, 123) black]"></div>
-<div style="background-color:rgba(123, 255, 255, 1);"></div>
-<div style="background-color:rgba(255, 0, 0, 0.3);"></div>
-<div class="bg-[#0f0 var(--value)]"></div>
-<div class="bg-[var(--value1) var(--value2)]"></div>
-<div class="bg-[color:var(--value1) var(--value2)]"></div>
+<div style="background-color:rgb(0 0 255 / 0.8);"></div>
+<div style="background-color:rgb(123 123 123 / 0.5);"></div>
+<div style="background-color:rgb(123, 456, 123) black;"></div>
+<div style="background-color:rgb(123 255 255);"></div>
+<div style="background-color:rgb(255 0 0 / 0.3);"></div>
+<div style="background-color:#0f0 var(--value);"></div>
+<div style="background-color:var(--value1) var(--value2);"></div>
+<div style="background-color:color:var(--value1) var(--value2);"></div>
 
-<div class="bg-[url('/path-to-image.png')] bg-[url:var(--url)]"></div>
-<div class="bg-[linear-gradient(#eee,#fff)]"></div>
-<div class="bg-[linear-gradient(#eee,#fff),conic-gradient(red,orange,yellow,green,blue)]"></div>
-<div class="bg-[image(),var(--value)]"></div>
-<div class="bg-[var(--value),var(--value)]"></div>
-<div class="bg-[image:var(--value),var(--value)]"></div>
+<div style="background-color:url:var(--url);"></div>
+<div style="background-color:linear-gradient(#eee,#fff);"></div>
+<div style="background-color:linear-gradient(#eee,#fff),conic-gradient(red,orange,yellow,green,blue);"></div>
+<div style="background-color:image(),var(--value);"></div>
+<div style="background-color:var(--value),var(--value);"></div>
+<div style="background-color:image:var(--value),var(--value);"></div>
 
-<div class="bg-opacity-[0.11]"></div>
-<div class="bg-opacity-[var(--value)]"></div>
+<div style="" class="bg-opacity-[0.11]"></div>
+<div style="" class="bg-opacity-[var(--value)]"></div>
 
-<div style="--tw-gradient-from:rgba(218, 91, 102, 1);--tw-gradient-stops:var(--tw-gradient-from),rgba(218, 91, 102, 1),var(--tw-gradient-to,rgba(218, 91, 102, 1));--tw-gradient-to:rgba(218, 91, 102, 1);"></div>
-<div class="from-[var(--color)] via-[var(--color)] to-[var(--color)]"></div>
+<div style="--tw-gradient-from:rgb(218 91 102);--tw-gradient-stops:var(--tw-gradient-from),rgb(218 91 102),var(--tw-gradient-to,rgb(218 91 102));--tw-gradient-to:rgb(218 91 102);"></div>
+<div style="--tw-gradient-from:var(--color);--tw-gradient-stops:var(--tw-gradient-from),var(--color),var(--tw-gradient-to,var(--color));--tw-gradient-to:var(--color);"></div>
 
-<div class="bg-[length:200px 100px]"></div>
-<div class="bg-[length:var(--value)]"></div>
+<div style="" class="bg-[length:200px 100px]"></div>
+<div style="background-color:length:var(--value);"></div>
 
-<div class="bg-[center top 1rem]"></div>
-<div class="bg-[position:200px 100px]"></div>
-<div class="bg-[position:var(--value)]"></div>
+<div style="" class="bg-[center top 1rem]"></div>
+<div style="" class="bg-[position:200px 100px]"></div>
+<div style="background-color:position:var(--value);"></div>
 
-<div style="fill:rgba(218, 91, 102, 1);"></div>
-<div class="fill-[var(--value)]"></div>
-<div class="fill-[url(#icon-gradient)]"></div>
+<div style="fill:rgb(218 91 102);"></div>
+<div style="fill:var(--value);"></div>
+<div style="fill:url(#icon-gradient);"></div>
 
-<div class="stroke-[#da5b66]"></div>
-<div class="stroke-[color:var(--value)]"></div>
-<div class="stroke-[url(#icon-gradient)]"></div>
+<div style="" class="stroke-[#da5b66]"></div>
+<div style="" class="stroke-[color:var(--value)]"></div>
+<div style="" class="stroke-[url(#icon-gradient)]"></div>
 
-<div class="stroke-[20px]"></div>
-<div class="stroke-[length:var(--value)]"></div>
+<div style="" class="stroke-[20px]"></div>
+<div style="" class="stroke-[length:var(--value)]"></div>
 
 <div style="object-position:50%,50%;"></div>
 <div style="object-position:top,right;"></div>
@@ -264,39 +254,39 @@
 
 <div style="vertical-align:10em;"></div>
 
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
+<div style="font-family:Georgia,serif;"></div>
+<div style="font-family:'Gill Sans';"></div>
+<div style="font-family:sans-serif,serif;"></div>
+<div style="font-family:family-name:var(--value);"></div>
+<div style="font-family:serif,var(--value);"></div>
+<div style="font-family:'Some Font',sans-serif;"></div>
+<div style="font-family:'Some Font','Some Other Font';"></div>
+<div style="font-family:'Some Font',var(--other-font);"></div>
+<div style="font-family:var(--font1),var(--font2);"></div>
+<div style="font-family:invalid font because spaces;"></div>
 
-<div class="text-[0]"></div>
-<div class="text-[2.23rem]"></div>
-<div class="text-[length:var(--font-size)]"></div>
-<div class="text-[angle:var(--angle)]"></div>
-<div class="text-[min(10vh,100px)]"></div>
+<div style="font-size:0;"></div>
+<div style="font-size:2.23rem;"></div>
+<div style="font-size:length:var(--font-size);"></div>
+<div style="font-size:angle:var(--angle);"></div>
+<div style="font-size:min(10vh,100px);"></div>
 
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
-<div style="font-family:;"></div>
+<div style="font-weight:300;"></div>
+<div style="font-family:number:lighter;"></div>
+<div style="font-family:number:var(--value);"></div>
 
-<div class="leading-[var(--leading)]"></div>
+<div style="line-height:var(--leading);"></div>
 
 <div style="letter-spacing:var(--tracking);"></div>
 
-<div style="color:rgba(0, 0, 0, 1);"></div>
-<div style="color:rgba(123, 123, 123, 1);"></div>
-<div style="color:rgba(123, 123, 123, 1);"></div>
-<div style="color:rgba(123, 123, 123, 1);"></div>
-<div class="text-[color:var(--color)]"></div>
+<div style="font-size:black;"></div>
+<div style="color:rgb(123 123 123);"></div>
+<div style="color:rgb(123 123 123);"></div>
+<div style="color:rgb(123 123 123);"></div>
+<div style="font-size:color:var(--color);"></div>
 
-<div class="text-opacity-[0.8]"></div>
-<div class="text-opacity-[var(--value)]"></div>
+<div style="" class="text-opacity-[0.8]"></div>
+<div style="" class="text-opacity-[var(--value)]"></div>
 
 <div style="text-decoration:black;"></div>
 <div style="text-decoration:rgb(123,123,123);"></div>
@@ -308,15 +298,15 @@
 
 <div style="text-underline-offset:10px;"></div>
 
-<div class="placeholder-[var(--placeholder)]"></div>
+<div style="" class="placeholder-[var(--placeholder)]"></div>
 
-<div class="placeholder-opacity-[var(--placeholder-opacity)]"></div>
+<div style="" class="placeholder-opacity-[var(--placeholder-opacity)]"></div>
 
-<div style="caret-color:rgba(0, 0, 0, 1);"></div>
-<div class="caret-[var(--value)]"></div>
+<div style="caret-color:rgb(0 0 0);"></div>
+<div style="caret-color:var(--value);"></div>
 
-<div style="accent-color:rgba(186, 218, 85, 1);"></div>
-<div class="accent-[var(--accent-color)]"></div>
+<div style="accent-color:rgb(186 218 85);"></div>
+<div style="accent-color:var(--accent-color);"></div>
 
 <div style="opacity:50%;"></div>
 <div style="opacity:50%;"></div>
@@ -324,43 +314,43 @@
 <div style="box-shadow:0px 1px 2px black;"></div>
 <div style="box-shadow:shadow:var(--value);"></div>
 
-<div style="outline-color:rgba(0, 0, 0, 1);"></div>
+<div style="outline-color:rgb(0 0 0);"></div>
 <div style="outline-width:10px;"></div>
-<div class="outline-[color:var(--outline)]"></div>
-<div class="outline-[length:var(--outline)]"></div>
+<div style="outline-color:color:var(--outline);"></div>
+<div style="outline-color:length:var(--outline);"></div>
 <div style="outline-offset:10px;"></div>
 
-<div class="ring-[#76ad65]"></div>
-<div class="ring-[color:var(--value)]"></div>
-<div style="--tw-ring-offset-width:3;box-shadow:0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color), var(--tw-ring-shadow);"></div>
-<div class="ring-[10px]"></div>
-<div class="ring-[length:(var(--value))]"></div>
-<div style="--tw-ring-offset-width:3;box-shadow:0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color), var(--tw-ring-shadow);"></div>
-<div style="--tw-ring-offset-width:3;box-shadow:0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color), var(--tw-ring-shadow);"></div>
-<div style="--tw-ring-offset-width:3;box-shadow:0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color), var(--tw-ring-shadow);"></div>
-<div style="--tw-ring-offset-width:3;box-shadow:0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color), var(--tw-ring-shadow);"></div>
-<div class="ring-opacity-[var(--ring-opacity)]"></div>
+<div style="--tw-ring-shadow:var(--tw-ring-inset, ) 0 0 0 calc(#76ad65 + var(--tw-ring-offset-width, 0px)) var(--tw-ring-color, currentColor);box-shadow:var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);"></div>
+<div style="--tw-ring-shadow:var(--tw-ring-inset, ) 0 0 0 calc(color:var(--value) + var(--tw-ring-offset-width, 0px)) var(--tw-ring-color, currentColor);box-shadow:var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);"></div>
+<div style="--tw-ring-offset-color:rgb(118 173 101);--tw-ring-offset-shadow:var(--tw-ring-inset, ) 0 0 0 var(--tw-ring-offset-width, 0px) rgb(118 173 101);box-shadow:var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow, 0 0 #0000);"></div>
+<div style="--tw-ring-shadow:var(--tw-ring-inset, ) 0 0 0 calc(10px + var(--tw-ring-offset-width, 0px)) var(--tw-ring-color, currentColor);box-shadow:var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);"></div>
+<div style="--tw-ring-shadow:var(--tw-ring-inset, ) 0 0 0 calc(length:(var(--value)) + var(--tw-ring-offset-width, 0px)) var(--tw-ring-color, currentColor);box-shadow:var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);"></div>
+<div style="--tw-ring-offset-color:rgb(173 103 47);--tw-ring-offset-shadow:var(--tw-ring-inset, ) 0 0 0 var(--tw-ring-offset-width, 0px) rgb(173 103 47);box-shadow:var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow, 0 0 #0000);"></div>
+<div style="--tw-ring-offset-color:color:var(--value);--tw-ring-offset-shadow:var(--tw-ring-inset, ) 0 0 0 var(--tw-ring-offset-width, 0px) color:var(--value);box-shadow:var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow, 0 0 #0000);"></div>
+<div style="" class="ring-offset-[19rem]"></div>
+<div style="--tw-ring-offset-color:length:var(--value);--tw-ring-offset-shadow:var(--tw-ring-inset, ) 0 0 0 var(--tw-ring-offset-width, 0px) length:var(--value);box-shadow:var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow, 0 0 #0000);"></div>
+<div style="" class="ring-opacity-[var(--ring-opacity)]"></div>
 
-<div style="filter:blur(15px);"></div>
-<div style="filter:brightness(300%);"></div>
-<div style="filter:contrast(2.4);"></div>
+<div style="--tw-blur:blur(15px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);"></div>
+<div style="--tw-brightness:brightness(300%);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);"></div>
+<div style="--tw-contrast:contrast(2.4);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);"></div>
 <div style="filter:0px 1px 2px black;"></div>
-<div style="filter:grayscale(0.55);"></div>
-<div style="filter:hue-rotate(0.8turn);"></div>
-<div style="filter:invert(0.75);"></div>
-<div style="filter:saturate(180%);"></div>
-<div style="filter:sepia(0.2);"></div>
-<div style="backdrop-filter:blur(11px);"></div>
-<div style="backdrop-filter:brightness(1.23);"></div>
-<div style="backdrop-filter:contrast(0.87);"></div>
-<div style="backdrop-filter:grayscale(0.42);"></div>
-<div style="backdrop-filter:hue-rotate(1.57rad);"></div>
-<div style="backdrop-filter:invert(0.66);"></div>
+<div style="--tw-grayscale:grayscale(0.55);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);"></div>
+<div style="--tw-hue-rotate:hue-rotate(0.8turn);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);"></div>
+<div style="--tw-invert:invert(0.75);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);"></div>
+<div style="--tw-saturate:saturate(180%);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);"></div>
+<div style="--tw-sepia:sepia(0.2);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);"></div>
+<div style="--tw-backdrop-blur:blur(11px);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) var(--tw-backdrop-drop-shadow);"></div>
+<div style="--tw-backdrop-brightness:brightness(1.23);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) var(--tw-backdrop-drop-shadow);"></div>
+<div style="--tw-backdrop-contrast:contrast(0.87);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) var(--tw-backdrop-drop-shadow);"></div>
+<div style="--tw-backdrop-grayscale:grayscale(0.42);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) var(--tw-backdrop-drop-shadow);"></div>
+<div style="--tw-backdrop-hue-rotate:hue-rotate(1.57rad);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) var(--tw-backdrop-drop-shadow);"></div>
+<div style="--tw-backdrop-invert:invert(0.66);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) var(--tw-backdrop-drop-shadow);"></div>
 <div style="backdrop-filter:opacity(50%);"></div>
-<div style="backdrop-filter:saturate(144%);"></div>
-<div style="backdrop-filter:sepia(0.38);"></div>
+<div style="--tw-backdrop-saturate:saturate(144%);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) var(--tw-backdrop-drop-shadow);"></div>
+<div style="--tw-backdrop-sepia:sepia(0.38);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) var(--tw-backdrop-drop-shadow);"></div>
 
-<div style=""></div>
+<div style="transition-property:opacity,width;"></div>
 
 <div style="transition-delay:var(--delay);"></div>
 
@@ -369,33 +359,33 @@
 
 <div style="will-change:var(--will-change);"></div>
 
-<div style="content:'hello';"></div>
-<div style="content:attr(content-before);"></div>
-<div style="content:'>';"></div>
+<div style="--tw-content:'hello';content:var(--tw-content);"></div>
+<div style="--tw-content:attr(content-before);content:var(--tw-content);"></div>
+<div style="--tw-content:'>';content:var(--tw-content);"></div>
 
 <!-- Balancing issues, this is not checking the validity of the actual value, but purely syntax-wise -->
 <!-- INVALID w-[][]-->
 <!-- INVALID w-[][]]-->
 <!-- INVALID w-[do-not-generate-this]w-[it-is-invalid-syntax]-->
 <!--<div class="grid-cols-[[linename],1fr,auto]"></div>-->
-<div class="w-[{}]"></div>
-<div class="w-[{{}}]"></div>
-<div class="w-[()]"></div>
-<div class="w-[(())]"></div>
-<div class="w-[[]]"></div>
-<div class="w-[[[]]]"></div>
-<div class="w-['][]']"></div>
-<div class="w-[{[}]]"></div>
-<div class="w-[[{]}]"></div>
-<div class="w-[{(})]"></div>
-<div class="w-[({)}]"></div>
-<div class="w-[([)]]"></div>
-<div class="w-[[(])]"></div>
-<div class="w-[)(]"></div>
-<div class="w-[}{]"></div>
-<div class="w-[)()]"></div>
-<div class="w-[}{}]"></div>
-<div class="w-[')()']"></div>
-<div class="w-['}{}']"></div>
+<div style="" class="w-[{}]"></div>
+<div style="" class="w-[{{}}]"></div>
+<div style="" class="w-[()]"></div>
+<div style="" class="w-[(())]"></div>
+<div style="" class="w-[[]]"></div>
+<div style="" class="w-[[[]]]"></div>
+<div style="" class="w-['][]']"></div>
+<div style="" class="w-[{[}]]"></div>
+<div style="" class="w-[[{]}]"></div>
+<div style="" class="w-[{(})]"></div>
+<div style="" class="w-[({)}]"></div>
+<div style="" class="w-[([)]]"></div>
+<div style="" class="w-[[(])]"></div>
+<div style="" class="w-[)(]"></div>
+<div style="" class="w-[}{]"></div>
+<div style="" class="w-[)()]"></div>
+<div style="" class="w-[}{}]"></div>
+<div style="" class="w-[')()']"></div>
+<div style="" class="w-['}{}']"></div>
 </body>
 </html>

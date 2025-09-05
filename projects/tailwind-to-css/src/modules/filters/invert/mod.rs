@@ -15,8 +15,13 @@ impl Display for TailwindInvert {
 
 impl TailwindInstance for TailwindInvert {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
-        let n = self.percent.get_properties(|f| format!("{}%", f));
-        self.backdrop.get_filter(format!("invert({})", n))
+        let n = self.percent.get_properties(|f| {
+            // Convert percentage to decimal for invert function
+            // 100% = 1.0, 0% = 0, etc.
+            let decimal = f / 100.0;
+            format!("{}", decimal)
+        });
+        self.backdrop.get_filter_var("invert", format!("invert({})", n))
     }
 }
 

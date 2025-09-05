@@ -27,5 +27,27 @@
 <div class="-delay-100"></div>
 <div class="delay-unset"></div>
 <div class="delay-[unset]"></div>
+<!-- Testing problematic transition classes from react_ssr -->
+<!-- https://tailwindcss.com/docs/transition-property -->
+<div class="transition-none"></div>
+<div class="transition-all"></div>
+<div class="transition"></div>
+<div class="transition-colors"></div>
+<div class="transition-opacity"></div>
+<div class="transition-shadow"></div>
+<div class="transition-transform"></div>
+<!-- https://tailwindcss.com/docs/animation -->
+<div class="animate-none"></div>
+<div class="animate-spin"></div>
+<div class="animate-ping"></div>
+<div class="animate-pulse"></div>
+<div class="animate-bounce"></div>
+<!-- Animation with variants -->
+<div class="hover:animate-spin"></div>
+<div class="lg:animate-pulse"></div>
+<div class="dark:animate-bounce"></div>
+<div class="group-hover:animate-ping"></div>
+<!-- Arbitrary animation -->
+<div class="animate-[wiggle_1s_ease-in-out_infinite]"></div>
 </body>
 </html>

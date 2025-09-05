@@ -1,9 +1,9 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8"></meta>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"></link>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flexbox tests</title>
 </head>
 <body>
@@ -47,8 +47,8 @@
 <div class="flex-auto"></div>
 <div class="flex-initial"></div>
 <div class="flex-none"></div>
-<div class="flex-[10_30px]"></div>
-<div class="flex-[2_2_10%]"></div>
+<div class="flex-10 30px"></div>
+<div class="flex-2 2 10%"></div>
 <!-- https://tailwindcss.com/docs/flex-grow -->
 <div class="grow-100"></div>
 <div class="grow-0"></div>
@@ -56,25 +56,25 @@
 <div class="grow-1"></div>
 <div class="grow-1"></div>
 <div class="grow-unset"></div>
-<div class="grow-[unset]"></div>
+<div class="grow-unset"></div>
 <!-- https://tailwindcss.com/docs/flex-shrink -->
-<div class="shrink-100"></div>
+<div class="shrink-1"></div>
 <div class="shrink-0"></div>
 <div class="shrink-0"></div>
 <div class="shrink-1"></div>
 <div class="shrink-1"></div>
 <div class="shrink-unset"></div>
-<div class="shrink-[unset]"></div>
+<div class="shrink-unset"></div>
 <!-- https://tailwindcss.com/docs/order -->
 <div class="order-0"></div>
 <div class="order-0"></div>
 <div class="order-0"></div>
 <div class="order-1"></div>
-<div class="order-1"></div>
+<div class="-order-1"></div>
 <div class="order-9999"></div>
 <div class="order-9999"></div>
 <div class="order-unset"></div>
-<div class="order-[unset]"></div>
+<div class="order-unset"></div>
 <!-- https://tailwindcss.com/docs/grid-template-columns -->
 <div class="grid-cols-1"></div>
 <div class="grid-cols-0"></div>
@@ -103,11 +103,28 @@
 <div class="auto-rows-max"></div>
 <div class="auto-rows-fr"></div>
 <!-- https://tailwindcss.com/docs/gap -->
-<div class="gap-[0rem]"></div>
-<div class="gap-x-[0rem]"></div>
-<div class="gap-y-[0rem]"></div>
+<div class="gap-[0px]"></div>
+<div class="gap-[1px]"></div>
+<div class="gap-[0.125rem]"></div>
+<div class="gap-[0.25rem]"></div>
+<div class="gap-[0.5rem]"></div>
+<div class="gap-[0.75rem]"></div>
+<div class="gap-[1rem]"></div>
+<div class="gap-[1.25rem]"></div>
+<div class="gap-[1.5rem]"></div>
+<div class="gap-[2rem]"></div>
+<div class="gap-[2.5rem]"></div>
+<div class="gap-[3rem]"></div>
+<div class="gap-[4rem]"></div>
+<div class="gap-[5rem]"></div>
+<div class="gap-[6rem]"></div>
+<div class="gap-[8rem]"></div>
+<div class="gap-x-[0px]"></div>
+<div class="gap-x-[1rem]"></div>
+<div class="gap-y-[0px]"></div>
+<div class="gap-y-[1rem]"></div>
 <!-- https://tailwindcss.com/docs/justify-content -->
-<div class="justify-content-start"></div>
+<div class="justify-start"></div>
 <!-- https://tailwindcss.com/docs/justify-items -->
 <div class="justify-items-start"></div>
 <!-- https://tailwindcss.com/docs/justify-self -->

@@ -1,61 +1,26 @@
-.backdrop-blur-8 {
-  backdrop-filter: blur(8px);
-}
-
-.backdrop-brightness-100 {
-  backdrop-filter: brightness();
-}
-
-.backdrop-contrast-100 {
-  backdrop-filter: contrast();
-}
-
-.backdrop-grayscale-100 {
-  backdrop-filter: grayscale();
-}
-
-.backdrop-hue-rotate-180 {
-  backdrop-filter: hue-rotate(180deg);
-}
-
-.backdrop-invert-100 {
-  backdrop-filter: invert();
-}
-
-.backdrop-opacity-50 {
-  backdrop-filter: opacity(50%);
-}
-
-.backdrop-saturate-100 {
-  backdrop-filter: saturate();
-}
-
-.backdrop-sepia-100 {
-  backdrop-filter: sepia();
-}
-
-.blur-8 {
-  filter: blur(8px);
-}
-
 .brightness-100 {
-  filter: brightness();
+  --tw-brightness: brightness(1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);
 }
 
 .contrast-100 {
-  filter: contrast();
+  --tw-contrast: contrast(1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);
 }
 
 .grayscale-100 {
-  filter: grayscale();
+  --tw-grayscale: grayscale(1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);
 }
 
 .hue-rotate-180 {
-  filter: hue-rotate(180deg);
+  --tw-hue-rotate: hue-rotate(180deg);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);
 }
 
 .invert-100 {
-  filter: invert();
+  --tw-invert: invert(1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);
 }
 
 .opacity-50 {
@@ -63,9 +28,6 @@
 }
 
 .saturate-100 {
-  filter: saturate();
-}
-
-.sepia-100 {
-  filter: sepia();
+  --tw-saturate: saturate(1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia);
 }

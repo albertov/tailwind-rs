@@ -28,6 +28,7 @@ impl TailwindWillChange {
         let set = BTreeSet::from_iter(vec![
             "auto",
             "contents",
+            "filter",
             "inherit",
             "initial",
             "opacity",

@@ -12,7 +12,8 @@ impl Palette {
     /// <span style="color:#475569">600</span>,
     /// <span style="color:#334155">700</span>,
     /// <span style="color:#1E293B">800</span>,
-    /// <span style="color:#0F172A">900</span>
+    /// <span style="color:#0F172A">900</span>,
+    /// <span style="color:#020617">950</span>
     pub fn slate() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#F8FAFC").unwrap());
@@ -25,6 +26,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#334155").unwrap());
         colors.insert(800, Srgb::from_str("#1E293B").unwrap());
         colors.insert(900, Srgb::from_str("#0F172A").unwrap());
+        colors.insert(950, Srgb::from_str("#020617").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## GRAY
@@ -37,7 +39,8 @@ impl Palette {
     /// <span style="color:#4B5563">600</span>,
     /// <span style="color:#374151">700</span>,
     /// <span style="color:#1F2937">800</span>,
-    /// <span style="color:#111827">900</span>
+    /// <span style="color:#111827">900</span>,
+    /// <span style="color:#030712">950</span>
     pub fn gray() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#F9FAFB").unwrap());
@@ -50,6 +53,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#374151").unwrap());
         colors.insert(800, Srgb::from_str("#1F2937").unwrap());
         colors.insert(900, Srgb::from_str("#111827").unwrap());
+        colors.insert(950, Srgb::from_str("#030712").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## ZINC
@@ -62,7 +66,8 @@ impl Palette {
     /// <span style="color:#52525B">600</span>,
     /// <span style="color:#3F3F46">700</span>,
     /// <span style="color:#27272A">800</span>,
-    /// <span style="color:#18181B">900</span>
+    /// <span style="color:#18181B">900</span>,
+    /// <span style="color:#09090b">950</span>
     pub fn zinc() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FAFAFA").unwrap());
@@ -75,6 +80,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#3F3F46").unwrap());
         colors.insert(800, Srgb::from_str("#27272A").unwrap());
         colors.insert(900, Srgb::from_str("#18181B").unwrap());
+        colors.insert(950, Srgb::from_str("#09090b").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## NEUTRAL
@@ -87,7 +93,8 @@ impl Palette {
     /// <span style="color:#525252">600</span>,
     /// <span style="color:#404040">700</span>,
     /// <span style="color:#262626">800</span>,
-    /// <span style="color:#171717">900</span>
+    /// <span style="color:#171717">900</span>,
+    /// <span style="color:#0a0a0a">950</span>
     pub fn neutral() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FAFAFA").unwrap());
@@ -100,6 +107,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#404040").unwrap());
         colors.insert(800, Srgb::from_str("#262626").unwrap());
         colors.insert(900, Srgb::from_str("#171717").unwrap());
+        colors.insert(950, Srgb::from_str("#0a0a0a").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## STONE
@@ -112,7 +120,8 @@ impl Palette {
     /// <span style="color:#57534E">600</span>,
     /// <span style="color:#44403C">700</span>,
     /// <span style="color:#292524">800</span>,
-    /// <span style="color:#1C1917">900</span>
+    /// <span style="color:#1C1917">900</span>,
+    /// <span style="color:#0c0a09">950</span>
     pub fn stone() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FAFAF9").unwrap());
@@ -125,6 +134,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#44403C").unwrap());
         colors.insert(800, Srgb::from_str("#292524").unwrap());
         colors.insert(900, Srgb::from_str("#1C1917").unwrap());
+        colors.insert(950, Srgb::from_str("#0c0a09").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## RED
@@ -137,7 +147,8 @@ impl Palette {
     /// <span style="color:#DC2626">600</span>,
     /// <span style="color:#B91C1C">700</span>,
     /// <span style="color:#991B1B">800</span>,
-    /// <span style="color:#7F1D1D">900</span>
+    /// <span style="color:#7F1D1D">900</span>,
+    /// <span style="color:#450a0a">950</span>
     pub fn red() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FEF2F2").unwrap());
@@ -150,6 +161,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#B91C1C").unwrap());
         colors.insert(800, Srgb::from_str("#991B1B").unwrap());
         colors.insert(900, Srgb::from_str("#7F1D1D").unwrap());
+        colors.insert(950, Srgb::from_str("#450a0a").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## ORANGE
@@ -162,7 +174,8 @@ impl Palette {
     /// <span style="color:#EA580C">600</span>,
     /// <span style="color:#C2410C">700</span>,
     /// <span style="color:#9A3412">800</span>,
-    /// <span style="color:#7C2D12">900</span>
+    /// <span style="color:#7C2D12">900</span>,
+    /// <span style="color:#431407">950</span>
     pub fn orange() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FFF7ED").unwrap());
@@ -175,6 +188,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#C2410C").unwrap());
         colors.insert(800, Srgb::from_str("#9A3412").unwrap());
         colors.insert(900, Srgb::from_str("#7C2D12").unwrap());
+        colors.insert(950, Srgb::from_str("#431407").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## AMBER
@@ -187,7 +201,8 @@ impl Palette {
     /// <span style="color:#D97706">600</span>,
     /// <span style="color:#B45309">700</span>,
     /// <span style="color:#92400E">800</span>,
-    /// <span style="color:#78350F">900</span>
+    /// <span style="color:#78350F">900</span>,
+    /// <span style="color:#451a03">950</span>
     pub fn amber() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FFFBEB").unwrap());
@@ -200,6 +215,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#B45309").unwrap());
         colors.insert(800, Srgb::from_str("#92400E").unwrap());
         colors.insert(900, Srgb::from_str("#78350F").unwrap());
+        colors.insert(950, Srgb::from_str("#451a03").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## YELLOW
@@ -212,7 +228,8 @@ impl Palette {
     /// <span style="color:#CA8A04">600</span>,
     /// <span style="color:#A16207">700</span>,
     /// <span style="color:#854D0E">800</span>,
-    /// <span style="color:#713F12">900</span>
+    /// <span style="color:#713F12">900</span>,
+    /// <span style="color:#422006">950</span>
     pub fn yellow() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FEFCE8").unwrap());
@@ -225,6 +242,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#A16207").unwrap());
         colors.insert(800, Srgb::from_str("#854D0E").unwrap());
         colors.insert(900, Srgb::from_str("#713F12").unwrap());
+        colors.insert(950, Srgb::from_str("#422006").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## LIME
@@ -237,7 +255,8 @@ impl Palette {
     /// <span style="color:#65A30D">600</span>,
     /// <span style="color:#4D7C0F">700</span>,
     /// <span style="color:#3F6212">800</span>,
-    /// <span style="color:#365314">900</span>
+    /// <span style="color:#365314">900</span>,
+    /// <span style="color:#1a2e05">950</span>
     pub fn lime() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#F7FEE7").unwrap());
@@ -250,6 +269,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#4D7C0F").unwrap());
         colors.insert(800, Srgb::from_str("#3F6212").unwrap());
         colors.insert(900, Srgb::from_str("#365314").unwrap());
+        colors.insert(950, Srgb::from_str("#1a2e05").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## GREEN
@@ -262,7 +282,8 @@ impl Palette {
     /// <span style="color:#16A34A">600</span>,
     /// <span style="color:#15803D">700</span>,
     /// <span style="color:#166534">800</span>,
-    /// <span style="color:#14532D">900</span>
+    /// <span style="color:#14532D">900</span>,
+    /// <span style="color:#052e16">950</span>
     pub fn green() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#F0FDF4").unwrap());
@@ -275,6 +296,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#15803D").unwrap());
         colors.insert(800, Srgb::from_str("#166534").unwrap());
         colors.insert(900, Srgb::from_str("#14532D").unwrap());
+        colors.insert(950, Srgb::from_str("#052e16").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## EMERALD
@@ -287,7 +309,8 @@ impl Palette {
     /// <span style="color:#059669">600</span>,
     /// <span style="color:#047857">700</span>,
     /// <span style="color:#065F46">800</span>,
-    /// <span style="color:#064E3B">900</span>
+    /// <span style="color:#064E3B">900</span>,
+    /// <span style="color:#022c22">950</span>
     pub fn emerald() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#ECFDF5").unwrap());
@@ -300,6 +323,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#047857").unwrap());
         colors.insert(800, Srgb::from_str("#065F46").unwrap());
         colors.insert(900, Srgb::from_str("#064E3B").unwrap());
+        colors.insert(950, Srgb::from_str("#022c22").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## TEAL
@@ -312,7 +336,8 @@ impl Palette {
     /// <span style="color:#0D9488">600</span>,
     /// <span style="color:#0F766E">700</span>,
     /// <span style="color:#115E59">800</span>,
-    /// <span style="color:#134E4A">900</span>
+    /// <span style="color:#134E4A">900</span>,
+    /// <span style="color:#042f2e">950</span>
     pub fn teal() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#F0FDFA").unwrap());
@@ -325,6 +350,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#0F766E").unwrap());
         colors.insert(800, Srgb::from_str("#115E59").unwrap());
         colors.insert(900, Srgb::from_str("#134E4A").unwrap());
+        colors.insert(950, Srgb::from_str("#042f2e").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## CYAN
@@ -337,7 +363,8 @@ impl Palette {
     /// <span style="color:#0891B2">600</span>,
     /// <span style="color:#0E7490">700</span>,
     /// <span style="color:#155E75">800</span>,
-    /// <span style="color:#164E63">900</span>
+    /// <span style="color:#164E63">900</span>,
+    /// <span style="color:#083344">950</span>
     pub fn cyan() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#ECFEFF").unwrap());
@@ -350,6 +377,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#0E7490").unwrap());
         colors.insert(800, Srgb::from_str("#155E75").unwrap());
         colors.insert(900, Srgb::from_str("#164E63").unwrap());
+        colors.insert(950, Srgb::from_str("#083344").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## SKY
@@ -362,7 +390,8 @@ impl Palette {
     /// <span style="color:#0284C7">600</span>,
     /// <span style="color:#0369A1">700</span>,
     /// <span style="color:#075985">800</span>,
-    /// <span style="color:#0C4A6E">900</span>
+    /// <span style="color:#0C4A6E">900</span>,
+    /// <span style="color:#0c1431">950</span>
     pub fn sky() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#F0F9FF").unwrap());
@@ -375,6 +404,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#0369A1").unwrap());
         colors.insert(800, Srgb::from_str("#075985").unwrap());
         colors.insert(900, Srgb::from_str("#0C4A6E").unwrap());
+        colors.insert(950, Srgb::from_str("#0c1431").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## BLUE
@@ -387,7 +417,8 @@ impl Palette {
     /// <span style="color:#2563EB">600</span>,
     /// <span style="color:#1D4ED8">700</span>,
     /// <span style="color:#1E40AF">800</span>,
-    /// <span style="color:#1E3A8A">900</span>
+    /// <span style="color:#1E3A8A">900</span>,
+    /// <span style="color:#1e1b4b">950</span>
     pub fn blue() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#EFF6FF").unwrap());
@@ -400,6 +431,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#1D4ED8").unwrap());
         colors.insert(800, Srgb::from_str("#1E40AF").unwrap());
         colors.insert(900, Srgb::from_str("#1E3A8A").unwrap());
+        colors.insert(950, Srgb::from_str("#1e1b4b").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## INDIGO
@@ -412,7 +444,8 @@ impl Palette {
     /// <span style="color:#4F46E5">600</span>,
     /// <span style="color:#4338CA">700</span>,
     /// <span style="color:#3730A3">800</span>,
-    /// <span style="color:#312E81">900</span>
+    /// <span style="color:#312E81">900</span>,
+    /// <span style="color:#1e1b4b">950</span>
     pub fn indigo() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#EEF2FF").unwrap());
@@ -425,6 +458,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#4338CA").unwrap());
         colors.insert(800, Srgb::from_str("#3730A3").unwrap());
         colors.insert(900, Srgb::from_str("#312E81").unwrap());
+        colors.insert(950, Srgb::from_str("#1e1b4b").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## VIOLET
@@ -437,7 +471,8 @@ impl Palette {
     /// <span style="color:#7C3AED">600</span>,
     /// <span style="color:#6D28D9">700</span>,
     /// <span style="color:#5B21B6">800</span>,
-    /// <span style="color:#4C1D95">900</span>
+    /// <span style="color:#4C1D95">900</span>,
+    /// <span style="color:#2e1065">950</span>
     pub fn violet() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#F5F3FF").unwrap());
@@ -450,6 +485,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#6D28D9").unwrap());
         colors.insert(800, Srgb::from_str("#5B21B6").unwrap());
         colors.insert(900, Srgb::from_str("#4C1D95").unwrap());
+        colors.insert(950, Srgb::from_str("#2e1065").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## PURPLE
@@ -462,7 +498,8 @@ impl Palette {
     /// <span style="color:#9333EA">600</span>,
     /// <span style="color:#7E22CE">700</span>,
     /// <span style="color:#6B21A8">800</span>,
-    /// <span style="color:#581C87">900</span>
+    /// <span style="color:#581C87">900</span>,
+    /// <span style="color:#3b0764">950</span>
     pub fn purple() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FAF5FF").unwrap());
@@ -475,6 +512,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#7E22CE").unwrap());
         colors.insert(800, Srgb::from_str("#6B21A8").unwrap());
         colors.insert(900, Srgb::from_str("#581C87").unwrap());
+        colors.insert(950, Srgb::from_str("#3b0764").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## FUCHSIA
@@ -487,7 +525,8 @@ impl Palette {
     /// <span style="color:#C026D3">600</span>,
     /// <span style="color:#A21CAF">700</span>,
     /// <span style="color:#86198F">800</span>,
-    /// <span style="color:#701A75">900</span>
+    /// <span style="color:#701A75">900</span>,
+    /// <span style="color:#4a044e">950</span>
     pub fn fuchsia() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FDF4FF").unwrap());
@@ -500,6 +539,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#A21CAF").unwrap());
         colors.insert(800, Srgb::from_str("#86198F").unwrap());
         colors.insert(900, Srgb::from_str("#701A75").unwrap());
+        colors.insert(950, Srgb::from_str("#4a044e").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## PINK
@@ -512,7 +552,8 @@ impl Palette {
     /// <span style="color:#DB2777">600</span>,
     /// <span style="color:#BE185D">700</span>,
     /// <span style="color:#9D174D">800</span>,
-    /// <span style="color:#831843">900</span>
+    /// <span style="color:#831843">900</span>,
+    /// <span style="color:#500724">950</span>
     pub fn pink() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FDF2F8").unwrap());
@@ -525,6 +566,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#BE185D").unwrap());
         colors.insert(800, Srgb::from_str("#9D174D").unwrap());
         colors.insert(900, Srgb::from_str("#831843").unwrap());
+        colors.insert(950, Srgb::from_str("#500724").unwrap());
         Self { gradient: true, key_points: colors }
     }
     /// ## ROSE
@@ -537,7 +579,8 @@ impl Palette {
     /// <span style="color:#E11D48">600</span>,
     /// <span style="color:#BE123C">700</span>,
     /// <span style="color:#9F1239">800</span>,
-    /// <span style="color:#881337">900</span>
+    /// <span style="color:#881337">900</span>,
+    /// <span style="color:#4c0519">950</span>
     pub fn rose() -> Self {
         let mut colors = BTreeMap::default();
         colors.insert(50, Srgb::from_str("#FFF1F2").unwrap());
@@ -550,6 +593,7 @@ impl Palette {
         colors.insert(700, Srgb::from_str("#BE123C").unwrap());
         colors.insert(800, Srgb::from_str("#9F1239").unwrap());
         colors.insert(900, Srgb::from_str("#881337").unwrap());
+        colors.insert(950, Srgb::from_str("#4c0519").unwrap());
         Self { gradient: true, key_points: colors }
     }
 }

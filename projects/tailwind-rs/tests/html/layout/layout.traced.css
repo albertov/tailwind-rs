@@ -1,121 +1,21 @@
-.-inset-1 {
-  inset: -.25rem;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.aspect-1\/1 {
+.aspect-square {
   aspect-ratio: 1;
 }
 
-.aspect-16\/9 {
+.aspect-video {
   aspect-ratio: 16 / 9;
-}
-
-.aspect-21\/9 {
-  aspect-ratio: 21 / 9;
-}
-
-.aspect-\[16\/9\] {
-  aspect-ratio: 16 / 9;
-}
-
-.aspect-\[unset\] {
-  aspect-ratio: unset;
 }
 
 .aspect-auto {
   aspect-ratio: auto;
 }
 
-.aspect-unset {
+.aspect-unset, .aspect-\[unset\] {
   aspect-ratio: unset;
 }
 
-.bottom-1px {
-  bottom: 1px;
-}
-
-.box-border {
-  box-sizing: border-box;
-}
-
-.box-break-\[unset\], .box-break-unset {
-  box-decoration-break: unset;
-}
-
-.box-clone {
-  box-decoration-break: clone;
-}
-
-.box-content {
-  box-sizing: content-box;
-}
-
-.box-sizing-\[unset\], .box-sizing-unset {
-  box-sizing: unset;
-}
-
-.box-slice {
-  box-decoration-break: slice;
-}
-
-.break-after-\[unset\] {
-  break-after: unset;
-}
-
-.break-after-auto {
-  break-after: auto;
-}
-
-.break-after-unset {
-  break-after: unset;
-}
-
-.break-before-\[unset\] {
-  break-before: unset;
-}
-
-.break-before-auto {
-  break-before: auto;
-}
-
-.break-before-unset {
-  break-before: unset;
-}
-
-.break-inside-\[unset\] {
-  break-inside: unset;
-}
-
-.break-inside-auto {
-  break-inside: auto;
-}
-
-.break-inside-unset {
-  break-inside: unset;
-}
-
-.columns-1 {
-  columns: 1;
-}
-
-.columns-\[20rem\] {
-  columns: 20rem;
-}
-
-.columns-\[320px\] {
-  columns: 320px;
-}
-
-.columns-\[auto_1\] {
-  columns: auto 1;
-}
-
-.columns-auto {
-  columns: auto;
+.aspect-\[16\/9\] {
+  aspect-ratio: 16 / 9;
 }
 
 .container {
@@ -158,138 +58,172 @@
   }
 }
 
-.display-block {
+.columns-1 {
+  columns: 1;
+}
+
+.columns-auto {
+  columns: auto;
+}
+
+.columns-\[20rem\] {
+  columns: 20rem;
+}
+
+.columns-\[320px\] {
+  columns: 320px;
+}
+
+.columns-\[auto_1\] {
+  columns: auto 1;
+}
+
+.break-before-auto {
+  break-before: auto;
+}
+
+.break-before-unset, .break-before-\[unset\] {
+  break-before: unset;
+}
+
+.break-inside-auto {
+  break-inside: auto;
+}
+
+.break-inside-unset, .break-inside-\[unset\] {
+  break-inside: unset;
+}
+
+.break-after-auto {
+  break-after: auto;
+}
+
+.break-after-unset, .break-after-\[unset\] {
+  break-after: unset;
+}
+
+.box-clone {
+  box-decoration-break: clone;
+}
+
+.box-slice {
+  box-decoration-break: slice;
+}
+
+.box-break-unset, .box-break-\[unset\] {
+  box-decoration-break: unset;
+}
+
+.box-border {
+  box-sizing: border-box;
+}
+
+.box-content {
+  box-sizing: content-box;
+}
+
+.box-sizing-unset, .box-sizing-\[unset\] {
+  box-sizing: unset;
+}
+
+.block {
   display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
 }
 
 .display-contents {
   display: contents;
 }
 
-.display-flex {
-  display: flex;
-}
-
-.display-inline {
-  display: inline;
-}
-
-.display-inline-block {
-  display: inline-block;
-}
-
-.display-none {
+.hidden {
   display: none;
-}
-
-.fixed {
-  position: fixed;
-}
-
-.float-\[unset\] {
-  float: unset;
-}
-
-.float-both {
-  clear: both;
-}
-
-.float-left {
-  float: left;
 }
 
 .float-none {
   float: none;
 }
 
+.float-left {
+  float: left;
+}
+
 .float-right {
   float: right;
 }
 
-.float-unset {
+.float-unset, .float-\[unset\] {
   float: unset;
 }
 
-.inset-0 {
-  inset: 0;
+.clear-none {
+  clear: none;
 }
 
-.inset-1 {
-  inset: .25rem;
+.clear-left {
+  clear: left;
 }
 
-.inset-1\/1 {
-  inset: 100%;
+.clear-right {
+  clear: right;
 }
 
-.inset-1px {
-  inset: 1px;
+.clear-both {
+  clear: both;
 }
 
-.inset-1rem {
-  inset: 1rem;
-}
-
-.inset-\[unset\] {
-  bottom: unset;
-  left: unset;
-  right: unset;
-  top: unset;
-}
-
-.inset-auto {
-  inset: auto;
-}
-
-.inset-unset {
-  bottom: unset;
-  left: unset;
-  right: unset;
-  top: unset;
-}
-
-.invisible {
-  visibility: hidden;
+.clear-unset, .clear-\[unset\] {
+  clear: unset;
 }
 
 .isolate {
   isolation: isolate;
 }
 
-.isolation- {
+.isolation-auto {
   isolation: auto;
 }
 
-.isolation-\[unset\] {
+.isolation-unset, .isolation-\[unset\] {
   isolation: unset;
 }
 
-.left-1px {
-  left: 1px;
+.object-fill {
+  object-fit: fill;
 }
 
-.object-1 {
-  object-position: 0% 100%;
+.object-contain {
+  object-fit: contain;
 }
 
-.object-2 {
-  object-position: 50% 100%;
+.object-cover {
+  object-fit: cover;
 }
 
-.object-3 {
-  object-position: 100% 100%;
+.object-scale-down {
+  object-fit: scale-down;
 }
 
-.object-4 {
-  object-position: 0% 50%;
+.object-none {
+  object-fit: none;
 }
 
-.object-5 {
-  object-position: 50% 50%;
+.object-unset, .object-\[unset\] {
+  object-fit: unset;
 }
 
-.object-6 {
-  object-position: 100% 50%;
+.object-\[unset\] {
+  object-position: unset;
 }
 
 .object-7 {
@@ -304,56 +238,44 @@
   object-position: 100% 0%;
 }
 
-.object-\[50px_50\%\] {
-  object-position: 50px 50%;
+.object-4 {
+  object-position: 0% 50%;
+}
+
+.object-5 {
+  object-position: 50% 50%;
+}
+
+.object-6 {
+  object-position: 100% 50%;
+}
+
+.object-1 {
+  object-position: 0% 100%;
+}
+
+.object-2 {
+  object-position: 50% 100%;
+}
+
+.object-3 {
+  object-position: 100% 100%;
 }
 
 .object-\[center_top\] {
   object-position: center top;
 }
 
-.object-\[unset\] {
-  object-fit: unset;
-}
-
-.object-contain {
-  object-fit: contain;
-}
-
-.object-cover {
-  object-fit: cover;
-}
-
-.object-fill {
-  object-fit: fill;
-}
-
-.object-none {
-  object-fit: none;
-}
-
-.object-scale-down {
-  object-fit: scale-down;
+.object-\[50px_50\%\] {
+  object-position: 50px 50%;
 }
 
 .object-unset {
-  object-fit: unset;
-}
-
-.overflow-\[hidden_visible\] {
-  overflow: hidden visible;
-}
-
-.overflow-\[unset\] {
-  overflow: unset;
+  object-position: unset;
 }
 
 .overflow-auto {
   overflow: auto;
-}
-
-.overflow-unset {
-  overflow: unset;
 }
 
 .overflow-x-auto {
@@ -364,20 +286,16 @@
   overflow-y: auto;
 }
 
-.overscroll-\[auto_contain\] {
-  overscroll-behavior: auto contain;
+.overflow-unset, .overflow-\[unset\] {
+  overflow: unset;
 }
 
-.overscroll-\[unset\] {
-  overscroll-behavior: unset;
+.overflow-\[hidden_visible\] {
+  overflow: hidden visible;
 }
 
 .overscroll-auto {
   overscroll-behavior: auto;
-}
-
-.overscroll-unset {
-  overscroll-behavior: unset;
 }
 
 .overscroll-x-auto {
@@ -388,50 +306,114 @@
   overscroll-behavior-y: auto;
 }
 
-.position-, .position-\[unset\] {
-  position: unset;
+.overscroll-unset, .overscroll-\[unset\] {
+  overscroll-behavior: unset;
 }
 
-.relative {
-  position: relative;
-}
-
-.right-1px {
-  right: 1px;
+.overscroll-\[auto_contain\] {
+  overscroll-behavior: auto contain;
 }
 
 .static {
   position: static;
 }
 
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
 .sticky {
   position: sticky;
+}
+
+.position-, .position-\[unset\] {
+  position: unset;
+}
+
+.left-1px {
+  left: 1px;
+}
+
+.right-1px {
+  right: 1px;
+}
+
+.bottom-1px {
+  bottom: 1px;
 }
 
 .top-1px {
   top: 1px;
 }
 
+.inset-0 {
+  inset: 0;
+  inset: 0;
+}
+
+.-inset-1 {
+  inset: -.25rem;
+}
+
+.inset-1 {
+  inset: .25rem;
+}
+
+.inset-1px {
+  inset: 1px;
+}
+
+.-inset-1px {
+  inset: -1px;
+}
+
+.inset-1rem {
+  inset: 1rem;
+}
+
+.inset-auto {
+  inset: auto;
+}
+
+.inset-1\/1 {
+  inset: 100%;
+}
+
+.inset-unset, .inset-\[unset\] {
+  bottom: unset;
+  left: unset;
+  right: unset;
+  top: unset;
+}
+
 .visible {
   visibility: visible;
 }
 
-.visible-\[unset\], .visible-unset {
+.invisible {
+  visibility: hidden;
+}
+
+.visible-unset, .visible-\[unset\] {
   visibility: unset;
-}
-
-.z-2333 {
-  z-index: 2333;
-}
-
-.z-\[unset\] {
-  z-index: unset;
 }
 
 .z-auto {
   z-index: auto;
 }
 
-.z-unset {
+.z-2333 {
+  z-index: 2333;
+}
+
+.z-unset, .z-\[unset\] {
   z-index: unset;
 }

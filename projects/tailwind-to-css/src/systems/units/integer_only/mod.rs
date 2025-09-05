@@ -69,6 +69,6 @@ impl NumericValue {
         if negative.0 {
             n = -n
         }
-        Ok(Self::Number { n, negative: negative.0, can_be_negative: false })
+        Ok(Self::Number { n, negative: negative.0, can_be_negative: negative.0 })
     }
 }

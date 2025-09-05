@@ -21,7 +21,7 @@ impl SpacingSize {
     pub fn parse(pattern: &[&str], arbitrary: &TailwindArbitrary, check_valid: &'static impl Fn(&str) -> bool) -> Result<Self> {
         match pattern {
             [] => Self::parse_arbitrary(arbitrary),
-            ["px"] => Ok(Self::Arbitrary(TailwindArbitrary::from("1px"))),
+            ["px"] => Ok(Self::Standard("px".to_string())),
             [n] if check_valid(n) => Ok(Self::Standard(n.to_string())),
             [n] => Ok(Self::Unit(TailwindArbitrary::from(*n).as_float()?)),
             _ => syntax_error!("Unknown padding instructions: {}", pattern.join("-")),
@@ -36,6 +36,7 @@ impl SpacingSize {
     pub fn get_properties(&self) -> String {
         match self {
             Self::Unit(x) => format!("{}rem", x / 4.0),
+            Self::Standard(x) if x == "px" => "1px".to_string(),
             Self::Standard(x) => x.to_string(),
             Self::Arbitrary(x) => x.get_properties(),
         }

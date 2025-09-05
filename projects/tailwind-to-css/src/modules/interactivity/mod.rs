@@ -13,6 +13,7 @@ pub use self::{
     appearance::TailwindAppearance,
     caret::TailwindCaretColor,
     cursor::TailwindCursor,
+    markers::{TailwindGroupMarker, TailwindPeerMarker},
     pointer::TailwindPointerEvents,
     resize::TailwindResize,
     scroll::scroll_behavior::TailwindScrollBehavior,
@@ -27,6 +28,7 @@ mod accent;
 mod appearance;
 mod caret;
 mod cursor;
+mod markers;
 mod pointer;
 mod resize;
 mod scroll;

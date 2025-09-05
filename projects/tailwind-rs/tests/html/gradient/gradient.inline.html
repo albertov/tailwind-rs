@@ -1,0 +1,26 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient tests</title>
+</head>
+<body>
+<!-- https://tailwindcss.com/docs/background-image#linear-gradients -->
+<div style="background-image:linear-gradient(to top, var(--tw-gradient-stops));"></div>
+<div style="background-image:linear-gradient(to top right, var(--tw-gradient-stops));"></div>
+<div style="background-image:linear-gradient(to right, var(--tw-gradient-stops));"></div>
+<div style="background-image:linear-gradient(to bottom right, var(--tw-gradient-stops));"></div>
+<div style="background-image:linear-gradient(to bottom, var(--tw-gradient-stops));"></div>
+<div style="background-image:linear-gradient(to bottom left, var(--tw-gradient-stops));"></div>
+<div style="background-image:linear-gradient(to left, var(--tw-gradient-stops));"></div>
+<div style="background-image:linear-gradient(to top left, var(--tw-gradient-stops));"></div>
+<!-- Gradient color stops -->
+<div style="--tw-gradient-from:rgb(59 130 246);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,rgb(59 130 246));"></div>
+<div style="--tw-gradient-stops:var(--tw-gradient-from),rgb(168 85 247),var(--tw-gradient-to,rgb(168 85 247));"></div>
+<div style="--tw-gradient-to:rgb(236 72 153);"></div>
+<!-- Combined gradient -->
+<div style="--tw-gradient-from:rgb(6 182 212);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,rgb(6 182 212));--tw-gradient-to:rgb(59 130 246);background-image:linear-gradient(to right, var(--tw-gradient-stops));"></div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 use super::*;
 
 #[doc=include_str!("readme.md")]
-#[derive(Copy, Clone, Debug)]
+#[derive(Clone, Debug)]
 pub struct TailwindBorderWidth {
     kind: BorderKind,
     width: LengthUnit,
@@ -16,6 +16,8 @@ enum BorderKind {
     BorderR,
     BorderB,
     BorderL,
+    BorderS,
+    BorderE,
 }
 
 impl Display for BorderKind {
@@ -28,6 +30,8 @@ impl Display for BorderKind {
             Self::BorderR => write!(f, "border-r"),
             Self::BorderB => write!(f, "border-b"),
             Self::BorderL => write!(f, "border-l"),
+            Self::BorderS => write!(f, "border-s"),
+            Self::BorderE => write!(f, "border-e"),
         }
     }
 }
@@ -65,6 +69,12 @@ impl TailwindInstance for TailwindBorderWidth {
             BorderKind::BorderL => css_attributes! {
                 "border-left-width" => &width,
             },
+            BorderKind::BorderS => css_attributes! {
+                "border-inline-start-width" => &width,
+            },
+            BorderKind::BorderE => css_attributes! {
+                "border-inline-end-width" => &width,
+            },
         }
     }
 }
@@ -78,6 +88,8 @@ impl TailwindBorderWidth {
             ["l", rest @ ..] => Self::parse_inner(rest, BorderKind::BorderL, arbitrary),
             ["x", rest @ ..] => Self::parse_inner(rest, BorderKind::BorderX, arbitrary),
             ["y", rest @ ..] => Self::parse_inner(rest, BorderKind::BorderY, arbitrary),
+            ["s", rest @ ..] => Self::parse_inner(rest, BorderKind::BorderS, arbitrary),
+            ["e", rest @ ..] => Self::parse_inner(rest, BorderKind::BorderE, arbitrary),
             _ => Self::parse_inner(pattern, BorderKind::Border, arbitrary),
         }
     }

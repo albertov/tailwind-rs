@@ -18,7 +18,7 @@ impl Display for TailwindHueRotate {
 impl TailwindInstance for TailwindHueRotate {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
         let n = self.degree.get_properties(|f| format!("{}deg", f));
-        self.backdrop.get_filter(format!("hue-rotate({})", n))
+        self.backdrop.get_filter_var("hue-rotate", format!("hue-rotate({})", n))
     }
 }
 

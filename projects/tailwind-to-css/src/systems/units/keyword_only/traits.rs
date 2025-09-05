@@ -22,6 +22,7 @@ impl Display for StandardValue {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Keyword(s) => write!(f, "{}", s),
+            // For arbitrary values, preserve the bracketed format for round-trip compatibility
             Self::Arbitrary(s) => s.write(f),
         }
     }

@@ -16,8 +16,13 @@ impl Display for TailwindBrightness {
 
 impl TailwindInstance for TailwindBrightness {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
-        let n = self.percent.get_properties(|f| format!("{}%", f));
-        self.backdrop.get_filter(format!("brightness({})", n))
+        let n = self.percent.get_properties(|f| {
+            // Convert percentage to decimal for brightness function
+            // 100% = 1.0, 150% = 1.5, etc.
+            let decimal = f / 100.0;
+            format!("{}", decimal)
+        });
+        self.backdrop.get_filter_var("brightness", format!("brightness({})", n))
     }
 }
 

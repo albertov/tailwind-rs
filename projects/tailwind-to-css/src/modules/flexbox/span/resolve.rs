@@ -36,10 +36,15 @@ impl Display for GridSize {
 
 impl GridSize {
     pub fn parse(pattern: &str, allow_full: bool) -> Result<Self> {
-        debug_assert!(allow_full, "can't set to full");
         let size = match pattern {
             "auto" => Self::Auto,
-            "full" => Self::Full,
+            "full" => {
+                if !allow_full {
+                    eprintln!("Warning: 'full' not allowed in this context");
+                    return syntax_error!("'full' not allowed in this context");
+                }
+                Self::Full
+            },
             n => Self::Unit(TailwindArbitrary::from(n).as_integer()?),
         };
         Ok(size)

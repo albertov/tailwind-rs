@@ -20,7 +20,9 @@ impl Display for TailwindMargin {
 impl TailwindInstance for TailwindMargin {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
         let mut out = CssAttributes::default();
-        self.axis.write_attributes(&mut out, self.size.get_properties());
+        // Apply negative sign to the value if needed
+        let value = self.negative.get_properties(&self.size.get_properties());
+        self.axis.write_attributes(&mut out, value);
         out
     }
 }
@@ -37,6 +39,8 @@ impl TailwindMargin {
             ["mb", rest @ ..] => (SpacingAxis::new("mb", &["margin-bottom"]), rest),
             ["mx", rest @ ..] => (SpacingAxis::new("mx", &["margin-left", "margin-right"]), rest),
             ["my", rest @ ..] => (SpacingAxis::new("my", &["margin-top", "margin-bottom"]), rest),
+            ["ms", rest @ ..] => (SpacingAxis::new("ms", &["margin-inline-start"]), rest),
+            ["me", rest @ ..] => (SpacingAxis::new("me", &["margin-inline-end"]), rest),
             _ => return syntax_error!("Unknown margin axis"),
         };
         let size = SpacingSize::parse(rest, arbitrary, &Self::check_valid)?;

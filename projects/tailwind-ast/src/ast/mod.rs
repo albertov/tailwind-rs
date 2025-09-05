@@ -4,6 +4,12 @@ mod methods;
 mod parse;
 #[cfg(test)]
 mod tests;
+#[cfg(test)]
+mod container_query_tests;
+#[cfg(test)]
+mod container_important_test;
+#[cfg(test)]
+mod important_basic_test;
 use nom::{
     branch::alt,
     bytes::complete::{tag, take_till1},
@@ -22,10 +28,20 @@ use std::{
 /// Decompose a string into tailwind instructions
 pub fn parse_tailwind(input: &str) -> Result<Vec<AstStyle>, Err<Error<&str>>> {
     let rest = many0(tuple((multispace1, AstGroupItem::parse)));
-    let (head, groups) = match tuple((AstGroupItem::parse, rest))(input.trim()) {
-        Ok(o) => o.1,
+    let result = tuple((AstGroupItem::parse, rest))(input.trim());
+    
+    // Check if parsing succeeded and consumed the entire input
+    let (_remaining, (head, groups)) = match result {
+        Ok((remaining, parsed)) => {
+            // If there's remaining input that couldn't be parsed, this is not valid Tailwind
+            if !remaining.is_empty() {
+                return Err(Err::Error(Error::new(input, nom::error::ErrorKind::Eof)));
+            }
+            (remaining, parsed)
+        },
         Err(e) => return Err(e),
     };
+    
     let mut out = vec![];
     head.expand(&mut out);
     for (_, g) in groups {
@@ -35,7 +51,7 @@ pub fn parse_tailwind(input: &str) -> Result<Vec<AstStyle>, Err<Error<&str>>> {
 }
 
 /// `variant:ast-style(grouped)`
-#[derive(Clone, Debug, PartialEq, Default)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash, Default)]
 pub struct AstGroup<'a> {
     /// Is a `!important` group
     pub important: bool,
@@ -46,7 +62,7 @@ pub struct AstGroup<'a> {
 }
 
 /// One of [`AstGroup`] and [`AstStyle`]
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum AstGroupItem<'a> {
     /// Is grouped node can be expand
     Grouped(AstGroup<'a>),
@@ -54,8 +70,8 @@ pub enum AstGroupItem<'a> {
     Styled(AstStyle<'a>),
 }
 
-/// `not-variant:pseudo::-ast-element-[arbitrary]`
-#[derive(Clone, Debug, PartialEq, Default)]
+/// `not-variant:pseudo::-ast-element-[arbitrary]/opacity`
+#[derive(Clone, Debug, PartialEq, Eq, Hash, Default)]
 pub struct AstStyle<'a> {
     /// Is a `!important` style
     pub important: bool,
@@ -67,32 +83,34 @@ pub struct AstStyle<'a> {
     pub elements: Vec<&'a str>,
     /// Is a arbitrary value
     pub arbitrary: Option<&'a str>,
+    /// Opacity modifier (e.g., 50 for /50, or arbitrary value)
+    pub opacity: Option<&'a str>,
 }
 
 /// `-[.+]`
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct AstArbitrary<'a> {
     /// The arbitrary value text
     pub arbitrary: &'a str,
 }
 
 /// `ast-elements`
-#[derive(Clone, Debug, PartialEq, Default)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash, Default)]
 pub struct AstElements<'a> {
     /// `name-space`
     pub elements: Vec<&'a str>,
 }
 
 /// `&`
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub struct AstReference {}
 
 /// `!`
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub struct AstImportant {}
 
-/// `(not-)?variant:pseudo::`
-#[derive(Clone, Debug, PartialEq)]
+/// `(not-)?variant(/modifier)?:pseudo::` or `@container-query:` or `has-selector:`
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct ASTVariant<'a> {
     /// `not-`
     pub not: bool,
@@ -100,4 +118,27 @@ pub struct ASTVariant<'a> {
     pub pseudo: bool,
     /// `name-space`
     pub names: Vec<&'a str>,
+    /// Optional modifier (e.g., `/sidebar` in `group-hover/sidebar`)
+    pub modifier: Option<&'a str>,
+    /// Container query indicator (starts with @)
+    pub container: bool,
+    /// Container query type (min, max, arbitrary)
+    pub container_type: Option<ContainerQueryType>,
+    /// Has selector indicator (starts with has-)
+    pub has: bool,
+    /// Optional arbitrary has selector (e.g., `>img` in `has-[>img]`)
+    pub has_selector: Option<&'a str>,
+    /// Optional arbitrary selector for group/peer (e.g., `&[data-state='open']` in `group-[&[data-state='open']]`)
+    pub arbitrary_selector: Option<&'a str>,
+}
+
+/// Type of container query
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
+pub enum ContainerQueryType {
+    /// Minimum width query (@lg: or @min-lg:)
+    Min,
+    /// Maximum width query (@max-lg:)
+    Max,
+    /// Arbitrary value query (@[123px]:)
+    Arbitrary,
 }

@@ -20,13 +20,36 @@ impl Display for TailwindSpace {
 
 impl TailwindInstance for TailwindSpace {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
-        let class = match self.axis {
+        // Return empty attributes since we handle everything in additional()
+        CssAttributes::default()
+    }
+    
+    fn additional(&self, _: &TailwindBuilder) -> String {
+        // Generate the complete CSS rule with child combinator selector
+        let property = match self.axis {
             true => "margin-left",
             false => "margin-top",
         };
-        css_attributes! {
-            class => self.size.get_properties()
-        }
+        let value = self.size.get_properties();
+        
+        // Get the class name using id() which returns the escaped version
+        let class_name = self.id();
+        
+        // Escape special characters for CSS selector
+        let escaped_class = class_name
+            .replace('[', "\\[")
+            .replace(']', "\\]")
+            .replace('(', "\\(")
+            .replace(')', "\\)")
+            .replace('%', "\\%")
+            .replace(' ', "_")
+            .replace('.', "\\.");
+        
+        // Use the > * + * selector to target all children except the first
+        format!(".{} > * + * {{ {}: {}; }}", 
+                escaped_class,
+                property, 
+                value)
     }
 }
 

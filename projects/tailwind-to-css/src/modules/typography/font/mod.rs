@@ -2,6 +2,7 @@ use super::*;
 
 pub(crate) mod font_family;
 pub(crate) mod font_size;
+pub(crate) mod font_size_with_line_height;
 pub(crate) mod font_smoothing;
 pub(crate) mod font_style;
 pub(crate) mod font_variant_numeric;
@@ -19,6 +20,14 @@ pub fn font_adaptor(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<B
         ["bold"] => TailwindFontWeight::BOLD.boxed(),
         ["extrabold"] => TailwindFontWeight::EXTRA_BOLD.boxed(),
         ["black"] => TailwindFontWeight::BLACK.boxed(),
+        // Handle font-[300] case where pattern is empty and arbitrary has value
+        [] if arbitrary.is_some() => {
+            // Try to parse as weight first, then fall back to font family
+            match maybe_weight(arbitrary) {
+                Ok(weight) => weight,
+                Err(_) => TailwindFontFamily::from(arbitrary.as_str()).boxed(),
+            }
+        },
         ["size"] => maybe_size(arbitrary)?,
         ["size", n] => {
             let a = TailwindArbitrary::from(*n);

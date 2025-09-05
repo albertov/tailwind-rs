@@ -1,4 +1,23 @@
 use super::*;
+use std::fmt::{Display, Formatter};
+
+impl Display for PresetSize {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Xs => write!(f, "xs"),
+            Self::Sm => write!(f, "sm"),
+            Self::Md => write!(f, "md"),
+            Self::Lg => write!(f, "lg"),
+            Self::Xl => write!(f, "xl"),
+            Self::Xxl => write!(f, "2xl"),
+            Self::Xxxl => write!(f, "3xl"),
+            Self::Xxxxl => write!(f, "4xl"),
+            Self::Xxxxxl => write!(f, "5xl"),
+            Self::Xxxxxxl => write!(f, "6xl"),
+            Self::Xxxxxxxl => write!(f, "7xl"),
+        }
+    }
+}
 
 impl Display for SizingUnit {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
@@ -9,14 +28,36 @@ impl Display for SizingUnit {
             Self::Auto => write!(f, "auto"),
             Self::Full => write!(f, "full"),
             Self::Screen => write!(f, "screen"),
+            Self::Preset(preset) => write!(f, "{}", preset),
             Self::Fraction(numerator, denominator) => write!(f, "{}/{}", numerator, denominator),
+            // Standard spacing values display without brackets
+            Self::SpacingValue(name, _) => write!(f, "{}", name),
+            // Arbitrary values display with brackets
             Self::Length(x) => write!(f, "[{}]", x),
         }
     }
 }
 
+impl PresetSize {
+    fn to_rem(&self) -> f32 {
+        match self {
+            Self::Xs => 20.0,      // 320px
+            Self::Sm => 24.0,      // 384px
+            Self::Md => 28.0,      // 448px
+            Self::Lg => 32.0,      // 512px
+            Self::Xl => 36.0,      // 576px
+            Self::Xxl => 42.0,     // 672px
+            Self::Xxxl => 48.0,    // 768px
+            Self::Xxxxl => 56.0,   // 896px
+            Self::Xxxxxl => 64.0,  // 1024px
+            Self::Xxxxxxl => 72.0, // 1152px
+            Self::Xxxxxxxl => 80.0, // 1280px
+        }
+    }
+}
+
 impl SizingUnit {
-    fn get_attribute(&self, is_width: bool) -> String {
+    pub(super) fn get_attribute(&self, is_width: bool) -> String {
         let is_width = match is_width {
             true => "vw",
             false => "vh",
@@ -28,8 +69,12 @@ impl SizingUnit {
             Self::Auto => "auto".to_string(),
             Self::Full => "100%".to_string(),
             Self::Screen => format!("100{}", is_width),
-            Self::Fraction(numerator, denominator) => format!("{}%", *numerator as f32 / *denominator as f32),
-            Self::Length(x) => format!("{}", x),
+            Self::Preset(preset) => format!("{}rem", preset.to_rem()),
+            Self::Fraction(numerator, denominator) => format!("{}%", (*numerator as f32 / *denominator as f32) * 100.0),
+            // Standard spacing values use their stored LengthUnit
+            Self::SpacingValue(_, length) => length.get_properties(),
+            // Arbitrary values
+            Self::Length(x) => x.get_properties(),
         }
     }
 }
@@ -55,7 +100,16 @@ impl Display for TailwindSizingKind {
 
 impl Display for TailwindSizing {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}-{}", self.kind, self.size)
+        // Format the prefix based on kind
+        let prefix = match self.kind {
+            TailwindSizingKind::Width => "w",
+            TailwindSizingKind::MinWidth => "min-w",
+            TailwindSizingKind::MaxWidth => "max-w",
+            TailwindSizingKind::Height => "h",
+            TailwindSizingKind::MinHeight => "min-h",
+            TailwindSizingKind::MaxHeight => "max-h",
+        };
+        write!(f, "{}-{}", prefix, self.size)
     }
 }
 

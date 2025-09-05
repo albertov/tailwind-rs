@@ -1,4 +1,3 @@
-#![feature(arbitrary_self_types)]
 #![allow(non_snake_case)]
 #![allow(clippy::mut_from_ref)]
 #![allow(clippy::derivable_impls)]

@@ -33,7 +33,7 @@ impl FontSystem {
     }
     // https://tailwindcss.com/docs/letter-spacing
     fn insert_builtin_tracking(&mut self) {
-        self.insert_tracking("tightest", -0.75);
+        self.insert_tracking("tightest", -0.075);
         self.insert_tracking("tighter", -0.05);
         self.insert_tracking("tight", -0.025);
         self.insert_tracking("normal", 0.0);

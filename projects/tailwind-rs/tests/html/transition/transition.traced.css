@@ -1,13 +1,5 @@
-.delay-0 {
-  transition-delay: 0s;
-}
-
-.delay-100 {
-  transition-delay: .1s;
-}
-
-.delay-\[unset\], .delay-unset {
-  transition-delay: unset;
+.duration-150 {
+  transition-duration: .15s;
 }
 
 .duration-0 {
@@ -18,10 +10,145 @@
   transition-duration: .1s;
 }
 
-.duration-150 {
-  transition-duration: .15s;
+.duration-unset {
+  transition-duration: unset;
 }
 
-.duration-\[unset\], .duration-unset {
-  transition-duration: unset;
+.delay-100 {
+  transition-delay: .1s;
+}
+
+.delay-0 {
+  transition-delay: 0s;
+}
+
+.delay-unset {
+  transition-delay: unset;
+}
+
+.transition-none {
+  transition-property: none;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.transition-shadow {
+  transition-property: box-shadow;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.animate-none {
+  animation: none;
+}
+
+.animate-spin {
+  animation: 1s linear infinite spin;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-ping {
+  animation: 1s cubic-bezier(0, 0, .2, 1) infinite ping;
+}
+
+@keyframes ping {
+  75%, 100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+.animate-pulse {
+  animation: 2s cubic-bezier(.4, 0, .6, 1) infinite pulse;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-bounce {
+  animation: 1s infinite bounce;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(.8, 0, 1, 1);
+    transform: translateY(-25%);
+  }
+
+  50% {
+    animation-timing-function: cubic-bezier(0, 0, .2, 1);
+    transform: translateY(0);
+  }
+}
+
+@media (hover: hover) {
+  .hover\:animate-spin:hover {
+    animation: 1s linear infinite spin;
+  }
+}
+
+@media (width >= 1024px) {
+  .lg\:animate-pulse {
+    animation: 2s cubic-bezier(.4, 0, .6, 1) infinite pulse;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:animate-bounce {
+    animation: 1s infinite bounce;
+  }
+}
+
+@media (hover: hover) {
+  .group:hover .group-hover\:animate-ping {
+    animation: 1s cubic-bezier(0, 0, .2, 1) infinite ping;
+  }
+}
+
+.animate-\[wiggle_1s_ease-in-out_infinite\] {
+  animation: 1s ease-in-out infinite wiggle;
 }

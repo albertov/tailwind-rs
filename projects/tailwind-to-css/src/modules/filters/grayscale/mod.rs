@@ -15,8 +15,13 @@ impl Display for TailwindGrayscale {
 
 impl TailwindInstance for TailwindGrayscale {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
-        let n = self.percent.get_properties(|f| format!("{}%", f));
-        self.backdrop.get_filter(format!("grayscale({})", n))
+        let n = self.percent.get_properties(|f| {
+            // Convert percentage to decimal for grayscale function
+            // 100% = 1.0, 0% = 0, etc.
+            let decimal = f / 100.0;
+            format!("{}", decimal)
+        });
+        self.backdrop.get_filter_var("grayscale", format!("grayscale({})", n))
     }
 }
 

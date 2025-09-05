@@ -80,7 +80,11 @@ impl WordBreak {
             ["all"] => Self::Standard("break-all".to_string()),
             _ => {
                 let kind = pattern.join("-");
-                debug_assert!(Self::check_valid(&kind));
+                // Skip invalid break values instead of panicking
+                if !Self::check_valid(&kind) {
+                    eprintln!("Warning: Unknown break value '{}', skipping", kind);
+                    return syntax_error!("Unknown break pattern: {}", kind);
+                }
                 Self::Standard(kind)
             },
         };

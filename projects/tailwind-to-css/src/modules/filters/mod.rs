@@ -38,6 +38,36 @@ impl Backdrop {
             },
         }
     }
+    
+    /// Get filter attributes using CSS variables for composition
+    /// Each filter sets its own CSS variable and the complete filter chain
+    pub fn get_filter_var<T>(&self, var_name: &str, value: T) -> CssAttributes
+    where
+        T: Into<String>,
+    {
+        let mut css = CssAttributes::default();
+        let value_str = value.into();
+        
+        // Set only the specific variable for this filter
+        // The preflight system handles initialization of all CSS variables
+        let filter_chain = if self.0 {
+            css.insert(format!("--tw-backdrop-{}", var_name), value_str);
+            "var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) var(--tw-backdrop-drop-shadow)"
+        } else {
+            css.insert(format!("--tw-{}", var_name), value_str);
+            "var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-drop-shadow) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-opacity) var(--tw-saturate) var(--tw-sepia)"
+        };
+        
+        // Set the filter property with the complete chain
+        match self.0 {
+            true => css.insert("backdrop-filter", filter_chain),
+            false => css.insert("filter", filter_chain),
+        }
+        
+        css
+    }
+    
+    #[allow(dead_code)]
     pub fn get_filter<T>(&self, value: T) -> CssAttributes
     where
         T: Into<String>,

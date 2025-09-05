@@ -16,7 +16,23 @@ crate::macros::sealed::keyword_instance!(TailwindDisplay => "display", { "hidden
 
 impl Display for TailwindDisplay {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "display-{}", self.kind)
+        // Special cases for Tailwind CSS shorthand utilities  
+        let value = self.kind.get_properties();
+        match value.as_ref() {
+            "flex" => write!(f, "flex"),
+            "inline-flex" => write!(f, "inline-flex"),
+            "grid" => write!(f, "grid"),
+            "inline-grid" => write!(f, "inline-grid"),
+            "none" => write!(f, "hidden"),  // display: none becomes class "hidden"
+            "block" => write!(f, "block"),
+            "inline" => write!(f, "inline"),
+            "inline-block" => write!(f, "inline-block"),
+            "table" => write!(f, "table"),
+            "table-caption" => write!(f, "table-caption"),
+            "table-cell" => write!(f, "table-cell"),
+            "table-row" => write!(f, "table-row"),
+            _ => write!(f, "display-{}", self.kind)
+        }
     }
 }
 
@@ -47,6 +63,8 @@ impl TailwindDisplay {
             "hidden",
             "revert",
             "table",
+            "table-caption",
+            "table-cell",
             "table-row",
         ]);
         set.contains(mode)

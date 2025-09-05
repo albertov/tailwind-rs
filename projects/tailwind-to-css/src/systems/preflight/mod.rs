@@ -25,6 +25,8 @@ pub struct PreflightSystem {
     pub reset_forms: bool,
     /// Prevents `hidden` elements from being displayed.
     pub hidden_attribute: bool,
+    /// Initialize CSS variables for transform, filter, and other composable utilities.
+    pub initialize_css_variables: bool,
     /// Custom CSS to be prepended to the preflight styles.
     pub custom: String,
 }
@@ -42,6 +44,7 @@ impl Default for PreflightSystem {
             reset_tables: true,
             reset_forms: true,
             hidden_attribute: true,
+            initialize_css_variables: true,
             custom: String::new(),
         }
     }
@@ -61,24 +64,64 @@ impl PreflightSystem {
 }
 "#;
 
+    const CSS_VARIABLES: &'static str = r#"
+*,
+::before,
+::after {
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-drop-shadow: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-opacity: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  --tw-backdrop-drop-shadow: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-inset-shadow: 0 0 #0000;
+  --tw-inset-ring-shadow: 0 0 #0000;
+  --tw-inset-ring-color: ;
+  --tw-space-x-reverse: 0;
+  --tw-space-y-reverse: 0;
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+}
+"#;
+
     const HTML_BASE: &'static str = r#"
 html,
 :host {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   tab-size: 4;
-  font-family: --theme(
-    --default-font-family,
-    ui-sans-serif,
-    system-ui,
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji'
-  );
-  font-feature-settings: --theme(--default-font-feature-settings, normal);
-  font-variation-settings: --theme(--default-font-variation-settings, normal);
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-feature-settings: normal;
+  font-variation-settings: normal;
   -webkit-tap-highlight-color: transparent;
 }
 hr {
@@ -194,6 +237,9 @@ impl Display for PreflightSystem {
         
         if self.global_reset {
             writeln!(f, "{}", Self::GLOBAL_RESET.trim())?;
+        }
+        if self.initialize_css_variables {
+            writeln!(f, "{}", Self::CSS_VARIABLES.trim())?;
         }
         if self.html_base {
             writeln!(f, "{}", Self::HTML_BASE.trim())?;

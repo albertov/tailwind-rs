@@ -1,6 +1,6 @@
 use std::{
     cmp::Ordering,
-    collections::{BTreeMap, BTreeSet},
+    collections::BTreeMap,
     fmt::{Debug, Display, Formatter, Write},
     hash::{Hash, Hasher},
     ops::{Add, AddAssign},
@@ -9,7 +9,7 @@ use std::{
 use itertools::Itertools;
 use xxhash_rust::xxh3::Xxh3;
 
-use crate::{Result, TailwindBuilder, TailwindInstance};
+use crate::{Result, TailwindInstance};
 
 pub use self::{
     attribute::CssAttributes,

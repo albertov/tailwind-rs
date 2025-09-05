@@ -1,4 +1,5 @@
 use super::*;
+use super::transform_utility::{TransformUtility, sealed};
 
 #[doc=include_str!("readme.md")]
 #[derive(Clone, Debug)]
@@ -13,20 +14,39 @@ impl Display for TailwindRotate {
     }
 }
 
-impl TailwindInstance for TailwindRotate {
-    fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
-        let deg = self.kind.get_properties(|f| format!("{}deg", f));
-        let transform = format!("rotate({})", deg);
-        css_attributes! {
-            "transform" => transform,
-        }
+// Implement sealed trait to prevent external implementations
+impl sealed::Sealed for TailwindRotate {}
+
+// Implement TransformUtility trait for unified transform handling
+impl TransformUtility for TailwindRotate {
+    type ValueType = UnitValue;
+    
+    fn get_value(&self) -> &Self::ValueType {
+        &self.kind
+    }
+    
+    fn get_axis(&self) -> Option<AxisXY> {
+        // Rotate doesn't have axis-specific variants
+        None
+    }
+    
+    fn css_var_prefix(&self) -> &'static str {
+        "--tw-rotate"
+    }
+    
+    fn format_css_value(&self, value: &Self::ValueType) -> String {
+        value.get_properties(|f| format!("{}deg", f))
     }
 }
 
 impl TailwindRotate {
     // <https://tailwindcss.com/docs/rotate>
     pub fn parse(input: &[&str], arbitrary: &TailwindArbitrary, negative: Negative) -> Result<Self> {
-        let kind = UnitValue::negative_parser("scale", |_| false, false, false, false)(input, arbitrary, negative)?;
+        let kind = if negative == true {
+            UnitValue::negative_parser("rotate", |_| false, false, false, false)(input, arbitrary, negative)?
+        } else {
+            UnitValue::positive_parser("rotate", |_| false, false, false, false)(input, arbitrary)?
+        };
         Ok(Self { kind })
     }
 }

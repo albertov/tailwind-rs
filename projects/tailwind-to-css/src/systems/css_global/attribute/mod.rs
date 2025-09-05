@@ -5,7 +5,7 @@ mod traits;
 /// A css property is used to remove duplicates.
 ///
 /// In principle, each css property will only appear once, and the one set later will override the previous one.
-#[derive(Debug, Clone, Default, Ord, PartialOrd, Eq, PartialEq, Hash)]
+#[derive(Debug, Clone, Default, Eq, PartialEq, Hash)]
 pub struct CssAttributes {
     normal: ImportantMap,
     transforms: ImportantSet,
@@ -46,6 +46,31 @@ impl CssAttributes {
     {
         for i in items {
             self.insert(i.0, i.1);
+        }
+    }
+
+    /// Insert a CSS property with !important flag
+    pub fn insert_important<K, V>(&mut self, key: K, value: V)
+    where
+        K: Into<String>,
+        V: Into<String>,
+    {
+        let key = key.into();
+        match key.as_str() {
+            "transform" => self.transforms.insert_important(value.into()),
+            "backdrop-filter" => self.backdrop_filter.insert_important(value.into()),
+            "filter" => self.filter.insert_important(value.into()),
+            _ => self.normal.insert_important(key, value.into()),
+        };
+    }
+
+    /// Extend with CSS properties marked as !important
+    pub fn extend_important<T>(&mut self, items: T)
+    where
+        T: IntoIterator<Item = (String, String)>,
+    {
+        for i in items {
+            self.insert_important(i.0, i.1);
         }
     }
 }

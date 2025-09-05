@@ -10,7 +10,14 @@ pub enum Aspect {
 impl Display for Aspect {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::Radio(a, b) => write!(f, "{}/{}", a, b),
+            Self::Radio(a, b) => {
+                // Special cases for known aspect ratios to maintain round-trip compatibility
+                match (a, b) {
+                    (16, 9) => write!(f, "video"),
+                    (1, 1) => write!(f, "square"),
+                    _ => write!(f, "[{}/{}]", a, b), // Use bracketed format for arbitrary ratios
+                }
+            },
             Self::Standard(s) => write!(f, "{}", s),
             Self::Arbitrary(s) => s.write(f),
         }

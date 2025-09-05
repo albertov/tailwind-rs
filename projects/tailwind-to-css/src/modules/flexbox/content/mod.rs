@@ -28,7 +28,11 @@ impl TailwindContent {
             // https://tailwindcss.com/docs/content
             _ => {
                 let s = pattern.join("-");
-                debug_assert!(Self::check_valid(&s));
+                // Skip invalid content values instead of panicking
+                if !Self::check_valid(&s) {
+                    eprintln!("Warning: Unknown content value '{}', skipping", s);
+                    return syntax_error!("Unknown content pattern: {}", s);
+                }
                 TailwindContent::from(s).boxed()
             },
         };

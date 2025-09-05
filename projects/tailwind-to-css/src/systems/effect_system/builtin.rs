@@ -8,8 +8,13 @@ impl EffectSystem {
         new
     }
     fn builtin_box_shadows(&mut self) {
+        // Default shadow (no modifier) maps to shadow-sm in v4
         self.set_box_shadow_default("0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)");
-        self.insert_box_shadow("sm", "0 1px 2px 0 rgb(0 0 0 / 0.05)");
+        // New v4 shadow scale entries
+        self.insert_box_shadow("2xs", "0 1px rgb(0 0 0 / 0.05)");
+        self.insert_box_shadow("xs", "0 1px 2px 0 rgb(0 0 0 / 0.05)");
+        // Updated v4 shadow values
+        self.insert_box_shadow("sm", "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)");
         self.insert_box_shadow("md", "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)");
         self.insert_box_shadow("lg", "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)");
         self.insert_box_shadow("xl", "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)");
@@ -18,12 +23,16 @@ impl EffectSystem {
         self.insert_box_shadow("none", "0 0 #0000");
     }
     fn builtin_drop_shadows(&mut self) {
-        self.set_drop_shadow_default("drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06))");
-        self.insert_drop_shadow("sm", "drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));");
-        self.insert_drop_shadow("md", "drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));");
-        self.insert_drop_shadow("lg", "drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));");
-        self.insert_drop_shadow("xl", "drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));");
-        self.insert_drop_shadow("2xl", "drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));");
-        self.insert_drop_shadow("none", "drop-shadow(0 0 #0000);");
+        // Default drop-shadow (no modifier) maps to drop-shadow-sm in v4
+        self.set_drop_shadow_default("drop-shadow(0 1px 2px rgb(0 0 0 / 0.15))");
+        // New v4 drop-shadow scale entries - note: no 2xs for drop-shadow in v4
+        self.insert_drop_shadow("xs", "drop-shadow(0 1px 1px rgb(0 0 0 / 0.05))");
+        // Updated v4 drop-shadow values
+        self.insert_drop_shadow("sm", "drop-shadow(0 1px 2px rgb(0 0 0 / 0.15))");
+        self.insert_drop_shadow("md", "drop-shadow(0 3px 3px rgb(0 0 0 / 0.12))");
+        self.insert_drop_shadow("lg", "drop-shadow(0 4px 4px rgb(0 0 0 / 0.15))");
+        self.insert_drop_shadow("xl", "drop-shadow(0 9px 7px rgb(0 0 0 / 0.1))");
+        self.insert_drop_shadow("2xl", "drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))");
+        self.insert_drop_shadow("none", "drop-shadow(0 0 #0000)");
     }
 }

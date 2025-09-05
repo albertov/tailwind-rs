@@ -58,7 +58,10 @@ impl TailwindLeading {
         }
     }
     pub fn parse_arbitrary(arbitrary: &TailwindArbitrary) -> Result<Self> {
-        Self::maybe_no_unit(arbitrary).or_else(|_| Self::maybe_length(arbitrary))
+        // First try to parse as a length unit (e.g., "162.5%", "1.5rem")
+        Self::maybe_length(arbitrary)
+            // Then try as a unitless number
+            .or_else(|_| Self::maybe_no_unit(arbitrary))
     }
     #[inline]
     fn maybe_no_unit(arbitrary: &TailwindArbitrary) -> Result<Self> {
@@ -66,7 +69,9 @@ impl TailwindLeading {
     }
     #[inline]
     fn maybe_length(arbitrary: &TailwindArbitrary) -> Result<Self> {
-        rem(arbitrary.as_float()? / 4.0)
+        // Parse as a length unit which handles percentages, rem, px, etc.
+        let length = arbitrary.as_length()?;
+        Ok(Self { kind: LineHeight::Length(length) })
     }
 }
 

@@ -27,6 +27,7 @@ impl TailwindGrid {
 #[derive(Debug, Clone)]
 enum GridTemplate {
     None,
+    Subgrid,
     Unit(i32),
     Arbitrary(TailwindArbitrary),
 }
@@ -35,6 +36,7 @@ impl Display for GridTemplate {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
             GridTemplate::None => write!(f, "none"),
+            GridTemplate::Subgrid => write!(f, "subgrid"),
             GridTemplate::Unit(s) => write!(f, "{}", s),
             GridTemplate::Arbitrary(s) => s.write(f),
         }
@@ -44,6 +46,7 @@ impl GridTemplate {
     pub fn parse(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Self> {
         let kind = match pattern {
             ["none"] => Self::None,
+            ["subgrid"] => Self::Subgrid,
             [n] => Self::Unit(TailwindArbitrary::from(*n).as_integer()?),
             _ => Self::parse_arbitrary(arbitrary)?,
         };
@@ -55,6 +58,7 @@ impl GridTemplate {
     pub fn get_properties(&self) -> String {
         match self {
             GridTemplate::None => "none".to_string(),
+            GridTemplate::Subgrid => "subgrid".to_string(),
             GridTemplate::Unit(s) => format!("repeat({},minmax(0,1fr))", s),
             GridTemplate::Arbitrary(s) => s.get_properties(),
         }

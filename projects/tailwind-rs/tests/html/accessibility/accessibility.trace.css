@@ -1,14 +1,3 @@
-.not-sr-only {
-  clip: auto;
-  white-space: normal;
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  position: static;
-  overflow: visible;
-}
-
 .sr-only {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -19,4 +8,15 @@
   padding: 0;
   position: absolute;
   overflow: hidden;
+}
+
+.not-sr-only {
+  clip: auto;
+  white-space: normal;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  position: static;
+  overflow: visible;
 }

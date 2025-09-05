@@ -17,7 +17,8 @@ impl Display for NumericValue {
         match self {
             Self::Number { n, .. } => write!(f, "{}", n.abs()),
             Self::Keyword(value) => write!(f, "{}", value),
-            Self::Arbitrary(value) => value.write(f),
+            // For arbitrary values, use get_properties to get the CSS value without brackets
+            Self::Arbitrary(value) => write!(f, "{}", value.get_properties()),
         }
     }
 }

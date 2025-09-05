@@ -1,15 +1,15 @@
 #[cfg(feature = "css-color")]
 mod for_css_color;
-#[cfg(feature = "docx-rs")]
-mod for_docx;
-#[cfg(feature = "git2")]
-mod for_git2;
+// #[cfg(feature = "docx-rs")]
+// mod for_docx;
+// #[cfg(feature = "git2")]
+// mod for_git2;
 #[cfg(feature = "glob")]
 mod for_glob;
 #[cfg(feature = "globset")]
 mod for_globset;
-#[cfg(feature = "html_parser")]
-mod for_html_parser;
+// #[cfg(feature = "html_parser")]
+// mod for_html_parser;
 // #[cfg(feature = "lsp-types")]
 // mod for_lsp;
 #[cfg(feature = "nom")]
@@ -20,10 +20,10 @@ mod for_num;
 mod for_parcel_css;
 #[cfg(feature = "pest")]
 mod for_pest;
-#[cfg(feature = "rsass")]
-mod for_sass;
-#[cfg(feature = "serde_json")]
-mod for_serde_json;
+// #[cfg(feature = "rsass")]
+// mod for_sass;
+// #[cfg(feature = "serde_json")]
+// mod for_serde_json;
 #[cfg(feature = "chrono")]
 mod for_time;
 #[cfg(feature = "tl")]

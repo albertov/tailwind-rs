@@ -71,7 +71,7 @@ fn trace_class(node: &mut Node, tw: &mut TailwindBuilder, obfuscate: bool) -> Op
     let class = attributes.get_mut("class")??;
     match tw.trace(class.try_as_utf8_str()?, obfuscate) {
         Ok(c) => {
-            class.set(c).ok()?;
+            class.set(c.into_owned()).ok()?;
         },
         Err(e) => error!("{}", e),
     }

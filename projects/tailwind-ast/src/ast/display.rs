@@ -39,6 +39,9 @@ impl<'a> Display for ASTVariant<'a> {
             write!(f, "not-")?
         }
         write!(f, "{}", self.names.join("-"))?;
+        if let Some(modifier) = self.modifier {
+            write!(f, "/{}", modifier)?;
+        }
         match self.pseudo {
             true => write!(f, "::"),
             false => write!(f, ":"),

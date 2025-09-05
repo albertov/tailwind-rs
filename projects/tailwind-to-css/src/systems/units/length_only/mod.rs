@@ -14,6 +14,10 @@ impl Display for UnitValue {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Number { n, .. } => write!(f, "{}", n.abs()),
+            Self::Length(LengthUnit::Unit(n, unit)) if *n < 0.0 => {
+                // For negative length values, show absolute value (sign handled elsewhere)
+                write!(f, "{}{}", n.abs(), unit)
+            },
             Self::Length(n) => write!(f, "{}", n),
             Self::Keyword(s) => write!(f, "{}", s),
             Self::Arbitrary(s) => write!(f, "{}", s),
@@ -52,8 +56,9 @@ impl UnitValue {
 }
 
 pub fn is_negative(value: &UnitValue) -> bool {
-    match *value {
-        UnitValue::Number { n, is_negative } if is_negative => n < 0.0,
+    match value {
+        UnitValue::Number { n, is_negative } if *is_negative => *n < 0.0,
+        UnitValue::Length(LengthUnit::Unit(n, _)) => *n < 0.0,
         _ => false,
     }
 }
@@ -68,7 +73,22 @@ impl UnitValue {
     ) -> impl Fn(&[&str], &TailwindArbitrary, Negative) -> Result<Self> {
         move |pattern: &[&str], arbitrary: &TailwindArbitrary, negative: Negative| {
             let kind = match pattern {
-                [] => Self::parse_arbitrary(arbitrary)?,
+                [] => {
+                    // Handle negative arbitrary values
+                    if negative.0 && arbitrary.is_some() {
+                        // If it's a negative arbitrary value, prepend "-" to the value
+                        let value = arbitrary.as_str();
+                        if !value.starts_with('-') {
+                            let negative_value = format!("-{}", value);
+                            let negative_arbitrary = TailwindArbitrary::from(negative_value.as_str());
+                            Self::parse_arbitrary(&negative_arbitrary)?
+                        } else {
+                            Self::parse_arbitrary(arbitrary)?
+                        }
+                    } else {
+                        Self::parse_arbitrary(arbitrary)?
+                    }
+                },
                 [s] if check_valid(s) => Self::Keyword(s.to_string()),
                 [n] => Self::parse_number(n, negative, is_length, is_integer, allow_fraction)?,
                 _ => {
@@ -90,7 +110,7 @@ impl UnitValue {
             let kind = match pattern {
                 [] => Self::parse_arbitrary(arbitrary)?,
                 [s] if check_valid(s) => Self::Keyword(s.to_string()),
-                [n] => Self::parse_number(n, Negative::from(true), is_length, is_integer, allow_fraction)?,
+                [n] => Self::parse_number(n, Negative::from(false), is_length, is_integer, allow_fraction)?,
                 _ => {
                     let msg = format!("Unknown {} instructions: {}", id, pattern.join("-"));
                     return Err(TailwindError::syntax_error(msg));

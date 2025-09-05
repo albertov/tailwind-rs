@@ -27,12 +27,12 @@ impl TailwindInstance for TailwindDivideStyle {
         false
     }
     fn selectors(&self, _: &TailwindBuilder) -> String {
-        // format!(".divide-{} > * + *", self.kind)
-        format!(".divide-{}>:not([hidden])~:not([hidden])", self.kind)
+        // Use > * + * for consistency with space utilities
+        format!(".divide-{} > * + *", self.kind)
     }
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
         css_attributes! {
-            "divide-style" => self.kind
+            "border-style" => self.kind
         }
     }
 }

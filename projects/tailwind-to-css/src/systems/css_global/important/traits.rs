@@ -1,5 +1,15 @@
 use super::*;
 
+impl Hash for ImportantSet {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.important.hash(state);
+        // Hash the items in the IndexSet in order
+        for item in &self.set {
+            item.hash(state);
+        }
+    }
+}
+
 impl Display for ImportantSet {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self.important {

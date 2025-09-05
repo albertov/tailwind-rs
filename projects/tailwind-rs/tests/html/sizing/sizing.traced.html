@@ -1,54 +1,94 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8"></meta>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"></link>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sizing tests</title>
 </head>
 <body>
 <!-- https://tailwindcss.com/docs/width -->
-<div class="width-[0px]"></div>
-<div class="width-[0px]"></div>
-<div class="width-[0em]"></div>
-<div class="width-[0em]"></div>
-<div class="width-[0em]"></div>
-<div class="width-[1px]"></div>
-<div class="width-auto"></div>
+<div class="w-0"></div>
+<div class="w-0"></div>
+<div class="w-0.5"></div>
+<div class="w-1"></div>
+<div class="w-1"></div>
+<div class="w-px"></div>
+<div class="w-auto"></div>
 <div class="w-unset"></div>
 <!-- https://tailwindcss.com/docs/width#percentage-widths -->
-<div class="width-1/1"></div>
-<div class="width-1/2"></div>
-<div class="width-2/2"></div>
-<div class="width-0/12"></div>
-<div class="width-12/12"></div>
-<div class="width-full"></div>
+<div class="w-1/1"></div>
+<div class="w-1/2"></div>
+<div class="w-2/2"></div>
+<div class="w-0/12"></div>
+<div class="w-12/12"></div>
+<div class="w-full"></div>
 <!--https://tailwindcss.com/docs/width#viewport-width-->
-<div class="width-screen"></div>
-<div class="width-auto"></div>
-<div class="width-min"></div>
-<div class="width-max"></div>
-<div class="width-fit"></div>
+<div class="w-screen"></div>
+<div class="w-auto"></div>
+<div class="w-min"></div>
+<div class="w-max"></div>
+<div class="w-fit"></div>
 <div class="w-unset"></div>
 <!-- https://tailwindcss.com/docs/width#arbitrary-values -->
-<div class="width-[1px]"></div>
-<div class="width-[10%]"></div>
+<div class="w-[1px]"></div>
+<div class="w-[10%]"></div>
 <!-- https://tailwindcss.com/docs/min-width -->
-<div class="min-width-[0px]"></div>
-<div class="min-width-full"></div>
-<div class="min-width-min"></div>
-<div class="min-width-max"></div>
-<div class="min-width-fit"></div>
+<div class="min-w-0"></div>
+<div class="min-w-full"></div>
+<div class="min-w-min"></div>
+<div class="min-w-max"></div>
+<div class="min-w-fit"></div>
 <div class="min-w-unset"></div>
-<!-- https://tailwindcss.com/docs/margin -->
-<div class="max-width-[0px]"></div>
+<!-- https://tailwindcss.com/docs/max-width -->
+<div class="max-w-0"></div>
 <div class="max-w-none"></div>
 <div class="max-w-xs"></div>
+<div class="max-w-sm"></div>
+<div class="max-w-md"></div>
+<div class="max-w-lg"></div>
+<div class="max-w-xl"></div>
+<div class="max-w-2xl"></div>
+<div class="max-w-3xl"></div>
+<div class="max-w-4xl"></div>
+<div class="max-w-5xl"></div>
+<div class="max-w-6xl"></div>
+<div class="max-w-7xl"></div>
 <div class="max-w-screen-sm"></div>
-<div class="max-width-[50%]"></div>
+<div class="max-w-[50%]"></div>
 <!-- https://tailwindcss.com/docs/margin#add-margin-to-a-single-side -->
-<div class="height-screen"></div>
-<div class="min-height-screen"></div>
-<div class="max-height-screen"></div>
+<div class="h-screen"></div>
+<div class="min-h-screen"></div>
+<div class="max-h-screen"></div>
+<!-- Size utilities (sets both width and height) -->
+<div class="size-0"></div>
+<div class="size-px"></div>
+<div class="size-0.5"></div>
+<div class="size-1"></div>
+<div class="size-2"></div>
+<div class="size-4"></div>
+<div class="size-8"></div>
+<div class="size-16"></div>
+<div class="size-32"></div>
+<div class="size-64"></div>
+<div class="size-96"></div>
+<div class="size-min"></div>
+<div class="size-max"></div>
+<div class="size-fit"></div>
+<div class="size-auto"></div>
+<div class="size-full"></div>
+<div class="size-screen"></div>
+<div class="size-1/2"></div>
+<div class="size-[100px]"></div>
+<!-- Content sizing utilities for width/height -->
+<div class="h-min"></div>
+<div class="h-max"></div>
+<div class="h-fit"></div>
+<div class="min-h-min"></div>
+<div class="min-h-max"></div>
+<div class="min-h-fit"></div>
+<div class="max-h-min"></div>
+<div class="max-h-max"></div>
+<div class="max-h-fit"></div>
 </body>
 </html>

@@ -14,7 +14,7 @@ impl Display for TailWindShrink {
 
 impl TailwindInstance for TailWindShrink {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
-        let shrink = self.shrink.get_properties(|f| (f / 100.0).to_string());
+        let shrink = self.shrink.get_properties(|f| f.to_string());
         css_attributes! {
             "flex-shrink" => shrink
         }
@@ -25,7 +25,7 @@ impl TailWindShrink {
     /// <https://tailwindcss.com/docs/flex-shrink>
     pub fn parse(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Self> {
         let shrink = match pattern {
-            [] if arbitrary.is_none() => 100u32.into(),
+            [] if arbitrary.is_none() => 1u32.into(),
             _ => NumericValue::positive_parser("shrink", Self::check_valid)(pattern, arbitrary)?,
         };
         Ok(Self { shrink })

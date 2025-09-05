@@ -8,9 +8,9 @@ pub(crate) fn scroll_adaptor(
     negative: Negative,
 ) -> Result<Box<dyn TailwindInstance>> {
     let kind = match pattern {
-        ["p" | "pl" | "pr" | "pb" | "pt" | "px" | "py", ..] =>
+        ["p" | "pl" | "pr" | "pb" | "pt" | "px" | "py" | "ps" | "pe", ..] =>
             TailwindScrollPadding::parse(pattern, arbitrary, negative)?.boxed(),
-        ["m" | "ml" | "mr" | "mb" | "mt" | "mx" | "my", ..] =>
+        ["m" | "ml" | "mr" | "mb" | "mt" | "mx" | "my" | "ms" | "me", ..] =>
             TailwindScrollMargin::parse(pattern, arbitrary, negative)?.boxed(),
         _ => TailwindScrollBehavior::parse(pattern, arbitrary)?.boxed(),
     };

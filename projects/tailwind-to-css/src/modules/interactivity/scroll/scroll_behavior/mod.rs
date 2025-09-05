@@ -10,7 +10,7 @@ crate::macros::sealed::keyword_instance!(TailwindScrollBehavior => "scroll-behav
 
 impl Display for TailwindScrollBehavior {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "scroll-behavior-{}", self.kind)
+        write!(f, "scroll-{}", self.kind)
     }
 }
 

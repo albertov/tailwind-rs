@@ -10,7 +10,7 @@ crate::macros::sealed::keyword_instance!(TailwindClear => "clear");
 
 impl Display for TailwindClear {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "float-{}", self.kind)
+        write!(f, "clear-{}", self.kind)
     }
 }
 

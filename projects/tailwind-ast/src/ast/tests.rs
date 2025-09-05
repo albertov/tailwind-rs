@@ -18,7 +18,7 @@ fn assert_arbitrary(input: &str, output: &str) {
 #[test]
 fn test_arbitrary() {
     assert_arbitrary("-[#FFF]", "#FFF");
-    assert_arbitrary("-[\\]]", "]");
+    assert_arbitrary("-[\\]]", "\\]");  // Escape sequences are preserved in the AST
     assert_arbitrary("-[']']", "']'");
     assert_arbitrary("-[[line-name],1fr,auto]", "[line-name],1fr,auto");
 }
@@ -32,10 +32,30 @@ fn test_arbitrary_bad1() {
 #[test]
 fn test_variant() {
     let input = ASTVariant::parse("not-hover::").unwrap().1;
-    let output = ASTVariant { not: true, pseudo: true, names: vec!["hover"] };
+    let output = ASTVariant { 
+        not: true, 
+        pseudo: true, 
+        names: vec!["hover"], 
+        modifier: None,
+        container: false,
+        container_type: None,
+        has: false,
+        has_selector: None,
+        arbitrary_selector: None,
+    };
     assert_eq!(input, output);
     let input = ASTVariant::parse("sm:").unwrap().1;
-    let output = ASTVariant { not: false, pseudo: false, names: vec!["sm"] };
+    let output = ASTVariant { 
+        not: false, 
+        pseudo: false, 
+        names: vec!["sm"], 
+        modifier: None,
+        container: false,
+        container_type: None,
+        has: false,
+        has_selector: None,
+        arbitrary_selector: None,
+    };
     assert_eq!(input, output);
 }
 
@@ -47,6 +67,31 @@ fn test_style() {
         variants: vec![],
         elements: vec!["full"],
         arbitrary: None,
+        opacity: None,
+        ..Default::default()
+    };
+    assert_eq!(input, output);
+    
+    // Test opacity modifier with predefined value
+    let input = AstStyle::parse("bg-red-500/50").unwrap().1;
+    let output = AstStyle {
+        negative: false,
+        variants: vec![],
+        elements: vec!["bg", "red", "500"],
+        arbitrary: None,
+        opacity: Some("50"),
+        ..Default::default()
+    };
+    assert_eq!(input, output);
+    
+    // Test opacity modifier with arbitrary value
+    let input = AstStyle::parse("text-blue-600/[0.23]").unwrap().1;
+    let output = AstStyle {
+        negative: false,
+        variants: vec![],
+        elements: vec!["text", "blue", "600"],
+        arbitrary: None,
+        opacity: Some("0.23"),
         ..Default::default()
     };
     assert_eq!(input, output);
@@ -56,6 +101,7 @@ fn test_style() {
         variants: vec![],
         elements: vec!["top", "1"],
         arbitrary: None,
+        opacity: None,
         ..Default::default()
     };
     assert_eq!(input, output);
@@ -63,11 +109,12 @@ fn test_style() {
     let output = AstStyle {
         negative: false,
         variants: vec![
-            ASTVariant { not: true, pseudo: false, names: vec!["hover"] },
-            ASTVariant { not: false, pseudo: false, names: vec!["sm"] },
+            ASTVariant { not: true, pseudo: false, names: vec!["hover"], modifier: None, container: false, container_type: None, has: false, has_selector: None, arbitrary_selector: None },
+            ASTVariant { not: false, pseudo: false, names: vec!["sm"], modifier: None, container: false, container_type: None, has: false, has_selector: None, arbitrary_selector: None },
         ],
         elements: vec!["text", "red"],
         arbitrary: Some("200/50"),
+        opacity: None,
         ..Default::default()
     };
     assert_eq!(input, output);
@@ -88,6 +135,7 @@ fn test_group() {
             variants: vec![],
             elements: vec!["w"],
             arbitrary: None,
+            opacity: None,
             ..Default::default()
         },
         children: vec![
@@ -96,13 +144,15 @@ fn test_group() {
                 variants: vec![],
                 elements: vec!["full"],
                 arbitrary: None,
+                opacity: None,
                 ..Default::default()
             }),
             Styled(AstStyle {
                 negative: false,
-                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["sm"] }],
+                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["sm"], modifier: None, container: false, container_type: None, has: false, has_selector: None, arbitrary_selector: None }],
                 elements: vec!["auto"],
                 arbitrary: None,
+                opacity: None,
                 ..Default::default()
             }),
         ],
@@ -116,6 +166,7 @@ fn test_group() {
             variants: vec![],
             elements: vec!["rotate"],
             arbitrary: None,
+            opacity: None,
             ..Default::default()
         },
         children: vec![
@@ -124,21 +175,24 @@ fn test_group() {
                 variants: vec![],
                 elements: vec!["3"],
                 arbitrary: None,
+                opacity: None,
                 ..Default::default()
             }),
             Styled(AstStyle {
                 negative: false,
-                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["hover"] }],
+                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["hover"], modifier: None, container: false, container_type: None, has: false, has_selector: None, arbitrary_selector: None }],
                 elements: vec!["6"],
                 arbitrary: None,
+                opacity: None,
                 ..Default::default()
             }),
             Grouped(AstGroup {
                 head: AstStyle {
                     negative: false,
-                    variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["md"] }],
+                    variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["md"], modifier: None, container: false, container_type: None, has: false, has_selector: None, arbitrary_selector: None }],
                     elements: vec![],
                     arbitrary: None,
+                    opacity: None,
                     ..Default::default()
                 },
                 children: vec![
@@ -155,6 +209,12 @@ fn test_group() {
                             not: false,
                             pseudo: false,
                             names: vec!["hover"],
+                            modifier: None,
+                            container: false,
+                            container_type: None,
+                            has: false,
+                            has_selector: None,
+                            arbitrary_selector: None,
                         }],
                         elements: vec!["6"],
                         arbitrary: None,
@@ -174,28 +234,32 @@ fn test_group() {
             variants: vec![],
             elements: vec!["bg", "blue", "500"],
             arbitrary: None,
+            opacity: None,
             ..Default::default()
         },
         children: vec![
             Styled(AstStyle {
                 negative: false,
-                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["hover"] }],
+                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["hover"], modifier: None, container: false, container_type: None, has: false, has_selector: None, arbitrary_selector: None }],
                 elements: vec!["&"],
                 arbitrary: None,
+                opacity: None,
                 ..Default::default()
             }),
             Styled(AstStyle {
                 negative: false,
-                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["focus"] }],
+                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["focus"], modifier: None, container: false, container_type: None, has: false, has_selector: None, arbitrary_selector: None }],
                 elements: vec!["&"],
                 arbitrary: None,
+                opacity: None,
                 ..Default::default()
             }),
             Styled(AstStyle {
                 negative: false,
-                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["active"] }],
+                variants: vec![ASTVariant { not: false, pseudo: false, names: vec!["active"], modifier: None, container: false, container_type: None, has: false, has_selector: None, arbitrary_selector: None }],
                 elements: vec!["&"],
                 arbitrary: None,
+                opacity: None,
                 ..Default::default()
             }),
         ],

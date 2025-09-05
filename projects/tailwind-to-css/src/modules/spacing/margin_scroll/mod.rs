@@ -20,7 +20,9 @@ impl Display for TailwindScrollMargin {
 impl TailwindInstance for TailwindScrollMargin {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
         let mut out = CssAttributes::default();
-        self.axis.write_attributes(&mut out, self.size.get_properties());
+        // Apply negative sign to the value if needed
+        let value = self.negative.get_properties(&self.size.get_properties());
+        self.axis.write_attributes(&mut out, value);
         out
     }
 }
@@ -36,7 +38,10 @@ impl TailwindScrollMargin {
             ["mt", rest @ ..] => (SpacingAxis::new("scroll-mt", &["scroll-margin-top"]), rest),
             ["mb", rest @ ..] => (SpacingAxis::new("scroll-mb", &["scroll-margin-bottom"]), rest),
             ["mx", rest @ ..] => (SpacingAxis::new("scroll-mx", &["scroll-margin-left", "scroll-margin-right"]), rest),
-            ["my", rest @ ..] => (SpacingAxis::new("scroll-my", &["scroll-margin"]), rest),
+            ["my", rest @ ..] => (SpacingAxis::new("scroll-my", &["scroll-margin-top", "scroll-margin-bottom"]), rest),
+            // Logical properties
+            ["ms", rest @ ..] => (SpacingAxis::new("scroll-ms", &["scroll-margin-inline-start"]), rest),
+            ["me", rest @ ..] => (SpacingAxis::new("scroll-me", &["scroll-margin-inline-end"]), rest),
             _ => return syntax_error!("Unknown scroll-margin axis"),
         };
         let size = SpacingSize::parse(rest, arbitrary, &Self::check_valid)?;

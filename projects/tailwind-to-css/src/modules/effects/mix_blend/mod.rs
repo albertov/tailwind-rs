@@ -31,11 +31,12 @@ impl TailwindBlend {
     ///
     /// - https://developer.mozilla.org/zh-CN/docs/Web/CSS/blend-mode
     #[inline]
-    pub fn get_properties(&self) -> &str {
+    pub fn get_properties(&self) -> String {
         self.kind.get_properties()
     }
     pub fn check_valid(mode: &str) -> bool {
         let set = BTreeSet::from_iter(vec![
+            // Standard blend mode values
             "normal",
             "multiply",
             "screen",
@@ -52,6 +53,12 @@ impl TailwindBlend {
             "saturation",
             "color",
             "luminosity",
+            // CSS-wide keywords
+            "inherit",
+            "initial",
+            "unset",
+            "revert",
+            "revert-layer",
         ]);
         set.contains(mode)
     }

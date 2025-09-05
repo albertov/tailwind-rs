@@ -14,6 +14,7 @@ impl Display for TailwindResize {
             "both" => write!(f, "resize"),
             "horizontal" => write!(f, "resize-x"),
             "vertical" => write!(f, "resize-y"),
+            "none" => write!(f, "resize-none"),
             _ => Err(std::fmt::Error),
         })
     }

@@ -17,6 +17,7 @@ impl Default for TailwindBuilder {
             objects: Default::default(),
             bundles: Default::default(),
             screens: BreakPointSystem::builtin(),
+            container_screens: ContainerBreakpointSystem::builtin(),
             palettes: PaletteSystem::builtin(),
             fonts: FontSystem::builtin(),
             preflight: PreflightSystem::default(),

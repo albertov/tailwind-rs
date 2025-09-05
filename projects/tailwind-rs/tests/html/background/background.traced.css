@@ -1,31 +1,3 @@
-.bg-attach-\[unset\], .bg-attach-unset {
-  background-attachment: unset;
-}
-
-.bg-clip-\[unset\] {
-  background-clip: unset;
-}
-
-.bg-clip-border {
-  background-clip: border-box;
-}
-
-.bg-clip-content {
-  background-clip: content-box;
-}
-
-.bg-clip-padding {
-  background-clip: padding-box;
-}
-
-.bg-clip-text {
-  background-clip: text;
-}
-
-.bg-clip-unset {
-  background-clip: unset;
-}
-
 .bg-fixed {
   background-attachment: fixed;
 }
@@ -34,27 +6,47 @@
   background-attachment: local;
 }
 
-.bg-no-repeat {
-  background-repeat: no-repeat;
+.bg-scroll {
+  background-attachment: scroll;
 }
 
-.bg-origin-\[unset\] {
-  background-origin: unset;
+.bg-attach-unset, .bg-attach-\[unset\] {
+  background-attachment: unset;
+}
+
+.bg-clip-border {
+  background-clip: border-box;
+}
+
+.bg-clip-padding {
+  background-clip: padding-box;
+}
+
+.bg-clip-content {
+  background-clip: content-box;
+}
+
+.bg-clip-text {
+  background-clip: text;
+}
+
+.bg-clip-unset, .bg-clip-\[unset\] {
+  background-clip: unset;
 }
 
 .bg-origin-border {
   background-origin: border-box;
 }
 
-.bg-origin-content {
-  background-origin: content-box;
-}
-
 .bg-origin-padding {
   background-origin: padding-box;
 }
 
-.bg-origin-unset {
+.bg-origin-content {
+  background-origin: content-box;
+}
+
+.bg-origin-unset, .bg-origin-\[unset\] {
   background-origin: unset;
 }
 
@@ -62,20 +54,8 @@
   background-repeat: repeat;
 }
 
-.bg-repeat-\[unset\] {
-  background-repeat: unset;
-}
-
-.bg-repeat-round {
-  background-repeat: round;
-}
-
-.bg-repeat-space {
-  background-repeat: space;
-}
-
-.bg-repeat-unset {
-  background-repeat: unset;
+.bg-no-repeat {
+  background-repeat: no-repeat;
 }
 
 .bg-repeat-x {
@@ -86,6 +66,14 @@
   background-repeat: repeat-y;
 }
 
-.bg-scroll {
-  background-attachment: scroll;
+.bg-repeat-round {
+  background-repeat: round;
+}
+
+.bg-repeat-space {
+  background-repeat: space;
+}
+
+.bg-repeat-unset, .bg-repeat-\[unset\] {
+  background-repeat: unset;
 }

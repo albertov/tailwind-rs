@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Copy, Debug, Clone)]
+#[derive(Debug, Clone)]
 pub struct FontSize {
     size: LengthUnit,
     height: LengthUnit,

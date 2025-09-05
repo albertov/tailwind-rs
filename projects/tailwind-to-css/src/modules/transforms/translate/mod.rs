@@ -1,4 +1,5 @@
 use super::*;
+use super::transform_utility::{TransformUtility, sealed};
 
 #[doc=include_str!("readme.md")]
 #[derive(Clone, Debug)]
@@ -18,17 +19,27 @@ impl Display for TailwindTranslate {
     }
 }
 
-impl TailwindInstance for TailwindTranslate {
-    fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
-        let size = self.kind.get_properties(|n| format!("{}rem", n / 4.0));
-        let transform = match self.axis {
-            AxisXY::X => format!("translateX({})", size),
-            AxisXY::Y => format!("translateY({})", size),
-            AxisXY::N => format!("translate({})", size),
-        };
-        css_attributes! {
-            "transform" => transform,
-        }
+// Implement the sealed trait to prevent external implementations
+impl sealed::Sealed for TailwindTranslate {}
+
+// Implement the TransformUtility trait
+impl TransformUtility for TailwindTranslate {
+    type ValueType = UnitValue;
+    
+    fn get_value(&self) -> &Self::ValueType {
+        &self.kind
+    }
+    
+    fn get_axis(&self) -> Option<AxisXY> {
+        Some(self.axis)
+    }
+    
+    fn css_var_prefix(&self) -> &'static str {
+        "--tw-translate"
+    }
+    
+    fn format_css_value(&self, value: &Self::ValueType) -> String {
+        value.get_properties(|n| format!("{}rem", n / 4.0))
     }
 }
 

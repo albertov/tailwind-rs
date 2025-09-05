@@ -11,20 +11,39 @@ pub struct TailwindDivideWidth {
 
 impl Display for TailwindDivideWidth {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        self.axis.write_xy(f, "divide-", &self.kind)
+        self.axis.write_xy(f, "divide", &self.kind)
     }
 }
 
 impl TailwindInstance for TailwindDivideWidth {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
+        // Return empty attributes since we handle everything in additional()
+        CssAttributes::default()
+    }
+    
+    fn additional(&self, _: &TailwindBuilder) -> String {
+        // Get the class name using id() 
+        let class_name = self.id();
+        
+        // Escape special characters for CSS selector
+        let escaped_class = class_name
+            .replace('[', "\\[")
+            .replace(']', "\\]")
+            .replace('(', "\\(")
+            .replace(')', "\\)")
+            .replace('%', "\\%")
+            .replace(' ', "_")
+            .replace('.', "\\.");
+        
+        // Use the > * + * selector to target all children except the first
         match self.axis {
-            AxisXY::X => css_attributes! {
-                "border-right-width" => format!("{}px", self.kind),
-                "border-left-width" => "0"
+            AxisXY::X => {
+                format!(".{} > * + * {{ border-right-width: {}px; border-left-width: 0; }}", 
+                        escaped_class, self.kind)
             },
-            AxisXY::Y => css_attributes! {
-                "border-top-width" => "0",
-                "border-bottom-width" => format!("{}px", self.kind)
+            AxisXY::Y => {
+                format!(".{} > * + * {{ border-top-width: 0; border-bottom-width: {}px; }}", 
+                        escaped_class, self.kind)
             },
             AxisXY::N => unreachable!(),
         }

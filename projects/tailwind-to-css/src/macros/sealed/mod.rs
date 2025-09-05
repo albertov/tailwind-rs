@@ -71,6 +71,10 @@ macro_rules! color_instance {
             pub fn parse_arbitrary(arbitrary: &TailwindArbitrary) -> Result<Self> {
                 Ok(Self { color: TailwindColor::parse_arbitrary(arbitrary)? })
             }
+            /// Parse with optional opacity modifier
+            pub fn parse_with_opacity(input: &[&str], arbitrary: &TailwindArbitrary, opacity: Option<&str>) -> Result<Self> {
+                Ok(Self { color: TailwindColor::parse_with_opacity(input, arbitrary, opacity)? })
+            }
         }
     };
 }

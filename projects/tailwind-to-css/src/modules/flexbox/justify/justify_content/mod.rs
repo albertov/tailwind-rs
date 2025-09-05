@@ -28,7 +28,19 @@ impl Display for TailwindJustifyContent {
 impl TailwindJustifyContent {
     /// <https://tailwindcss.com/docs/justify-content>
     pub fn parse(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Self> {
-        Ok(Self { kind: StandardValue::parser("justify-content", &Self::check_valid)(pattern, arbitrary)? })
+        // Handle Tailwind shorthand names
+        let kind = match pattern {
+            ["start"] => StandardValue::Keyword("flex-start".to_string()),
+            ["end"] => StandardValue::Keyword("flex-end".to_string()),
+            ["center"] => StandardValue::Keyword("center".to_string()),
+            ["between"] => StandardValue::Keyword("space-between".to_string()),
+            ["around"] => StandardValue::Keyword("space-around".to_string()),
+            ["evenly"] => StandardValue::Keyword("space-evenly".to_string()),
+            ["stretch"] => StandardValue::Keyword("stretch".to_string()),
+            [] => StandardValue::parse_arbitrary(arbitrary)?,
+            _ => return syntax_error!("Unknown justify-content value: {}", pattern.join("-")),
+        };
+        Ok(Self { kind })
     }
     /// dispatch to [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
     pub fn parse_arbitrary(arbitrary: &TailwindArbitrary) -> Result<Self> {

@@ -4,7 +4,7 @@ pub use self::{
     breaking::{after::TailwindBreakAfter, before::TailwindBreakBefore, inside::TailwindBreakInside},
     clear::TailwindClear,
     columns::TailwindColumns,
-    container::TailwindContainer,
+    container::{TailwindContainer, ContainerQuerySetup},
     display::TailwindDisplay,
     float::TailwindFloat,
     isolate::TailwindIsolation,

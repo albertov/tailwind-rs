@@ -28,7 +28,7 @@ impl Display for TailwindStrokeWidth {
 
 impl TailwindInstance for TailwindStrokeWidth {
     fn attributes(&self, _: &TailwindBuilder) -> CssAttributes {
-        let width = match self.kind {
+        let width = match &self.kind {
             StrokeWidth::Unit(s) => format!("{}px", s),
             StrokeWidth::Length(s) => s.get_properties(),
         };

@@ -26,7 +26,7 @@ pub struct TailwindApp {
     #[clap(long)]
     dry_run: bool,
     #[clap(short, action = ArgAction::Count)]
-    details: usize,
+    details: u8,
     #[clap(long, value_enum)]
     mode: Option<Mode>,
     #[clap(subcommand)]
